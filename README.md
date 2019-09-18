@@ -1,6 +1,3 @@
-# walrus
-dev tools
-
 <h1 align="center">walrus</h1>
 
 <div align="center">
