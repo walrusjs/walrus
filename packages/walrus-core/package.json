@@ -1,0 +1,15 @@
+{
+  "name": "@walrus/core",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "assert": "^2.0.0",
+    "chalk": "^2.4.2",
+    "commander": "^3.0.1",
+    "debug": "^4.1.1",
+    "lodash": "^4.17.15",
+    "mustache": "^3.1.0",
+    "signale": "^1.4.0"
+  }
+}
