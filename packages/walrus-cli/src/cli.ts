@@ -2,15 +2,14 @@
 import { Command } from 'commander';
 import didYouMean from 'didyoumean2';
 import { checkNodeVersion } from './utils/utils';
-import { chalk, semver } from '@walrus/shared-utils';
+import { chalk, semver, Logger } from '@walrus/shared-utils';
 import { clearConsoleWithTitle } from './utils/clearConsole';
 import Service from './service';
 
 const program = new Command();
+const logger = new Logger();
 const service = new Service(process.cwd());
 const requiredVersion = require('../package.json').engines.node;
-
-service.getUserConfig();
 
 // 检查Node版本
 checkNodeVersion(requiredVersion, 'walrus-cli');
@@ -57,3 +56,29 @@ program
   });
 
 program.parse(process.argv);
+
+const rawArgv = process.argv.slice(2);
+
+const args = require('minimist')(rawArgv, {
+  boolean: [
+    // build
+    'modern',
+    'report',
+    'report-json',
+    'inline-vue',
+    'watch',
+    // serve
+    'open',
+    'copy',
+    'https',
+    // inspect
+    'verbose'
+  ]
+});
+
+const command = args._[0];
+
+service.run(command, args, rawArgv).catch(err => {
+  logger.error(err);
+  process.exit(1);
+});

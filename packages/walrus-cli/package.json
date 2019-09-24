@@ -1,18 +1,21 @@
 {
   "name": "@walrus/cli",
   "version": "0.0.1",
-  "main": "index.js",
+  "main": "./lib/index.js",
+  "typings": "./lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "license": "MIT",
   "keywords": [
-    "walrus",
-    "cli"
+    "walrus-cli"
   ],
   "dependencies": {
     "@walrus/shared-utils": "^0.0.1",
     "@walrus/types": "^0.0.1",
     "commander": "^3.0.1",
     "didyoumean2": "^3.1.2",
-    "lodash": "^4.17.15"
+    "minimist": "^1.2.0"
   },
   "publishConfig": {
     "access": "public"
