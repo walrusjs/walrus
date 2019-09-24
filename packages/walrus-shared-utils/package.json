@@ -12,11 +12,12 @@
     "walrus",
     "shared-utils"
   ],
-  "scripts": {
-    "build": "father-build"
-  },
   "dependencies": {
-    "chalk": "^2.4.2"
+    "@types/lodash": "^4.14.139",
+    "@types/semver": "^6.0.2",
+    "chalk": "^2.4.2",
+    "lodash": "^4.17.15",
+    "semver": "^6.3.0"
   },
   "publishConfig": {
     "access": "public"

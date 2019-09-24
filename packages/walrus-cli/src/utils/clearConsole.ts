@@ -1,6 +1,5 @@
-import chalk from 'chalk';
-import semver from 'semver';
-import { clearConsole } from '@walrus/shared-utils';
+// @ts-ignore
+import { clearConsole, chalk, semver } from '@walrus/shared-utils';
 
 export const generateTitle = function(checkUpdate?: boolean) {
   const current = '0.0.1';

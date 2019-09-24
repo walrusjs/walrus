@@ -1,9 +1,9 @@
-import chalk from 'chalk';
-import * as semver from 'semver';
-import {} from 'fs';
 import { Command } from 'commander';
 import didYouMean from 'didyoumean2';
 import { checkNodeVersion } from './utils/utils';
+// @ts-ignore
+import { chalk, semver } from '@walrus/shared-utils';
+import { clearConsoleWithTitle } from './utils/clearConsole';
 
 const program = new Command();
 const requiredVersion = require('../package.json').engines.node;
@@ -34,6 +34,13 @@ function suggestCommands (unknownCommand) {
 program
   .version(require('../package').version)
   .usage('<command> [options]');
+
+program
+  .command('clear')
+  .description('clear console')
+  .action(() => {
+    clearConsoleWithTitle();
+  });
 
 // output help information on unknown commands
 program

@@ -1,5 +1,4 @@
-import chalk from 'chalk';
-import * as semver from 'semver';
+import { chalk, semver } from '@walrus/shared-utils';
 
 export function checkNodeVersion(wanted, id) {
   if (!semver.satisfies(process.version, wanted)) {

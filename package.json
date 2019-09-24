@@ -9,9 +9,7 @@
   "scripts": {
     "bootstarp": "lerna bootstrap",
     "release": "yarn --pure-lockfile && yarn clean && ts-node scripts/release.ts",
-    "start": "npx ts-node packages/walrus-cli/src/cli.ts",
-    "start1": "npx ts-node packages/walrus-shared-utils/src/index.ts",
-    "build": "father-build",
+    "build": "father-build --watch",
     "clean": "lerna clean --yes"
   },
   "devDependencies": {
