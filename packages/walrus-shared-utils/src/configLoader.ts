@@ -1,7 +1,8 @@
 import { dirname } from 'path';
 import { readFileSync } from 'fs';
 import JoyCon from 'joycon';
-import * as requireFromString from 'require-from-string';
+
+const requireFromString = require('require-from-string');
 
 const configLoader = new JoyCon({
   stopDir: dirname(process.cwd())
@@ -30,7 +31,7 @@ configLoader.addLoader({
       }
     );
     const m = requireFromString(content && content.code ? content.code : '', id);
-    return m.default || m
+    return m.default || m;
   }
 });
 

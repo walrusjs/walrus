@@ -1,4 +1,3 @@
-// @ts-ignore
 import { clearConsole, chalk, semver } from '@walrus/shared-utils';
 
 export const generateTitle = function(checkUpdate?: boolean) {

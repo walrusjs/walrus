@@ -8,9 +8,10 @@
   "license": "MIT",
   "scripts": {
     "bootstarp": "lerna bootstrap",
-    "release": "yarn --pure-lockfile && yarn clean && ts-node scripts/release.ts",
+    "start": "npx ts-node ./packages/walrus-cli/src/cli.ts clea1",
     "build": "father-build --watch",
-    "clean": "lerna clean --yes"
+    "clean": "lerna clean --yes",
+    "release": "yarn --pure-lockfile && yarn clean && ts-node scripts/release.ts"
   },
   "devDependencies": {
     "@types/assert": "^1.4.3",

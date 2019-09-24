@@ -13,11 +13,19 @@
     "shared-utils"
   ],
   "dependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-typescript": "^7.6.0",
     "@types/lodash": "^4.14.139",
     "@types/semver": "^6.0.2",
     "chalk": "^2.4.2",
+    "joycon": "^2.2.5",
     "lodash": "^4.17.15",
+    "require-from-string": "^2.0.2",
     "semver": "^6.3.0"
+  },
+  "devDependencies": {
+    "@types/require-from-string": "^1.2.0"
   },
   "publishConfig": {
     "access": "public"

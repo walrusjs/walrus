@@ -1,12 +1,16 @@
+#!/usr/bin/env node
 import { Command } from 'commander';
 import didYouMean from 'didyoumean2';
 import { checkNodeVersion } from './utils/utils';
-// @ts-ignore
 import { chalk, semver } from '@walrus/shared-utils';
 import { clearConsoleWithTitle } from './utils/clearConsole';
+import Service from './service';
 
 const program = new Command();
+const service = new Service(process.cwd());
 const requiredVersion = require('../package.json').engines.node;
+
+service.getUserConfig();
 
 // 检查Node版本
 checkNodeVersion(requiredVersion, 'walrus-cli');
