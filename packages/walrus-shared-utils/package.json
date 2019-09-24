@@ -12,6 +12,9 @@
     "walrus",
     "shared-utils"
   ],
+  "scripts": {
+    "build": "father-build"
+  },
   "dependencies": {
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
@@ -25,7 +28,8 @@
     "semver": "^6.3.0"
   },
   "devDependencies": {
-    "@types/require-from-string": "^1.2.0"
+    "@types/require-from-string": "^1.2.0",
+    "father-build": "^1.10.0"
   },
   "publishConfig": {
     "access": "public"

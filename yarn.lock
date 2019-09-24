@@ -3776,7 +3776,7 @@ fastparse@^1.1.1:
   resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.2.tgz#91728c5a5942eced8531283c79441ee4122c35a9"
   integrity sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==
 
-father-build@^1.9.5:
+father-build@^1.10.0, father-build@^1.9.5:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/father-build/-/father-build-1.10.0.tgz#ec4f093c4c201b7b643fb59dcc8a7a8e65e4fdaa"
   integrity sha512-zdd9bBIZUcWoenGicm+0zwNLjYVHVPELtS6jmUv799bOr+OATUWdStbqhEexpGngbhISUeD4dl7ZfLLnO/gLsw==
