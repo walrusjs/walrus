@@ -10,7 +10,7 @@
 Frontend development tools 
 </div>
 
-[![Alita](https://img.shields.io/badge/alitajs-walrus-blue.svg)](https://github.com/ts-react/walrus)
+[![Alita](https://img.shields.io/badge/alitajs-walrus-blue.svg)](https://github.com/walrus-plus/walrus)
 
 ## ✨ 特性
 
