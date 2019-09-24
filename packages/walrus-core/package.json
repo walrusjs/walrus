@@ -1,8 +1,13 @@
 {
   "name": "@walrus/core",
   "version": "0.0.1",
-  "main": "index.js",
   "license": "MIT",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "main": "./lib/index.js",
+  "typings": "./lib/index.d.ts",
   "dependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
@@ -17,5 +22,8 @@
     "mustache": "^3.1.0",
     "require-from-string": "^2.0.2",
     "signale": "^1.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

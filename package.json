@@ -4,16 +4,27 @@
   "main": "index.js",
   "private": true,
   "repository": "git@github.com:ts-react/walrus.git",
-  "author": "wangxingkang <wangxingkang@sensoro.com>",
+  "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
+  "scripts": {
+    "bootstarp": "lerna bootstrap",
+    "release": "yarn --pure-lockfile && yarn clean && ts-node scripts/release.ts",
+    "start": "npx ts-node packages/walrus-cli/src/cli.ts",
+    "start1": "npx ts-node packages/walrus-shared-utils/src/index.ts",
+    "build": "father-build",
+    "clean": "lerna clean --yes"
+  },
   "devDependencies": {
     "@types/assert": "^1.4.3",
     "@types/debug": "^4.1.5",
     "@types/lodash": "^4.14.138",
     "@types/mustache": "^0.8.32",
     "@types/node": "^12.7.5",
+    "execa": "^2.0.4",
+    "father-build": "^1.9.5",
     "lerna": "^3.16.4",
     "lerna-changelog": "^0.8.2",
+    "semver": "^6.3.0",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.3"
   },

@@ -1,5 +1,1 @@
-import Plugin from './plugin';
-
-const plugin = new Plugin('jest');
-
-plugin.registerCommand();
+export { default as getUserConfig } from './getUserConfig';
