@@ -8,26 +8,20 @@ import {
   debug,
   lodash
 } from '@walrus/shared-utils';
+import {
+  ICommandOpts,
+  ICommandFun,
+  IRawArgs,
+  IArgs
+} from '@walrus/types';
 import helpCommand from './commands/help';
 import PluginAPI from './pluginAPI';
 import { defaults } from './options';
 
-export interface IArgs {
-  [key: string]: any;
-}
-
-export type IRawArgs = string[];
-
 export interface ICommands {
   [name: string]: {
-    opts: {
-      usage: string;
-      description: string;
-      options: {
-        [key: string]: string
-      }
-    };
-    fn: (args: IArgs, rawArgs: IRawArgs) => Promise<any>;
+    opts: ICommandOpts;
+    fn: ICommandFun;
   }
 }
 
@@ -37,15 +31,35 @@ function getInteriorPluginId(id) {
   return id.replace(/^.\//, 'built-in:')
 }
 
+/**
+ * 解析walrus-cli的package.json
+ */
+function resolveWalrusCliPkg() {
+  return readPkg.sync({
+    cwd: join(__dirname, '..')
+  })
+}
+
+function idToPlugin(id: string) {
+  return {
+    id: getInteriorPluginId(id),
+    apply: require(id)
+  }
+}
+
 class Service {
   private initialized: boolean;
   public context: string;
   public plugins: any[];
   public pkg: readPkg.PackageJson;
+  public walrusCliPkg: readPkg.PackageJson;
   public projectOptions: any;
   private pluginResolution: PluginResolution;
   protected pluginsToSkip: Set<any>;
   public commands: ICommands;
+  public modes: {
+    [key: string]: string;
+  };
 
   constructor(
     context: string,
@@ -60,8 +74,12 @@ class Service {
     this.context = context;
     this.pluginResolution = new PluginResolution();
     this.pkg = this.resolvePkg(pkg);
+    this.walrusCliPkg = resolveWalrusCliPkg();
     this.initialized = false;
     this.plugins = this.resolvePlugins(plugins, useBuiltIn);
+    this.modes = this.plugins.reduce((modes, { apply: { defaultModes }}) => {
+      return Object.assign(modes, defaultModes)
+    }, {});
   }
 
   /**
@@ -98,11 +116,6 @@ class Service {
    * @param useBuiltIn
    */
   resolvePlugins(inlinePlugins, useBuiltIn) {
-    const idToPlugin = (id) => ({
-      id: getInteriorPluginId(id),
-      apply: require(id)
-    });
-
     let plugins;
 
     const builtInPlugins = [
@@ -117,30 +130,38 @@ class Service {
         ? builtInPlugins.concat(inlinePlugins)
         : inlinePlugins
     } else {
-      const projectPlugins = Object.keys(this.pkg.devDependencies || {})
-        .concat(Object.keys(this.pkg.dependencies || {}))
-        .filter(this.pluginResolution.isPlugin)
-        .map(id => {
-          if (
-            this.pkg.optionalDependencies &&
-            id in this.pkg.optionalDependencies
-          ) {
-            let apply = () => {};
-            try {
-              apply = require(id)
-            } catch (e) {
-              logger.warn(`Optional dependency ${id} is not installed.`)
-            }
-
-            return { id, apply }
-          } else {
-            return idToPlugin(id)
-          }
-        });
+      // 获取项目中安装的插件
+      const projectPlugins = this.getPkgPlugin(this.pkg);
       plugins = builtInPlugins.concat(projectPlugins)
     }
 
+    // 获取 walrus-cli 中安装的插件
+    if (this.walrusCliPkg) {
+      const walrusCliPlugins = this.getPkgPlugin(this.walrusCliPkg);
+      plugins = builtInPlugins.concat(walrusCliPlugins)
+    }
+
     return plugins;
+  }
+
+  private getPkgPlugin(pkg: readPkg.PackageJson) {
+    return Object.keys(pkg.devDependencies || {})
+      .concat(Object.keys(pkg.dependencies || {}))
+      .filter(this.pluginResolution.isPlugin)
+      .map(id => {
+        if (pkg.optionalDependencies && id in pkg.optionalDependencies) {
+          let apply = () => {};
+          try {
+            apply = require(id)
+          } catch (e) {
+            logger.warn(`Optional dependency ${id} is not installed.`)
+          }
+
+          return { id, apply }
+        } else {
+          return idToPlugin(id)
+        }
+      });
   }
 
   /**
@@ -175,7 +196,11 @@ class Service {
     // apply plugins.
     this.plugins.forEach(({ id, apply }) => {
       if (this.pluginsToSkip.has(id)) return;
-      apply(new PluginAPI(id, this), this.projectOptions)
+      if (lodash.isFunction(apply)) {
+        apply(new PluginAPI(id, this), this.projectOptions)
+      } else {
+        apply.default(new PluginAPI(id, this), this.projectOptions)
+      }
     })
   }
 
@@ -204,7 +229,14 @@ class Service {
     }
 
     const { fn } = command;
-    return fn(args, rawArgv);
+
+    if (lodash.isFunction(fn)) {
+      return fn(args, rawArgv);
+    }
+    if (lodash.isObject(fn)) {
+      // @ts-ignore
+      return fn.default(args, rawArgv);
+    }
   }
 }
 

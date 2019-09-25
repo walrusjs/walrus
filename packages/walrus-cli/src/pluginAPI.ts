@@ -29,7 +29,7 @@ class PluginAPI {
    * @param {string} path 从项目根目录开始的相对路径
    * @return {string} 解析后的绝对路径
    */
-  resolve(path) {
+  resolve(path: string): string {
     return resolve(this.service.context, path)
   }
 
@@ -37,7 +37,7 @@ class PluginAPI {
    * 检查项目是否具有给定的插件
    * @param id
    */
-  hasPlugin(id) {
+  hasPlugin(id: string): boolean {
     return this.service.plugins.some(p => pluginResolution.matchesPluginId(id, p.id))
   }
 

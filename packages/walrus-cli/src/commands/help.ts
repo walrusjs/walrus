@@ -1,7 +1,8 @@
+import { IApi } from '@walrus/types';
 import { chalk } from '@walrus/shared-utils';
 import getPadLength from '../utils/getPadLength';
 
-export default function(api) {
+export default function(api: IApi) {
   api.registerCommand('help', args => {
     const commandName = args._[0];
     if (!commandName) {

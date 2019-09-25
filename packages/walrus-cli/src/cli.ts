@@ -1,5 +1,10 @@
 #!/usr/bin/env node
-import { chalk, semver, Logger, checkNodeVersion } from '@walrus/shared-utils';
+import {
+  chalk,
+  semver,
+  Logger,
+  checkNodeVersion
+} from '@walrus/shared-utils';
 import Service from './service';
 
 const logger = new Logger();
