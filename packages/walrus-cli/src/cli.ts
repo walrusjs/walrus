@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 import didYouMean from 'didyoumean2';
-import { checkNodeVersion } from './utils/utils';
-import { chalk, semver, Logger } from '@walrus/shared-utils';
+import { chalk, semver, Logger, checkNodeVersion } from '@walrus/shared-utils';
 import { clearConsoleWithTitle } from './utils/clearConsole';
 import Service from './service';
 
