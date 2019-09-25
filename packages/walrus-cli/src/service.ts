@@ -55,12 +55,13 @@ class Service {
       useBuiltIn?: boolean;
     }
   ) {
-    const { plugins = [], pkg, useBuiltIn = false } = options;
-    this.pkg = this.resolvePkg(pkg);
-    this.context = context;
-    this.initialized = false;
-    this.pluginResolution = new PluginResolution();
+    const { plugins, pkg, useBuiltIn } = options || {};
     this.commands = {};
+    this.context = context;
+    this.pluginResolution = new PluginResolution();
+    this.pkg = this.resolvePkg(pkg);
+    this.initialized = false;
+    this.plugins = this.resolvePlugins(plugins, useBuiltIn);
   }
 
   /**
@@ -149,7 +150,7 @@ class Service {
    * @param context 当前工作目录
    * @return 返回解析后的Json对象
    */
-  resolvePkg(inlinePkg, context: string = this.context): readPkg.PackageJson {
+  resolvePkg(inlinePkg?, context: string = this.context) {
     if (inlinePkg) {
       return inlinePkg;
     }
