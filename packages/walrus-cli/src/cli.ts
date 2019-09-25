@@ -1,10 +1,7 @@
 #!/usr/bin/env node
-import { Command } from 'commander';
-import didYouMean from 'didyoumean2';
 import { chalk, semver, Logger, checkNodeVersion } from '@walrus/shared-utils';
 import Service from './service';
 
-// const program = new Command();
 const logger = new Logger();
 const service = new Service(process.cwd());
 const requiredVersion = require('../package.json').engines.node;
@@ -20,34 +17,6 @@ if (semver.satisfies(process.version, '9.x')) {
     `It's strongly recommended to use an active LTS version instead.`
   ))
 }
-
-// function suggestCommands (unknownCommand) {
-//   const availableCommands = program.commands.map(cmd => {
-//     return cmd._name
-//   });
-//
-//   const suggestion = didYouMean(unknownCommand, availableCommands);
-//   if (suggestion) {
-//     console.log(`  ` + chalk.red(`Did you mean ${chalk.yellow(suggestion + '')}?`))
-//   }
-// }
-
-// program
-//   .version(require('../package').version)
-//   .usage('<command> [options]');
-//
-//
-// // output help information on unknown commands
-// program
-//   .arguments('<command>')
-//   .action((cmd) => {
-//     program.outputHelp();
-//     console.log(`  ` + chalk.red(`Unknown command ${chalk.yellow(cmd)}.`));
-//     console.log();
-//     suggestCommands(cmd)
-//   });
-//
-// program.parse(process.argv);
 
 const rawArgv = process.argv.slice(2);
 
