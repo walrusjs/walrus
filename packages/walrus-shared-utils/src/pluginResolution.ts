@@ -46,6 +46,18 @@ class PluginResolution {
     // default short
     // e.g. foo
     return `walrus-plugin-${id}`
+  };
+
+  matchesPluginId = (input, full) => {
+    const short = full.replace(this.pluginRegExp, '');
+    return (
+      // input is full
+      full === input ||
+      // input is short without scope
+      short === input ||
+      // input is short with scope
+      short === input.replace(scopeRE, '')
+    )
   }
 }
 
