@@ -1,9 +1,5 @@
 <h1 align="center">@walrus/shared-utils</h1>
 
-<div align="center">
-walrus utils
-</div>
-
 [![Alita](https://img.shields.io/badge/alitajs-walrus-blue.svg)](https://github.com/walrus-plus/walrus)
 [![NPM version](https://img.shields.io/npm/v/@walrus/shared-utils.svg?style=flat)](https://npmjs.org/package/@walrus/shared-utils)
 [![NPM downloads](http://img.shields.io/npm/dm/@walrus/shared-utils.svg?style=flat)](https://npmjs.org/package/@walrus/shared-utils)
@@ -32,6 +28,13 @@ if (lodash.isBoolean(result)) {
 }
 ```
 
+## 🎉 目录
+
+- [lodash](#lodash)
+- [isLinux](#isLinux)
+- [isWindows](#isWindows)
+- [isMacintosh](#isMacintosh)
+
 ## ✨ API
 
 ### lodash 
@@ -53,26 +56,42 @@ import { isLinux } form '@walrus/shared-utils';
 - 类型:
 
 ```
-() => true
+() => boolean;
 ```
 
 - 描述: 是否是Linux系统
 
 ### isMacintosh
 
+- 使用:
+
 ```
 import { isLinux } form '@walrus/shared-utils';
 ```
 
-是否是Mac系统
+- 类型:
+
+```
+() => boolean;
+```
+
+- 描述: 是否是Mac系统
 
 ### isWindows
+
+- 使用:
 
 ```
 import { isWindows } form '@walrus/shared-utils';
 ```
 
-是否是Windows系统
+- 类型:
+
+```
+() => boolean;
+```
+
+- 描述: 是否是Windows系统
 
 
 
