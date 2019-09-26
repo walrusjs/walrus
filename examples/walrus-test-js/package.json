@@ -1,0 +1,14 @@
+{
+  "name": "@walrus/test-js",
+  "version": "1.0.0",
+  "description": "walrus test javascript example",
+  "private": true,
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "walrus test"
+  },
+  "dependencies": {
+    "@walrus/cli": "^0.0.1"
+  }
+}

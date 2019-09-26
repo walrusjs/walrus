@@ -1,0 +1,19 @@
+{
+  "name": "@walrus/test-react",
+  "version": "1.0.0",
+  "description": "walrus test react example",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "walrus test"
+  },
+  "dependencies": {
+    "react": "^16.9.0"
+  },
+  "devDependencies": {
+    "@walrus/cli": "^0.0.1",
+    "@testing-library/react-hooks": "^2.0.1",
+    "react-test-renderer": "^16.9.0"
+  }
+}
