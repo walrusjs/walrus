@@ -22,6 +22,7 @@
     "jest-watch-typeahead": "^0.4.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "ts-jest": "^24.1.0",
     "typescript": "^3.6.3",
     "vue": "^2.6.10",
     "vue-jest": "^3.0.5",
