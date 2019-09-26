@@ -28,6 +28,7 @@
     "typescript": "^3.6.3"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ]
 }
