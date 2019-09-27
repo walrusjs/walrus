@@ -18,3 +18,27 @@ Frontend development tools
 * 💅 内置支持 jest、eslint、stylelint 等
 * 🎉 插件体系，所有功能通过插件实现
 * 💻 使用TypeScript编写
+
+## 📦 安装
+
+```
+// npm
+npm install @walrus/cli --dev
+
+// yarn
+yarn add @walrus/cli --dev
+
+// 全局安装
+yarn global add @walrus/cli
+
+```
+
+⌨️ 本地开发
+
+```
+# 克隆项目到本地
+git clone git@github.com:walrus-plus/walrus.git
+
+# 安装依赖
+yarn bootstarp
+```
