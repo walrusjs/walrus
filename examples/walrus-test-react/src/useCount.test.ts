@@ -11,7 +11,7 @@ describe('useToggle', () => {
     expect(typeof result.current[1]).toBe('function');
   });
 
-  it('should set state to true', () => {
+  it('should set count to 1', () => {
     const { result } = setUp();
     const [, count] = result.current;
 

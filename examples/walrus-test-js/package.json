@@ -8,7 +8,7 @@
   "scripts": {
     "test": "walrus test"
   },
-  "dependencies": {
+  "devDependencies": {
     "@walrus/cli": "^0.0.1"
   }
 }

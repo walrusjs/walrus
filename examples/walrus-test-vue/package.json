@@ -1,13 +1,16 @@
 {
-  "name": "@walrus/test-ts",
+  "name": "@walrus/test-vue",
   "version": "1.0.0",
-  "description": "walrus test typescript example",
+  "description": "walrus test vue example",
   "main": "index.js",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "test": "walrus test"
   },
-  "private": true,
+  "dependencies": {
+    "vue": "^2.6.10"
+  },
   "devDependencies": {
     "@walrus/cli": "^0.0.1"
   }
