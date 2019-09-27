@@ -19,6 +19,16 @@ Frontend development tools
 * 🎉 插件体系，所有功能通过插件实现
 * 💻 使用TypeScript编写
 
+## 🌈 包
+
+|包名|版本|描述|
+|---|---|---|
+|@walrus/cli|[![NPM version](https://img.shields.io/npm/v/@walrus/cli.svg?style=flat)](https://npmjs.org/package/@walrus/cli)|命令注册中心|
+|@walrus/walrus-plugin-jest|[![NPM version](https://img.shields.io/npm/v/@walrus/walrus-plugin-jest.svg?style=flat)](https://npmjs.org/package/@walrus/walrus-plugin-jest)|封装Jest|
+|@walrus/shared-utils|[![NPM version](https://img.shields.io/npm/v/@walrus/shared-utils.svg?style=flat)](https://npmjs.org/package/@walrus/shared-utils)|工具方法|
+|@walrus/types|[![NPM version](https://img.shields.io/npm/v/@walrus/types.svg?style=flat)](https://npmjs.org/package/@walrus/types)|相关类型定义|
+
+
 ## 📦 安装
 
 ```
