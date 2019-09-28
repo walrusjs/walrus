@@ -1,6 +1,6 @@
 {
   "name": "@walrus/test-vue",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "walrus test vue example",
   "main": "index.js",
   "license": "MIT",
@@ -12,6 +12,6 @@
     "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@walrus/cli": "^0.0.1"
+    "@walrus/cli": "^0.0.2"
   }
 }
