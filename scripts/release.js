@@ -48,8 +48,6 @@ const currentVersion = require('../lerna.json').version;
 const release = async () => {
   console.log(`Current version: ${currentVersion}`);
 
-  return;
-
   const bumps = ['patch', 'minor', 'major', 'prerelease'];
   const versions = {};
   bumps.forEach(b => { versions[b] = semver.inc(currentVersion, b) });
