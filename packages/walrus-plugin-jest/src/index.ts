@@ -1,9 +1,9 @@
 import { IApi } from '@walrus/types';
 import { run } from 'jest';
-import resolve from './utils/resolve';
-import createJestConfig from './jest-config/defaultConfig';
+import { DefaultConfigResolver } from './defaultConfig.resolver';
+import { CustomConfigResolver } from './customConfig.resolver';
+import { JestConfigurationBuilder } from './jestConfigurationBuilder';
 
-const rootDir = process.cwd();
 const debug = require('debug')('walrus-plugin-jest');
 
 export default function(api: IApi) {
@@ -17,7 +17,11 @@ export default function(api: IApi) {
       `All jest command line options are supported.\n` +
       `See https://facebook.github.io/jest/docs/en/cli.html for more details.`
   },(args, rawArgv) => {
-    rawArgv.push('--config', JSON.stringify(createJestConfig(resolve, rootDir)));
+    const configuration = new JestConfigurationBuilder(
+      new DefaultConfigResolver(),
+      new CustomConfigResolver()
+    ).buildConfiguration(process.cwd());
+    rawArgv.push('--config', JSON.stringify(configuration));
     run(rawArgv)
       .then((result) => {
         debug(result);
@@ -29,5 +33,5 @@ export default function(api: IApi) {
 }
 
 export const defaultModes = {
-  'test:unit': 'test'
+  'test': 'test'
 };

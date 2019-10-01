@@ -1,4 +1,4 @@
-import {resolve} from 'path';
+import { resolve } from 'path';
 import { PluginResolution, lodash } from '@walrus/shared-utils';
 import Server from './service';
 

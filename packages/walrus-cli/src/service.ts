@@ -1,12 +1,12 @@
 import { existsSync } from 'fs';
 import { join } from 'path';
-import * as readPkg from 'read-pkg';
 import {
   configLoader,
   PluginResolution,
   Logger,
   debug,
-  lodash
+  lodash,
+  readPkg
 } from '@walrus/shared-utils';
 import {
   ICommandOpts,
