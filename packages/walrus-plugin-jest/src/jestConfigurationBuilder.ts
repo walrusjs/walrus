@@ -14,10 +14,8 @@ export class JestConfigurationBuilder {
   ): any {
 
     const globalDefaultConfig = this.defaultConfigResolver.resolveGlobal();
-    const projectDefaultConfig = this.defaultConfigResolver.resolveForProject();
     const globalCustomConfig = this.customConfigResolver.resolveGlobal(projectRoot);
-    const projectCustomConfig = this.customConfigResolver.resolveForProject(projectRoot, configPath);
 
-    return lodash.mergeWith(globalDefaultConfig, projectDefaultConfig, globalCustomConfig, projectCustomConfig);
+    return lodash.mergeWith(globalDefaultConfig, globalCustomConfig);
   }
 }

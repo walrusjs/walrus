@@ -22,13 +22,4 @@ export class CustomConfigResolver {
 
     return packageJson.jest || existsSync(workspaceJestConfigPath) && require(workspaceJestConfigPath) || {};
   }
-
-  resolveForProject(projectRoot: string, configPath: string) {
-    const jestConfigPath = getSystemPath(join(projectRoot, configPath));
-    if (!existsSync(jestConfigPath)) {
-      this.logger.warn(`warning: unable to locate custom jest configuration file at path "${jestConfigPath}"`);
-      return {};
-    }
-    return require(jestConfigPath);
-  }
 }
