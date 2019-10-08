@@ -1,0 +1,11 @@
+{
+  "name": "@walrus/walrus-plugin-eslint",
+  "version": "0.0.3",
+  "main": "./lib/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@walrus/shared-utils": "^0.0.3",
+    "@walrus/types": "^0.0.3",
+    "eslint": "^6.5.1"
+  }
+}
