@@ -1,6 +1,5 @@
 {
   "name": "@walrus/workspace",
-  "version": "1.0.0",
   "main": "index.js",
   "private": true,
   "repository": "git@github.com:ts-react/walrus.git",
