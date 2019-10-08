@@ -1,6 +1,6 @@
 {
   "name": "@walrus/types",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Type definitions for walrus.",
   "license": "MIT",
   "types": "index",

@@ -1,6 +1,6 @@
 {
   "name": "@walrus/cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "bin": {
@@ -14,9 +14,9 @@
     "walrus-cli"
   ],
   "dependencies": {
-    "@walrus/shared-utils": "^0.0.3",
-    "@walrus/types": "^0.0.3",
-    "@walrus/walrus-plugin-jest": "^0.0.3",
+    "@walrus/shared-utils": "^0.0.4",
+    "@walrus/types": "^0.0.4",
+    "@walrus/walrus-plugin-jest": "^0.0.4",
     "minimist": "^1.2.0"
   },
   "publishConfig": {
