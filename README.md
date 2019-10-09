@@ -97,3 +97,14 @@ git clone git@github.com:walrus-plus/walrus.git
 # 安装依赖
 yarn bootstarp
 ```
+
+
+## 🌟 社区
+
+* 钉钉，请扫描下面的二维码加群
+
+<img height="200" src="https://github.com/alitajs/alita/blob/master/public/dingding.png"></img> 
+
+* 微信，扫描二维码添加机器人，回复alita进群
+
+<img height="200" src="https://github.com/alitajs/alita/blob/master/public/wechat.png"></img> 
