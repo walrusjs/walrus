@@ -44,6 +44,7 @@ Frontend development tools
 |---|---|---|
 |@walrus/cli|[![NPM version](https://img.shields.io/npm/v/@walrus/cli.svg?style=flat)](https://npmjs.org/package/@walrus/cli)|命令注册中心|
 |@walrus/walrus-plugin-jest|[![NPM version](https://img.shields.io/npm/v/@walrus/walrus-plugin-jest.svg?style=flat)](https://npmjs.org/package/@walrus/walrus-plugin-jest)|封装Jest|
+|@walrus/walrus-plugin-eslint|[![NPM version](https://img.shields.io/npm/v/@walrus/walrus-plugin-eslint.svg?style=flat)](https://npmjs.org/package/@walrus/walrus-plugin-eslint)|封装eslint|
 |@walrus/shared-utils|[![NPM version](https://img.shields.io/npm/v/@walrus/shared-utils.svg?style=flat)](https://npmjs.org/package/@walrus/shared-utils)|工具方法|
 |@walrus/types|[![NPM version](https://img.shields.io/npm/v/@walrus/types.svg?style=flat)](https://npmjs.org/package/@walrus/types)|相关类型定义|
 
