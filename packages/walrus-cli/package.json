@@ -16,8 +16,7 @@
   "dependencies": {
     "@walrus/shared-utils": "^0.0.3",
     "@walrus/types": "^0.0.3",
-    "@walrus/walrus-plugin-jest": "^0.0.3",
-    "minimist": "^1.2.0"
+    "@walrus/walrus-plugin-jest": "^0.0.3"
   },
   "publishConfig": {
     "access": "public"

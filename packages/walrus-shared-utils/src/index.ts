@@ -1,6 +1,7 @@
 import * as semver from 'semver';
 import * as lodash from 'lodash';
 import * as readPkg from 'read-pkg';
+import * as minimist from 'minimist';
 const debug = require('debug');
 
 export { isLinux, isMacintosh, isWindows } from './osUtils';
@@ -18,5 +19,6 @@ export {
   semver,
   lodash,
   debug,
-  readPkg
+  readPkg,
+  minimist
 }

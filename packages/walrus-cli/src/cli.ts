@@ -3,6 +3,7 @@ import {
   chalk,
   semver,
   Logger,
+  minimist,
   checkNodeVersion
 } from '@walrus/shared-utils';
 import Service from './service';
@@ -25,7 +26,7 @@ if (semver.satisfies(process.version, '9.x')) {
 
 const rawArgv = process.argv.slice(2);
 
-const args = require('minimist')(rawArgv, {
+const args = minimist(rawArgv, {
   boolean: [
     // build
     'modern',

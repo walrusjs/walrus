@@ -27,12 +27,14 @@
     "is-url": "^1.2.4",
     "joycon": "^2.2.5",
     "lodash": "^4.17.15",
+    "minimist": "^1.2.0",
     "read-pkg": "^5.2.0",
     "require-from-string": "^2.0.2",
     "semver": "^6.3.0",
     "slash2": "^2.0.0"
   },
   "devDependencies": {
+    "@types/minimist": "^1.2.0",
     "@types/require-from-string": "^1.2.0",
     "father-build": "^1.10.0"
   },
