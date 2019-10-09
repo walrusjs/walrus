@@ -4,7 +4,7 @@ import Linter, { IOptions } from './linter';
 
 const rawArgv = process.argv.slice(2);
 
-function Cli(opts: IOptions) {
+function Cmd(opts: IOptions) {
   const linter = new Linter(opts);
 
   opts = Object.assign({
@@ -127,4 +127,4 @@ function Cli(opts: IOptions) {
 
 }
 
-export default Cli;
+export default Cmd;

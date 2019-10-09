@@ -1,4 +1,4 @@
-import Cli from './cmd';
+import Cmd from './cmd';
 import { join } from 'path';
 import * as eslint from 'eslint';
 import { readPkg } from '@walrus/shared-utils';
@@ -17,4 +17,7 @@ const options = {
   version: pkg.version
 };
 
-Cli(options);
+export default function() {
+  Cmd(options);
+}
+

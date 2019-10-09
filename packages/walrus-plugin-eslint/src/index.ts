@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { IApi } from '@walrus/types';
+import Cli from './cli';
 
 export default function(api: IApi) {
   api.registerCommand('lint', {
@@ -18,6 +19,7 @@ export default function(api: IApi) {
     details:
       'For more options, see https://eslint.org/docs/user-guide/command-line-interface#options'
   }, (args) => {
-
+    console.log(args);
+    // Cli();
   })
 }

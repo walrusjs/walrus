@@ -1,0 +1,13 @@
+{
+  "name": "@walrus/example-eslint",
+  "version": "1.0.0",
+  "description": "walrus example eslint",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "lint": "walrus lint"
+  },
+  "dependencies": {
+    "@walrus/cli": "^0.0.3"
+  }
+}
