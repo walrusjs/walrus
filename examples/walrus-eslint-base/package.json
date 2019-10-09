@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "walrus example eslint",
   "main": "index.js",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "lint": "walrus lint"

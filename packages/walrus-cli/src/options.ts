@@ -1,8 +1,10 @@
 import { IConfig } from '@walrus/types';
 
-// 默认配置
-export const defaults = (): IConfig => ({
+const defaultConfig: IConfig = {
   frame: 'react',
   useTypescript: true,
   plugins: []
-});
+};
+
+// 默认配置
+export const defaults = (): IConfig => defaultConfig;

@@ -9,8 +9,8 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
-    "@walrus/shared-utils": "^0.0.3",
-    "@walrus/types": "^0.0.3",
+    "@walrus/shared-utils": "^0.0.4",
+    "@walrus/types": "^0.0.4",
     "babel-eslint": "^10.0.3",
     "deglob": "^4.0.1",
     "eslint": "^6.5.1",
