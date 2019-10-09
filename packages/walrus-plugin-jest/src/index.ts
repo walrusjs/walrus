@@ -1,4 +1,4 @@
-import { IApi } from '@walrus/types';
+import { IApi, IConfig } from '@walrus/types';
 import { run } from 'jest';
 import { DefaultConfigResolver } from './defaultConfig.resolver';
 import { CustomConfigResolver } from './customConfig.resolver';
@@ -6,7 +6,7 @@ import { JestConfigurationBuilder } from './jestConfigurationBuilder';
 
 const debug = require('debug')('walrus-plugin-jest');
 
-export default function(api: IApi) {
+export default function(api: IApi, config: IConfig) {
   api.registerCommand('test', {
     description: 'run unit tests with jest',
     usage: 'walrus test:unit [options] <regexForTestFiles>',

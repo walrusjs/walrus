@@ -2,7 +2,7 @@
 
 import { join } from 'path';
 import * as eslint from 'eslint';
-import { IApi } from '@walrus/types';
+import { IApi, IConfig } from '@walrus/types';
 import { readPkg } from '@walrus/shared-utils';
 import cli from './cli';
 
@@ -20,7 +20,7 @@ const options = {
   version: pkg.version
 };
 
-export default function(api: IApi) {
+export default function(api: IApi, config: IConfig) {
   api.registerCommand('lint', {
     description: 'lint and fix source files',
     usage: 'walrus lint [options] [...files]',
@@ -35,7 +35,8 @@ export default function(api: IApi) {
     },
     details:
       'For more options, see https://eslint.org/docs/user-guide/command-line-interface#options'
-  }, (args, opts, config) => {
+  }, () => {
+    console.log(config);
     // react
     if (config.frame === 'react') {
       options.eslintConfig.configFile = join(__dirname, './config/eslintrc.react.js');
