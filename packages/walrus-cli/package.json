@@ -17,7 +17,8 @@
     "@walrus/shared-utils": "^0.0.5",
     "@walrus/types": "^0.0.5",
     "@walrus/walrus-plugin-eslint": "^0.0.5",
-    "@walrus/walrus-plugin-jest": "^0.0.5"
+    "@walrus/walrus-plugin-jest": "^0.0.5",
+    "@walrus/walrus-plugin-prettier": "^0.0.5"
   },
   "publishConfig": {
     "access": "public"
