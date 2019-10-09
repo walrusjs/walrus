@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import {
   chalk,
   semver,
@@ -27,20 +28,7 @@ if (semver.satisfies(process.version, '9.x')) {
 const rawArgv = process.argv.slice(2);
 
 const args = minimist(rawArgv, {
-  boolean: [
-    // build
-    'modern',
-    'report',
-    'report-json',
-    'inline-vue',
-    'watch',
-    // serve
-    'open',
-    'copy',
-    'https',
-    // inspect
-    'verbose'
-  ]
+  boolean: []
 });
 
 const command = args._[0];

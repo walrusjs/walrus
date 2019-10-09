@@ -53,7 +53,9 @@ function Cli(opts: IOptions) {
         linter.lintText(text, lintOpts, onResult)
       })
   } else {
-    linter.lintFiles(argv._, lintOpts, onResult)
+    const files = argv._;
+    files.shift();
+    linter.lintFiles(files, lintOpts, onResult)
   }
 
   function onResult (err, result) {
