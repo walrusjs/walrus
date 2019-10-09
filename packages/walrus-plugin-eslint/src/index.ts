@@ -15,7 +15,7 @@ const options = {
   cmd: 'walrus',
   eslint,
   eslintConfig: {
-    configFile: join(__dirname, '../eslintrc.json')
+    configFile: join(__dirname, './config/eslintrc.base.js')
   },
   version: pkg.version
 };
@@ -35,8 +35,18 @@ export default function(api: IApi) {
     },
     details:
       'For more options, see https://eslint.org/docs/user-guide/command-line-interface#options'
-  }, (args) => {
-    console.log(args);
-    // cli(options);
+  }, (args, opts, config) => {
+    // react
+    if (config.frame === 'react') {
+      options.eslintConfig.configFile = join(__dirname, './config/eslintrc.react.js');
+      if (config.useTypescript) {
+        options.eslintConfig.configFile = join(__dirname, './config/eslintrc.react-ts.js');
+      }
+    }
+    // 无框架
+    if (config.frame === '' && config.useTypescript) {
+      options.eslintConfig.configFile = join(__dirname, './config/eslintrc.ts.js')
+    }
+    cli(options);
   })
 }

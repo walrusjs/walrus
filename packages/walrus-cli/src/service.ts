@@ -12,6 +12,7 @@ import {
   ICommandOpts,
   ICommandFun,
   IRawArgs,
+  IConfig,
   IArgs
 } from '@walrus/types';
 import helpCommand from './commands/help';
@@ -231,11 +232,11 @@ class Service {
     const { fn } = command;
 
     if (lodash.isFunction(fn)) {
-      return fn(args, rawArgv);
+      return fn(args, rawArgv, this.projectOptions);
     }
     if (lodash.isObject(fn)) {
       // @ts-ignore
-      return fn.default(args, rawArgv);
+      return fn.default(args, rawArgv, this.projectOptions);
     }
   }
 }

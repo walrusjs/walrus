@@ -3,7 +3,6 @@ import { join, dirname } from 'path';
 import * as eslint from 'eslint';
 import { CLIEngine } from 'eslint';
 import pkgConf from 'pkg-conf';
-import * as deglob from 'deglob';
 import { lodash } from '@walrus/shared-utils';
 
 export type IParseOpts = (opts: string, packageOpts: any, rootDir: string) => {};
@@ -55,6 +54,8 @@ const DEFAULT_IGNORE = [
   'node_modules/**',
   'vendor/**'
 ];
+
+const deglob = require('deglob');
 
 class Linter {
   private readonly cwd: string;

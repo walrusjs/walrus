@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "lint": "walrus lint"
+    "lint": "walrus lint src/**/*.js"
   },
   "dependencies": {
     "@walrus/cli": "^0.0.3"
