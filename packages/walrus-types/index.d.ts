@@ -19,8 +19,7 @@ export type IRawArgs = string[];
 
 export type ICommandFun = (
   args: IArgs,
-  rawArgs: IRawArgs,
-  config: IConfig
+  rawArgs: IRawArgs
 ) => void;
 
 interface IRegisterCommand {
