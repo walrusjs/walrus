@@ -1,8 +1,10 @@
 #!/usr/bin/env node
+
 import {
   chalk,
   semver,
   Logger,
+  minimist,
   checkNodeVersion
 } from '@walrus/shared-utils';
 import Service from './service';
@@ -25,21 +27,8 @@ if (semver.satisfies(process.version, '9.x')) {
 
 const rawArgv = process.argv.slice(2);
 
-const args = require('minimist')(rawArgv, {
-  boolean: [
-    // build
-    'modern',
-    'report',
-    'report-json',
-    'inline-vue',
-    'watch',
-    // serve
-    'open',
-    'copy',
-    'https',
-    // inspect
-    'verbose'
-  ]
+const args = minimist(rawArgv, {
+  boolean: []
 });
 
 const command = args._[0];
