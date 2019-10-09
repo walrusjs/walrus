@@ -1,7 +1,24 @@
 #!/usr/bin/env node
 
+import { join } from 'path';
+import * as eslint from 'eslint';
 import { IApi } from '@walrus/types';
-import Cli from './cli';
+import { readPkg } from '@walrus/shared-utils';
+import cli from './cli';
+
+const pkg = readPkg.sync({
+  cwd: join(__dirname, '..')
+});
+
+const options = {
+  bugs: pkg.bugs.url,
+  cmd: 'walrus',
+  eslint,
+  eslintConfig: {
+    configFile: join(__dirname, '../eslintrc.json')
+  },
+  version: pkg.version
+};
 
 export default function(api: IApi) {
   api.registerCommand('lint', {
@@ -20,6 +37,6 @@ export default function(api: IApi) {
       'For more options, see https://eslint.org/docs/user-guide/command-line-interface#options'
   }, (args) => {
     console.log(args);
-    // Cli();
+    // cli(options);
   })
 }
