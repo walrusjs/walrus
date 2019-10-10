@@ -12,16 +12,33 @@ import {
   ICommandOpts,
   ICommandFun,
   IRawArgs,
+  IConfig,
   IArgs
 } from '@walrus/types';
 import helpCommand from './commands/help';
-import PluginAPI from './pluginAPI';
+import PluginAPI, { IPluginConfig } from './pluginAPI';
 import { defaults } from './options';
 
 export interface ICommands {
   [name: string]: {
-    opts: ICommandOpts;
     fn: ICommandFun;
+    opts: ICommandOpts;
+    config: IPluginConfig;
+  }
+}
+
+export type IApplyFun = (pluginAPI: PluginAPI, config: IConfig) => void;
+
+export interface IPlugin {
+  id: string;
+  apply: {
+    default?: IApplyFun;
+    defaultModes?: {
+      [key: string]: string;
+    };
+  };
+  opts?: {
+    [key: string]: any;
   }
 }
 
@@ -50,10 +67,10 @@ function idToPlugin(id: string) {
 class Service {
   private initialized: boolean;
   public context: string;
-  public plugins: any[];
+  public plugins: IPlugin[];
   public pkg: readPkg.PackageJson;
   public walrusCliPkg: readPkg.PackageJson;
-  public projectOptions: any;
+  public projectOptions: IConfig;
   private pluginResolution: PluginResolution;
   protected pluginsToSkip: Set<any>;
   public commands: ICommands;
@@ -129,10 +146,6 @@ class Service {
       plugins = useBuiltIn
         ? builtInPlugins.concat(inlinePlugins)
         : inlinePlugins
-    } else {
-      // 获取项目中安装的插件
-      const projectPlugins = this.getPkgPlugin(this.pkg);
-      plugins = builtInPlugins.concat(projectPlugins)
     }
 
     // 获取 walrus-cli 中安装的插件
@@ -142,6 +155,14 @@ class Service {
     }
 
     return plugins;
+  }
+
+  /**
+   * 解析用户插件
+   */
+  resolveUserPlugins() {
+    // 获取项目中安装的插件
+    return this.getPkgPlugin(this.pkg);
   }
 
   private getPkgPlugin(pkg: readPkg.PackageJson) {
@@ -193,13 +214,39 @@ class Service {
 
     debug('walrus:project-config')(this.projectOptions);
 
+    // 是否自动解析用户`package.json`中的插件
+    if (this.projectOptions.autoResolvePlugin) {
+      this.plugins = this.plugins.concat(this.resolveUserPlugins());
+    }
+
+    const userPlugins = (this.projectOptions.plugins || [])
+      .map(item => {
+        if (lodash.isString(item)) {
+          return {
+            id: getInteriorPluginId(lodash.uniqueId('plugin')),
+            apply: require(item),
+            opts: {}
+          }
+        }
+        if (lodash.isArray(item)) {
+          return {
+            id: getInteriorPluginId(lodash.uniqueId('plugin')),
+            apply: require(item[0]),
+            opts: item[1] || {}
+          }
+        }
+      })
+      .filter(_ => _);
+
+    this.plugins = this.plugins.concat(userPlugins);
+
     // apply plugins.
-    this.plugins.forEach(({ id, apply }) => {
+    this.plugins.forEach(({ id, apply, opts }) => {
       if (this.pluginsToSkip.has(id)) return;
       if (lodash.isFunction(apply)) {
-        apply(new PluginAPI(id, this), this.projectOptions)
+        apply(new PluginAPI(id, this, opts), this.projectOptions)
       } else {
-        apply.default(new PluginAPI(id, this), this.projectOptions)
+        apply.default(new PluginAPI(id, this, opts), this.projectOptions)
       }
     })
   }
@@ -228,14 +275,14 @@ class Service {
       rawArgv.shift()
     }
 
-    const { fn } = command;
+    const { fn, config } = command;
 
     if (lodash.isFunction(fn)) {
-      return fn(args, rawArgv);
+      return fn(args, rawArgv, config);
     }
     if (lodash.isObject(fn)) {
       // @ts-ignore
-      return fn.default(args, rawArgv);
+      return fn.default(args, rawArgv, config);
     }
   }
 }

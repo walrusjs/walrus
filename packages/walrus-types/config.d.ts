@@ -16,6 +16,11 @@ interface IConfig {
    */
   useTypescript?: boolean;
   /**
+   * 是否自动解析package.json中的插件
+   * 默认: false
+   */
+  autoResolvePlugin?: boolean;
+  /**
    * 插件集合 社区插件 或者 自定义插件
    * 默认: []
    */
