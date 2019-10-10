@@ -1,6 +1,6 @@
 {
   "name": "@walrus/walrus-plugin-eslint",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "./lib/index.js",
   "license": "MIT",
   "bugs": {
@@ -9,8 +9,8 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
-    "@walrus/shared-utils": "^0.0.5",
-    "@walrus/types": "^0.0.5",
+    "@walrus/shared-utils": "^0.0.6",
+    "@walrus/types": "^0.0.6",
     "babel-eslint": "^10.0.3",
     "deglob": "^4.0.1",
     "eslint": "^6.5.1",
