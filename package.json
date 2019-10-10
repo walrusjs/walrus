@@ -1,6 +1,5 @@
 {
   "name": "@walrus/workspace",
-  "main": "index.js",
   "private": true,
   "repository": "git@github.com:ts-react/walrus.git",
   "author": "wangxingkang <wang_xingkang@qq.com>",

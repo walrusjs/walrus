@@ -10,7 +10,12 @@
   ],
   "dependencies": {
     "@walrus/shared-utils": "^0.0.5",
-    "@walrus/types": "^0.0.5"
+    "@walrus/types": "^0.0.5",
+    "ignore": "^5.1.4",
+    "prettier": "^1.18.2"
+  },
+  "devDependencies": {
+    "@types/prettier": "^1.18.3"
   },
   "publishConfig": {
     "access": "public"
