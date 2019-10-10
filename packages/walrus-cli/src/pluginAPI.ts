@@ -10,7 +10,7 @@ const pluginResolution = new PluginResolution();
 
 class PluginAPI {
   private id: string;
-  private pluginConfig: IPluginConfig;
+  private readonly pluginConfig: IPluginConfig;
   private service: Server;
 
   constructor (
