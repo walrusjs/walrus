@@ -11,6 +11,7 @@ Frontend development tools
 </div>
 
 [![Alita](https://img.shields.io/badge/alitajs-walrus-blue.svg)](https://github.com/walrus-plus/walrus)
+[![NPM version](https://img.shields.io/npm/v/@walrus/cli.svg?style=flat)
 
 ## 项目由来以及定位
 
@@ -38,16 +39,22 @@ Frontend development tools
 * 🎉 插件体系，所有功能通过插件实现
 * 💻 使用TypeScript编写
 
-## 🌈 包
+## 🌈 插件
 
-|包名|版本|描述|
-|---|---|---|
-|@walrus/cli|[![NPM version](https://img.shields.io/npm/v/@walrus/cli.svg?style=flat)](https://npmjs.org/package/@walrus/cli)|命令注册中心|
-|@walrus/walrus-plugin-jest|[![NPM version](https://img.shields.io/npm/v/@walrus/walrus-plugin-jest.svg?style=flat)](https://npmjs.org/package/@walrus/walrus-plugin-jest)|封装Jest|
-|@walrus/walrus-plugin-eslint|[![NPM version](https://img.shields.io/npm/v/@walrus/walrus-plugin-eslint.svg?style=flat)](https://npmjs.org/package/@walrus/walrus-plugin-eslint)|封装eslint|
-|@walrus/shared-utils|[![NPM version](https://img.shields.io/npm/v/@walrus/shared-utils.svg?style=flat)](https://npmjs.org/package/@walrus/shared-utils)|工具方法|
-|@walrus/types|[![NPM version](https://img.shields.io/npm/v/@walrus/types.svg?style=flat)](https://npmjs.org/package/@walrus/types)|相关类型定义|
+### 内置
 
+* [@walrus/walrus-plugin-jest](https://github.com/walrus-plus/walrus/blob/master/packages/walrus-plugin-jest/README.md)
+* [@walrus/walrus-plugin-eslint](https://github.com/walrus-plus/walrus/blob/master/packages/walrus-plugin-eslint/README.md)
+* [@walrus/walrus-plugin-prettier](https://github.com/walrus-plus/walrus/blob/master/packages/walrus-plugin-prettier/README.md)
+
+### 其他
+
+* [@walrus/walrus-plugin-update-config](https://github.com/walrus-plus/walrus-plugin-update-config)
+* [@walrus/walrus-plugin-replace-keywords](https://github.com/walrus-plus/walrus-plugin-replace-keywords)
+
+### 社区
+
+...待补充
 
 ## 📦 安装
 

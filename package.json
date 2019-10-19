@@ -9,7 +9,7 @@
     "build": "father-build --watch",
     "clean": "lerna clean",
     "prerelease": "father-build",
-    "release": "yarn --pure-lockfile && yarn clean && node scripts/release.js"
+    "release": "yarn --pure-lockfile && node scripts/release.js"
   },
   "devDependencies": {
     "@types/assert": "^1.4.3",
