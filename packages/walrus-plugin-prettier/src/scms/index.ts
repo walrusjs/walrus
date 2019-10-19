@@ -6,4 +6,4 @@ export default (directory) => {
   if (rootDirectory) {
     return Object.assign({ rootDirectory }, gitScm);
   }
-}
+};
