@@ -7,7 +7,15 @@ export default function(
 ) {
   api.registerCommand('commitlint', {
     description: 'Lint your commit messages',
-  }, (args, rawArgv, opts) => {
-    commitLint().then()
+    usage: 'walrus commitlint [input]',
+    options: {
+      '--color': 'toggle colored output',
+      '--config [file]': 'path to the config file'
+    }
+  }, (args, rawArgv) => {
+    console.log(args);
+    const options = Object.assign({}, config.pluginCommitLint, rawArgv);
+    console.log(options);
+    commitLint(args._, options).then();
   })
 }

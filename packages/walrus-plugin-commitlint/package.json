@@ -13,6 +13,8 @@
     "@commitlint/read": "^8.2.0",
     "@walrus/shared-utils": "^0.1.1",
     "@walrus/types": "^0.1.1",
-    "get-stdin": "^7.0.0"
+    "get-stdin": "^7.0.0",
+    "resolve-from": "^5.0.0",
+    "resolve-global": "^1.0.0"
   }
 }

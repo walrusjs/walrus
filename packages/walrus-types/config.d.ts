@@ -1,4 +1,5 @@
 import { IPluginPrettierOptions } from './plugin-prettier';
+import { IPluginCommitLintOptions } from './plugin-commitlint';
 
 export type IPluginOptions = {
   [key: string]: any
@@ -31,6 +32,7 @@ interface IConfig {
    * prettier插件相关配置
    */
   pluginPrettier?: IPluginPrettierOptions;
+  pluginCommitLint?: IPluginCommitLintOptions;
 }
 
 export default IConfig;
