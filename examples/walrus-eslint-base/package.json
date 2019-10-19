@@ -1,6 +1,6 @@
 {
   "name": "@walrus/example-eslint-base",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "walrus example eslint",
   "main": "index.js",
   "private": true,
@@ -9,7 +9,7 @@
     "lint": "walrus lint"
   },
   "devDependencies": {
-    "@walrus/cli": "^0.2.0",
-    "@walrus/types": "^0.2.0"
+    "@walrus/cli": "^0.2.1",
+    "@walrus/types": "^0.2.1"
   }
 }

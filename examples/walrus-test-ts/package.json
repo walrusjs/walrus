@@ -1,6 +1,6 @@
 {
   "name": "@walrus/test-ts",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "walrus test typescript example",
   "main": "index.js",
   "license": "MIT",
@@ -9,6 +9,6 @@
   },
   "private": true,
   "devDependencies": {
-    "@walrus/cli": "^0.2.0"
+    "@walrus/cli": "^0.2.1"
   }
 }
