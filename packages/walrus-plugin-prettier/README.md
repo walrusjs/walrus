@@ -7,4 +7,4 @@
 <h1 align="center">walrus-plugin-prettier</h1>
 
 [![Alita](https://img.shields.io/badge/alitajs-walrus-blue.svg)](https://github.com/walrus-plus/walrus)
-[![NPM version](https://img.shields.io/npm/v/@walrus/walrus-plugin-prettier.svg?style=flat)
+[![NPM version](https://img.shields.io/npm/v/@walrus/walrus-plugin-prettier.svg?style=flat)](https://npmjs.org/package/@walrus/walrus-plugin-prettier)
