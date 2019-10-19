@@ -74,7 +74,7 @@ yarn global add @walrus/cli
 
 ### 测试
 
-> 本项目自带@walrus/walrus-plugin-jest插件
+> Cli自带`@walrus/walrus-plugin-jest`插件
 
 * package.json 添加如下代码
 
@@ -92,9 +92,45 @@ yarn global add @walrus/cli
 yarn test
 ```
 
-**注意:**
+### ESLint
 
-支持自定义配置 会自动读取`jest.config.js`和默认配置合并
+> Cli自带`@walrus/walrus-plugin-eslint`插件
+
+* package.json 添加如下代码
+
+```
+// package.json
+
+"scripts": {
+  "lint": "walrus lint"
+}
+```
+
+* 当前项目目录执行
+
+```
+yarn lint
+```
+
+### 代码美化
+
+> Cli自带`@walrus/walrus-plugin-prettier`插件
+
+* package.json 添加如下代码
+
+```
+// package.json
+
+"scripts": {
+  "prettier": "walrus prettier"
+}
+```
+
+* 当前项目目录执行
+
+```
+yarn prettier
+```
 
 ## ⌨️ 本地开发
 
@@ -105,7 +141,6 @@ git clone git@github.com:walrus-plus/walrus.git
 # 安装依赖
 yarn bootstarp
 ```
-
 
 ## 🌟 社区
 
