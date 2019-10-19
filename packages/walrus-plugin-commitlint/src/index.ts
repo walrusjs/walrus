@@ -12,10 +12,7 @@ export default function(
       '--color': 'toggle colored output',
       '--config [file]': 'path to the config file'
     }
-  }, (args, rawArgv) => {
-    console.log(args);
-    console.log(rawArgv);
-    const options = Object.assign({}, config.pluginCommitLint, rawArgv);
-    commitLint(args._, options);
+  }, (args) => {
+    commitLint(args._, Object.assign({}, config.pluginCommitLint, args)).then();
   })
 }
