@@ -17,5 +17,6 @@ export default function(
     console.log(rawArgv);
     const options = Object.assign({}, config.pluginCommitLint, rawArgv);
     commitLint(args._, options).then();
+    process.exit(1);
   })
 }
