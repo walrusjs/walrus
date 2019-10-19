@@ -13,6 +13,8 @@ export default function(
       '--config [file]': 'path to the config file'
     }
   }, (args, rawArgv) => {
+    console.log(args);
+    console.log(rawArgv);
     const options = Object.assign({}, config.pluginCommitLint, rawArgv);
     commitLint(args._, options).then();
   })
