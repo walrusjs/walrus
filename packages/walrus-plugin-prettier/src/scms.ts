@@ -2,13 +2,7 @@ import { dirname } from 'path';
 import * as findUp from 'find-up';
 import * as execa from 'execa';
 
-export const name = 'git';
-
-/**
- * 检查指定目录下是否存在.git目录
- * @param directory
- */
-export const detect = (directory) => {
+const detect = (directory) => {
   // 获取git目录
   const gitDirectory = findUp.sync('.git', {
     cwd: directory,
@@ -19,19 +13,18 @@ export const detect = (directory) => {
   }
 };
 
-const getLines = (execaResult) => execaResult.stdout.split('\n');
+const stageFile = (directory, file) => {
+  runGit(directory, ['add', file]);
+};
 
-/**
- * 运行Git命令
- * @param directory
- * @param args
- */
 const runGit = (directory: string, args) =>
   execa.sync('git', args, {
     cwd: directory
   });
 
-export const getSinceRevision = (directory, { staged, branch }) => {
+const getLines = (execaResult) => execaResult.stdout.split('\n');
+
+const getSinceRevision = (directory, { staged, branch }) => {
   try {
     const revision = staged
       ? 'HEAD'
@@ -45,17 +38,13 @@ export const getSinceRevision = (directory, { staged, branch }) => {
   }
 };
 
-export const getUnstagedChangedFiles = (directory) => {
-  return getChangedFiles(directory, null, false);
-};
-
 /**
  * 获取修改的文件
  * @param directory
  * @param revision
  * @param staged
  */
-export const getChangedFiles = (directory: string, revision, staged) => {
+const getChangedFiles = (directory: string, revision, staged) => {
   return [
     ...getLines(
       runGit(
@@ -73,6 +62,21 @@ export const getChangedFiles = (directory: string, revision, staged) => {
   ].filter(Boolean);
 };
 
-export const stageFile = (directory, file) => {
-  runGit(directory, ['add', file]);
+const getUnstagedChangedFiles = (directory) => {
+  return getChangedFiles(directory, null, false);
+};
+
+export default (directory) => {
+  const rootDirectory = detect(directory);
+
+  if (rootDirectory) {
+    return {
+      name: 'git',
+      rootDirectory,
+      stageFile,
+      getChangedFiles,
+      getSinceRevision,
+      getUnstagedChangedFiles
+    };
+  }
 };

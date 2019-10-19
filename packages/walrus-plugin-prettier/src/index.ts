@@ -12,7 +12,7 @@ export default function(api: IApi, config: IConfig) {
       options: {
         '--staged':
           'Pre-commit mode. Under this flag only staged files will be formatted, and they will be re-staged after formatting.',
-        '--restage': 'Use with the `--staged` flag to skip re-staging files after formatting.',
+        '--no-restage': 'Use with the `--staged` flag to skip re-staging files after formatting.',
         '--branch':
           'When not in `staged` pre-commit mode, use this flag to compare changes with the specified branch. Defaults to `master` (git) / `default` (hg) branch.',
         '--pattern':
