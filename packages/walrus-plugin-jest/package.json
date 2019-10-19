@@ -3,6 +3,9 @@
   "version": "0.1.1",
   "main": "./lib/index.js",
   "license": "MIT",
+  "files": [
+    "lib"
+  ],
   "dependencies": {
     "@babel/core": "^7.6.2",
     "@babel/plugin-transform-modules-commonjs": "^7.6.0",
@@ -10,7 +13,7 @@
     "@jest/types": "^24.9.0",
     "@testing-library/jest-dom": "^4.1.0",
     "@types/jest": "^24.0.18",
-    "@walrus/shared-utils": "^0.1.0",
+    "@walrus/shared-utils": "^0.1.1",
     "@walrus/types": "^0.1.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^24.9.0",

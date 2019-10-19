@@ -6,7 +6,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "prettier": "walrus prettier"
+    "prettier": "walrus prettier",
+    "commitlint": "walrus commitlint"
   },
   "dependencies": {
     "@walrus/cli": "^0.1.1"

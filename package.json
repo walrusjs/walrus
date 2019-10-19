@@ -9,6 +9,7 @@
     "build": "father-build --watch",
     "clean": "lerna clean",
     "prerelease": "father-build",
+    "commitlint": "node ./packages/walrus-plugin-commitlint/lib/commitlint.js",
     "release": "yarn --pure-lockfile && node scripts/release.js"
   },
   "devDependencies": {
@@ -21,6 +22,7 @@
     "execa": "^2.0.4",
     "father-build": "^1.9.5",
     "globby": "^10.0.1",
+    "husky": "^3.0.9",
     "inquirer": "^7.0.0",
     "lerna": "^3.16.4",
     "lerna-changelog": "^0.8.2",
@@ -32,6 +34,11 @@
     "semver": "^6.3.0",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.3"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "yarn commitlint"
+    }
   },
   "workspaces": [
     "packages/*",

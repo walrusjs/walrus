@@ -9,7 +9,7 @@
     "lib"
   ],
   "dependencies": {
-    "@walrus/shared-utils": "^0.1.0",
+    "@walrus/shared-utils": "^0.1.1",
     "@walrus/types": "^0.1.1",
     "execa": "^3.2.0",
     "find-up": "^4.1.0",

@@ -1,0 +1,18 @@
+{
+  "name": "@walrus/walrus-plugin-commitlint",
+  "version": "0.1.1",
+  "description": "walrus plugin commitlint",
+  "main": "lib/index.js",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@commitlint/format": "^8.2.0",
+    "@commitlint/lint": "^8.2.0",
+    "@commitlint/read": "^8.2.0",
+    "@walrus/shared-utils": "^0.1.1",
+    "@walrus/types": "^0.1.1",
+    "get-stdin": "^7.0.0"
+  }
+}
