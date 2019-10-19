@@ -6,7 +6,8 @@ const config: IConfig = {
     [join(__dirname, './lib/index.js'), {
       test: 'test'
     }]
-  ]
+  ],
+
 };
 
 export default config;

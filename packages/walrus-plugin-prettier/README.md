@@ -22,7 +22,85 @@
 
 ```
 
-## 内置配置详情
+## 配置
+
+```
+// walrus.config.ts
+import { IConfig } from '@walrus/types';
+
+const config: IConfig = {
+  pluginPrettier: {
+    // 预提交模式。在此标志下，仅已暂存的文件将被格式化，并且在格式化后将被重新暂存
+    staged: boolean;
+    // 与staged一起使用可在格式化后跳过重新暂存文件。
+    restage: boolean;
+    // 过滤给定的minimatch模式的文件。
+    pattern: string | string[];
+    // 在处理之前输出每个文件的名称
+    verbose: boolean;
+    // 防止git commit时任何文件被固定
+    bail: boolean;
+    // 检查文件格式是否正确，但不要格式化
+    check: boolean;
+  }
+};
+
+export default config;
+```
+
+## 命令行参数
+
+### `--staged`
+
+预提交模式。在此标志下，仅已暂存的文件将被格式化，并且在格式化后将被重新暂存
+
+```
+walrus prettier --staged
+```
+
+### `--no-restage`
+
+与staged一起使用可在格式化后跳过重新暂存文件
+
+```
+walrus prettier --staged --no-restage
+```
+
+### `--pattern`
+
+过滤给定的[minimatch](https://github.com/isaacs/minimatch)模式的文件
+
+```
+walrus prettier --pattern "**/*.*(js|jsx)"
+
+walrus prettier --pattern "**/*.js" --pattern "**/*.jsx"
+```
+
+### `--verbose`
+
+在处理之前输出每个文件的名称
+
+```
+walrus prettier --verbose
+```
+
+### `--bail`
+
+防止git commit时任何文件被固定
+
+```
+walrus prettier --bail
+```
+
+### `--check`
+
+检查文件格式是否正确，但不要格式化
+
+```
+walrus prettier --check
+```
+
+## 🍃 内置配置详情
 
 ```
 module.exports = {
