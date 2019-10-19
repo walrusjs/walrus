@@ -1,9 +1,7 @@
-import { join } from 'path';
 import { IApi } from '@walrus/types';
 import { chalk } from '@walrus/shared-utils';
-import prettier from './prettier';
-
-const prettierConfig = join(__dirname, 'prettier.config.js');
+import prettier, { IOptions } from './prettier';
+import defaultConfig from './defaultConfig';
 
 export default function(api: IApi) {
   api.registerCommand(
@@ -12,19 +10,27 @@ export default function(api: IApi) {
       description: 'prettier source files',
       usage: 'walrus prettier [opts] [filename ...]',
       options: {
-        '--print-width <int>': 'print width (default: 100)'
+        '--staged':
+          'Pre-commit mode. Under this flag only staged files will be formatted, and they will be re-staged after formatting.',
+        '--restage': 'Use with the `--staged` flag to skip re-staging files after formatting.',
+        '--branch':
+          'When not in `staged` pre-commit mode, use this flag to compare changes with the specified branch. Defaults to `master` (git) / `default` (hg) branch.',
+        '--pattern':
+          'Filters the files for the given [minimatch](https://github.com/isaacs/minimatch) pattern.',
+        '--verbose':
+          "Outputs the name of each file right before it is proccessed. This can be useful if Prettier throws an error and you can't identify which file is causing the problem.",
+        '--bail': 'Prevent `git commit` if any files are fixed.',
+        '--check':
+          "Check that files are correctly formatted, but don't format them. This is useful on CI to verify that all changed files in the current branch were correctly formatted.",
+        '--config': 'Path to a prettier config file.'
       },
       details: 'For more options, see https://prettier.io/docs/en/options.html'
     },
-    (args, opts) => {
+    (args, rawArgv, opts: IOptions) => {
       const cwd = api.getCwd();
       const prettyQuickResult = prettier(
         cwd,
-        Object.assign(
-          {
-            config: prettierConfig
-          },
-          args,
+        Object.assign(defaultConfig, args, opts,
           {
             onFoundSinceRevision: (scm, revision) => {
               console.log(
