@@ -34,7 +34,6 @@ export default function(api: IApi) {
               );
             },
             onFoundChangedFiles: (changedFiles) => {
-              console.log(changedFiles);
               console.log(
                 `🎯  Found ${chalk.bold(changedFiles.length)} changed ${
                   changedFiles.length === 1 ? 'file' : 'files'
