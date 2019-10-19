@@ -8,3 +8,14 @@
 
 [![Alita](https://img.shields.io/badge/alitajs-walrus-blue.svg)](https://github.com/walrus-plus/walrus)
 [![NPM version](https://img.shields.io/npm/v/@walrus/walrus-plugin-jest.svg?style=flat)](https://npmjs.org/package/@walrus/walrus-plugin-jest)
+
+## 🔨 使用
+
+`package.json`添加如下代码
+
+```
+"scripts": {
+  "test": "walrus test"
+}
+
+```
