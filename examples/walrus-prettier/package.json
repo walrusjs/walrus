@@ -9,6 +9,6 @@
     "prettier": "walrus prettier"
   },
   "dependencies": {
-    "@walrus/cli": "^0.0.5"
+    "@walrus/cli": "^0.0.6"
   }
 }

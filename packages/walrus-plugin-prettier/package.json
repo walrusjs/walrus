@@ -11,6 +11,8 @@
   "dependencies": {
     "@walrus/shared-utils": "^0.0.6",
     "@walrus/types": "^0.0.6",
+    "execa": "^3.2.0",
+    "find-up": "^4.1.0",
     "ignore": "^5.1.4",
     "prettier": "^1.18.2"
   },
