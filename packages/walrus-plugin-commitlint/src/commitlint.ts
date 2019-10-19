@@ -13,6 +13,7 @@ const load = require('@commitlint/load');
 const read = require('@commitlint/read');
 const lint = require('@commitlint/lint');
 const stdin = require('get-stdin');
+const pkg = require('../package.json');
 
 export default async function commitLint(
   raw: string[] = [],
@@ -20,11 +21,20 @@ export default async function commitLint(
 ) {
   const options = Object.assign({}, defaultOptions, config);
 
+  if (options.env) {
+    if (!(options.env in process.env)) {
+      throw new Error(
+        `Recieved '${
+          options.env
+          }' as value for --env, but environment variable '${
+          options.env
+          }' is not available globally`
+      );
+    }
+    options.edit = process.env[options.env];
+  }
+
   const fromStdin = checkFromStdin(raw, options);
-
-  console.log(fromStdin);
-
-  process.exit(1);
 
   const range = lodash.pick(options, 'edit', 'from', 'to');
 
@@ -87,8 +97,6 @@ export default async function commitLint(
   // @ts-ignore
   const results = await Promise.all(lints);
 
-  console.log(results);
-
   const report = results.reduce(
     (info, result) => {
       info.valid = result.valid ? info.valid : false;
@@ -119,6 +127,8 @@ export default async function commitLint(
   }
 
   if (!report.valid) {
-    throw new Error(output);
+    const err = new Error(output);
+    err['type'] = pkg.name;
+    throw err;
   }
 }

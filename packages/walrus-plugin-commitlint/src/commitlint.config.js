@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   rules: {
     // Header
     'header-max-length': [2, 'always', 200],
