@@ -1,3 +1,4 @@
+import { join } from 'path';
 import { IPluginCommitLintOptions } from '@walrus/types';
 
 const defaultOptions: IPluginCommitLintOptions = {
@@ -6,7 +7,7 @@ const defaultOptions: IPluginCommitLintOptions = {
   edit: false,
   from: null,
   to: null,
-  config: null
+  config: join(__dirname, 'commitlint.config.js')
 };
 
 export default defaultOptions;
