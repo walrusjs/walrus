@@ -1,0 +1,14 @@
+{
+  "name": "@walrus/example-prettier",
+  "version": "0.0.5",
+  "description": "walrus prettier example",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "prettier": "walrus prettier"
+  },
+  "dependencies": {
+    "@walrus/cli": "^0.0.6"
+  }
+}

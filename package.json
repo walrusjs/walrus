@@ -1,14 +1,13 @@
 {
   "name": "@walrus/workspace",
-  "main": "index.js",
   "private": true,
   "repository": "git@github.com:ts-react/walrus.git",
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "yarn && lerna bootstrap",
     "build": "father-build --watch",
-    "clean": "rimraf packages/test/* packages/**/temp/*",
+    "clean": "lerna clean",
     "prerelease": "father-build",
     "release": "yarn --pure-lockfile && yarn clean && node scripts/release.js"
   },

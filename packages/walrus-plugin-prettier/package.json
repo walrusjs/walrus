@@ -1,0 +1,26 @@
+{
+  "name": "@walrus/walrus-plugin-prettier",
+  "version": "0.0.6",
+  "description": "walrus prettier plugin",
+  "main": "./lib/index.js",
+  "typings": "./lib/index.d.ts",
+  "license": "MIT",
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@walrus/shared-utils": "^0.0.6",
+    "@walrus/types": "^0.0.6",
+    "execa": "^3.2.0",
+    "find-up": "^4.1.0",
+    "ignore": "^5.1.4",
+    "multimatch": "^4.0.0",
+    "prettier": "^1.18.2"
+  },
+  "devDependencies": {
+    "@types/prettier": "^1.18.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
