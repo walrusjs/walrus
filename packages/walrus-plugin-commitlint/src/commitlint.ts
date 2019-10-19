@@ -20,6 +20,10 @@ export default async function commitLint(
 ) {
   const options = Object.assign({}, defaultOptions, config);
 
+  console.log(options);
+
+  process.exit(1);
+
   const fromStdin = checkFromStdin(raw, options);
 
   const range = lodash.pick(options, 'edit', 'from', 'to');
