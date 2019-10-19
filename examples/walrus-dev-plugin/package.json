@@ -1,0 +1,17 @@
+{
+  "name": "@walrus/dev-plugin",
+  "version": "0.0.6",
+  "description": "dev walrus plugin",
+  "private": true,
+  "main": "lib/index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "father-build",
+    "start": "walrus example"
+  },
+  "devDependencies": {
+    "@walrus/cli": "^0.0.6",
+    "@walrus/types": "^0.0.6",
+    "father-build": "^1.12.0"
+  }
+}

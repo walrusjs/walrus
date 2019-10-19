@@ -2,18 +2,25 @@ import { resolve } from 'path';
 import { PluginResolution, lodash } from '@walrus/shared-utils';
 import Server from './service';
 
+export interface IPluginConfig {
+  [key: string]: any;
+}
+
 const pluginResolution = new PluginResolution();
 
 class PluginAPI {
   private id: string;
+  private readonly pluginConfig: IPluginConfig;
   private service: Server;
 
   constructor (
     id: string,
-    service
+    service,
+    pluginConfig: IPluginConfig
   ) {
     this.id = id;
-    this.service = service
+    this.service = service;
+    this.pluginConfig = pluginConfig;
   }
 
   /**
@@ -59,7 +66,11 @@ class PluginAPI {
       fn = opts;
       opts = null
     }
-    this.service.commands[name] = { fn, opts: opts || {}}
+    this.service.commands[name] = {
+      fn,
+      opts: opts || {},
+      config: this.pluginConfig
+    }
   }
 }
 

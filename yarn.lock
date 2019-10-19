@@ -4993,7 +4993,7 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.0"
 
-father-build@^1.10.0, father-build@^1.9.5:
+father-build@^1.10.0, father-build@^1.12.0, father-build@^1.9.5:
   version "1.12.0"
   resolved "https://registry.yarnpkg.com/father-build/-/father-build-1.12.0.tgz#ef636f81f72d11e367a0e59425065325df72b9c8"
   integrity sha512-VChyA1ul+BjItyj2gWZESpGhadBwT96W8WyV1k9o478y9m2pREP5ozcssrTWhCWYuKxnUsA1ukNip6zto+l+eQ==

@@ -36,7 +36,6 @@ export default function(api: IApi, config: IConfig) {
     details:
       'For more options, see https://eslint.org/docs/user-guide/command-line-interface#options'
   }, () => {
-    console.log(config);
     // react
     if (config.frame === 'react') {
       options.eslintConfig.configFile = join(__dirname, './config/eslintrc.react.js');
