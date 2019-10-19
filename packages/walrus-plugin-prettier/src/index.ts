@@ -1,9 +1,9 @@
-import { IApi } from '@walrus/types';
+import { IApi, IConfig } from '@walrus/types';
 import { chalk } from '@walrus/shared-utils';
-import prettier, { IOptions } from './prettier';
+import prettier from './prettier';
 import defaultConfig from './defaultConfig';
 
-export default function(api: IApi) {
+export default function(api: IApi, config: IConfig) {
   api.registerCommand(
     'prettier',
     {
@@ -26,11 +26,12 @@ export default function(api: IApi) {
       },
       details: 'For more options, see https://prettier.io/docs/en/options.html'
     },
-    (args, rawArgv, opts: IOptions) => {
+    (args) => {
+      const opts = config.pluginPrettier || {};
       const cwd = api.getCwd();
       const prettyQuickResult = prettier(
         cwd,
-        Object.assign(defaultConfig, args, opts,
+        Object.assign(defaultConfig, opts, args,
           {
             onFoundSinceRevision: (scm, revision) => {
               console.log(

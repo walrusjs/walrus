@@ -1,3 +1,5 @@
+import { IPluginPrettierOptions } from './plugin-prettier';
+
 export type IPluginOptions = {
   [key: string]: any
 }
@@ -25,6 +27,10 @@ interface IConfig {
    * 默认: []
    */
   plugins?: IPlugin[];
+  /**
+   * prettier插件相关配置
+   */
+  pluginPrettier?: IPluginPrettierOptions;
 }
 
 export default IConfig;

@@ -1,6 +1,12 @@
 import IConfig, { IPlugin } from './config';
+import { IPluginPrettierOptions, IProcessFilesOptions } from './plugin-prettier';
 
-export { IConfig, IPlugin };
+export {
+  IConfig,
+  IPlugin,
+  IPluginPrettierOptions,
+  IProcessFilesOptions
+};
 
 export interface ICommandOpts {
   description?: string;

@@ -1,17 +1,13 @@
 import { readFileSync, writeFileSync } from 'fs';
 import * as prettier from 'prettier';
+import { IProcessFilesOptions } from '@walrus/types';
 import { join } from 'path';
 
-export interface IProcessFilesOptions {
-  // 检查文件格式是否正确，但不要格式化。
-  check?: boolean;
-  config?: string;
-  onExamineFile?: (relative) => void;
-  onCheckFile?: (relative, isFormatted) => void;
-  onWriteFile?: (relative) => void;
-}
-
-const processFiles = (directory: string, files: string[], opts: IProcessFilesOptions = {}) => {
+const processFiles = (
+  directory: string,
+  files: string[],
+  opts: IProcessFilesOptions = {}
+) => {
   const { check, config, onExamineFile, onCheckFile, onWriteFile } = opts;
   for (const relative of files) {
     onExamineFile && onExamineFile(relative);

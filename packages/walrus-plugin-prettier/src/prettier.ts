@@ -1,27 +1,11 @@
+import { IPluginPrettierOptions } from '@walrus/types';
 import scms from './scms';
 import createIgnorer from './createIgnorer';
 import isSupportedExtension from './isSupportedExtension';
 import createMatcher from './createMatcher';
-import processFiles, { IProcessFilesOptions } from './processFiles';
+import processFiles from './processFiles';
 
-export interface IOptions extends IProcessFilesOptions {
-  since?: string;
-  // 是否开启暂存模式
-  staged?: boolean;
-  branch?: string;
-  bail?: boolean;
-  // 在处理之前输出每个文件的名称
-  verbose?: boolean;
-  // 是否重新暂存 与staged配合使用
-  restage?: boolean;
-  // 过滤给定模式的文件
-  pattern?: string[];
-  onPartiallyStagedFile?: (file) => void;
-  onFoundSinceRevision?: (name: string, revision: string) => void;
-  onFoundChangedFiles?: (changeFiles: string[]) => void;
-}
-
-export default (currentDirectory: string, options: IOptions = {}) => {
+export default (currentDirectory: string, options: IPluginPrettierOptions = {}) => {
   const scm = scms(currentDirectory);
   const {
     staged,
