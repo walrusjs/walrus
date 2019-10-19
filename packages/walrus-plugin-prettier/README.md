@@ -6,7 +6,7 @@
 
 <h1 align="center">walrus-plugin-prettier</h1>
 
-> 封装[prettier]()
+> 封装[prettier](https://github.com/prettier/prettier)
 
 [![Alita](https://img.shields.io/badge/alitajs-walrus-blue.svg)](https://github.com/walrus-plus/walrus)
 [![NPM version](https://img.shields.io/npm/v/@walrus/walrus-plugin-prettier.svg?style=flat)](https://npmjs.org/package/@walrus/walrus-plugin-prettier)
