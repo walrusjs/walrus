@@ -22,7 +22,7 @@
 
 ```
 
-## 配置
+## 🐝 配置
 
 ```
 // walrus.config.ts
@@ -48,7 +48,7 @@ const config: IConfig = {
 export default config;
 ```
 
-## 命令行参数
+## 🐈 命令行参数
 
 ### `--staged`
 
