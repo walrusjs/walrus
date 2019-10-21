@@ -1,4 +1,4 @@
-import { IApi, IConfig } from '@walrus/types';
+import { IApi } from '@walrus/types';
 import { run } from 'jest';
 import { DefaultConfigResolver } from './defaultConfig.resolver';
 import { CustomConfigResolver } from './customConfig.resolver';
@@ -6,7 +6,7 @@ import { JestConfigurationBuilder } from './jestConfigurationBuilder';
 
 const debug = require('debug')('walrus-plugin-jest');
 
-export default function(api: IApi, config: IConfig) {
+export default function(api: IApi) {
   api.registerCommand('test', {
     description: 'run unit tests with jest',
     usage: 'walrus test:unit [options] <regexForTestFiles>',
@@ -22,6 +22,8 @@ export default function(api: IApi, config: IConfig) {
       new CustomConfigResolver()
     ).buildConfiguration(process.cwd());
     rawArgv.push('--config', JSON.stringify(configuration));
+    // 未查找到测试文件正常退出
+    rawArgv.push('--passWithNoTests');
     run(rawArgv)
       .then((result) => {
         debug(result);

@@ -1,4 +1,4 @@
-import multimatch from 'multimatch';
+import * as multimatch from 'multimatch';
 const path = require('path');
 
 export default (pattern) => {
