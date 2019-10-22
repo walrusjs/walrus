@@ -1,13 +1,13 @@
 {
   "name": "@walrus/walrus-plugin-stylelint",
-  "version": "0.0.1",
+  "version": "0.2.2",
   "main": "./lib/index.js",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/walrus-plus/walrus/issues"
   },
   "dependencies": {
-    "@walrus/shared-utils": "^0.2.1",
+    "@walrus/shared-utils": "^0.2.2",
     "stylelint": "^10.0.1",
     "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-rational-order": "^0.1.2",

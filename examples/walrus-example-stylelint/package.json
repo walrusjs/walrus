@@ -1,6 +1,6 @@
 {
   "name": "@walrus/example-stylelint",
-  "version": "0.0.6",
+  "version": "0.2.2",
   "description": "walrus example stylelint",
   "main": "index.js",
   "private": true,
@@ -9,6 +9,6 @@
     "stylelint": "walrus stylelint src/**/*.less --fix --syntax less"
   },
   "devDependencies": {
-    "@walrus/cli": "^0.2.1"
+    "@walrus/cli": "^0.2.2"
   }
 }

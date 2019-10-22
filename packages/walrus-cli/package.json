@@ -1,6 +1,6 @@
 {
   "name": "@walrus/cli",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
   "bin": {
@@ -14,13 +14,13 @@
     "walrus-cli"
   ],
   "dependencies": {
-    "@walrus/shared-utils": "^0.2.1",
-    "@walrus/types": "^0.2.1",
-    "@walrus/walrus-plugin-commitlint": "^0.2.1",
-    "@walrus/walrus-plugin-eslint": "^0.2.1",
-    "@walrus/walrus-plugin-jest": "^0.2.1",
-    "@walrus/walrus-plugin-prettier": "^0.2.1",
-    "@walrus/walrus-plugin-stylelint": "^0.0.1"
+    "@walrus/shared-utils": "^0.2.2",
+    "@walrus/types": "^0.2.2",
+    "@walrus/walrus-plugin-commitlint": "^0.2.2",
+    "@walrus/walrus-plugin-eslint": "^0.2.2",
+    "@walrus/walrus-plugin-jest": "^0.2.2",
+    "@walrus/walrus-plugin-prettier": "^0.2.2",
+    "@walrus/walrus-plugin-stylelint": "^0.2.2"
   },
   "publishConfig": {
     "access": "public"

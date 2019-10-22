@@ -1,6 +1,6 @@
 {
   "name": "@walrus/example-jest-js",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "walrus test javascript example",
   "private": true,
   "main": "index.js",
@@ -9,6 +9,6 @@
     "test": "walrus test"
   },
   "devDependencies": {
-    "@walrus/cli": "^0.2.1"
+    "@walrus/cli": "^0.2.2"
   }
 }

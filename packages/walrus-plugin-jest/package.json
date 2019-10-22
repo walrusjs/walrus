@@ -1,6 +1,6 @@
 {
   "name": "@walrus/walrus-plugin-jest",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "./lib/index.js",
   "license": "MIT",
   "files": [
@@ -13,8 +13,8 @@
     "@jest/types": "^24.9.0",
     "@testing-library/jest-dom": "^4.1.0",
     "@types/jest": "^24.0.18",
-    "@walrus/shared-utils": "^0.2.1",
-    "@walrus/types": "^0.2.1",
+    "@walrus/shared-utils": "^0.2.2",
+    "@walrus/types": "^0.2.2",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^24.9.0",
     "babel-plugin-module-resolver": "^3.2.0",
