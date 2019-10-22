@@ -19,7 +19,8 @@
     "@walrus/walrus-plugin-commitlint": "^0.2.1",
     "@walrus/walrus-plugin-eslint": "^0.2.1",
     "@walrus/walrus-plugin-jest": "^0.2.1",
-    "@walrus/walrus-plugin-prettier": "^0.2.1"
+    "@walrus/walrus-plugin-prettier": "^0.2.1",
+    "@walrus/walrus-plugin-stylelint": "^0.0.1"
   },
   "publishConfig": {
     "access": "public"

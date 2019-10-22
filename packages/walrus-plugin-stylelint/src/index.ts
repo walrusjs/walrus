@@ -1,0 +1,51 @@
+#!/usr/bin/env node
+import { IApi, IConfig } from "@walrus/types";
+import stylelint from "stylelint";
+import lintConfig from "./config/stylelint.config.js";
+import { chalk } from "@walrus/shared-utils";
+
+export default function(api: IApi, config: IConfig) {
+  api.registerCommand(
+    "stylelint",
+    {
+      description: "lint and fix source files",
+      usage: "walrus stylelint [options] [...files]",
+      options: {
+        "--fix": "Automatically fix violations of certain rules.",
+        "--syntax": "Specify a syntax. Options."
+      },
+      details:
+        "For more options, see https://github.com/stylelint/stylelint/blob/master/docs/user-guide/cli.md"
+    },
+    args => {
+      console.log("registerCommand----->>>");
+      stylelint
+        .lint({
+          config: lintConfig,
+          files: args._,
+          ...args
+        })
+        .then(function(data) {
+          // do things with data.output, data.errored,
+          // and data.results
+          const { output } = data;
+          const outputParsed = JSON.parse(output);
+          outputParsed &&
+            outputParsed.forEach(function(o) {
+              const { source, warnings } = o;
+              console.error(chalk.red(source));
+              warnings &&
+                warnings.forEach(function(w) {
+                  const { line, column, rule, text } = w;
+                  console.error(chalk.red(`${line}:${column}   ${text}`));
+                });
+              console.error("");
+            });
+        })
+        .catch(function(err) {
+          // do things with err e.g.
+          console.error(chalk.red(err.stack));
+        });
+    }
+  );
+}

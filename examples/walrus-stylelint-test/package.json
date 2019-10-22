@@ -1,0 +1,14 @@
+{
+  "name": "@walrus/example-stylelint-test",
+  "version": "0.0.6",
+  "description": "walrus example stylelint",
+  "main": "index.js",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "stylelint": "walrus stylelint src/**/*.less --fix --syntax less"
+  },
+  "devDependencies": {
+    "@walrus/cli": "^0.2.1"
+  }
+}
