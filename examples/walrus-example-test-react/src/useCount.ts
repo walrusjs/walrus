@@ -13,4 +13,3 @@ const useCount = (): IUseCountResult => {
 };
 
 export default useCount;
-
