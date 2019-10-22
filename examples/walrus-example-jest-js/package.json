@@ -1,13 +1,13 @@
 {
-  "name": "@walrus/test-ts",
+  "name": "@walrus/example-jest-js",
   "version": "0.2.1",
-  "description": "walrus test typescript example",
+  "description": "walrus test javascript example",
+  "private": true,
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "test": "walrus test"
   },
-  "private": true,
   "devDependencies": {
     "@walrus/cli": "^0.2.1"
   }

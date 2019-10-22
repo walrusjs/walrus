@@ -1,5 +1,5 @@
 {
-  "name": "@walrus/example-stylelint-test",
+  "name": "@walrus/example-stylelint",
   "version": "0.0.6",
   "description": "walrus example stylelint",
   "main": "index.js",

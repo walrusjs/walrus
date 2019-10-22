@@ -1,24 +1,23 @@
 #!/usr/bin/env node
-import { IApi, IConfig } from "@walrus/types";
-import stylelint from "stylelint";
-import lintConfig from "./config/stylelint.config.js";
-import { chalk } from "@walrus/shared-utils";
+import { chalk } from '@walrus/shared-utils';
+import { IApi } from '@walrus/types';
+import stylelint from 'stylelint';
+import lintConfig from './config/stylelint.config.js';
 
-export default function(api: IApi, config: IConfig) {
+export default function(api: IApi) {
   api.registerCommand(
-    "stylelint",
+    'stylelint',
     {
-      description: "lint and fix source files",
-      usage: "walrus stylelint [options] [...files]",
+      description: 'lint your style code',
+      usage: 'walrus stylelint [options] [...files]',
       options: {
-        "--fix": "Automatically fix violations of certain rules.",
-        "--syntax": "Specify a syntax. Options."
+        '--fix': 'Automatically fix violations of certain rules.',
+        '--syntax': 'Specify a syntax. Options.'
       },
       details:
-        "For more options, see https://github.com/stylelint/stylelint/blob/master/docs/user-guide/cli.md"
+        'For more options, see https://github.com/stylelint/stylelint/blob/master/docs/user-guide/cli.md'
     },
-    args => {
-      console.log("registerCommand----->>>");
+    (args) => {
       stylelint
         .lint({
           config: lintConfig,
@@ -39,7 +38,7 @@ export default function(api: IApi, config: IConfig) {
                   const { line, column, rule, text } = w;
                   console.error(chalk.red(`${line}:${column}   ${text}`));
                 });
-              console.error("");
+              console.error('');
             });
         })
         .catch(function(err) {
