@@ -146,10 +146,11 @@ yarn bootstarp
 
 ## 🌟 社区
 
-- 钉钉，请扫描下面的二维码加群
 
-<img height="200" src="https://github.com/alitajs/alita/blob/master/public/dingding.png"></img>
+| Github Issue                                            | 钉钉群                                                                                                                         | 微信群                                                                                      |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| [walrus/issues](https://github.com/walrus-plus/walrus/issues) | <img src="https://github.com/alitajs/alita/blob/master/public/dingding.png" width="100" /> | <img src="https://github.com/alitajs/alita/blob/master/public/wechat.png" width="100" /> |
 
-- 微信，扫描二维码添加机器人，回复 alita 进群
+## License
 
-<img height="200" src="https://github.com/alitajs/alita/blob/master/public/wechat.png"></img>
+[MIT](https://github.com/walrus-plus/walrus/blob/master/LICENSE)
