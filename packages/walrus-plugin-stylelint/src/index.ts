@@ -17,7 +17,7 @@ export default function(api: IApi) {
       details:
         'For more options, see https://github.com/stylelint/stylelint/blob/master/docs/user-guide/cli.md'
     },
-    args => {
+    (args) => {
       stylelint
         .lint({
           config: lintConfig,

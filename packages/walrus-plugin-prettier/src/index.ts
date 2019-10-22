@@ -17,11 +17,9 @@ export default function(api: IApi, config: IConfig) {
           'When not in `staged` pre-commit mode, use this flag to compare changes with the specified branch. Defaults to `master` (git) / `default` (hg) branch.',
         '--pattern':
           'Filters the files for the given [minimatch](https://github.com/isaacs/minimatch) pattern.',
-        '--verbose':
-          `Outputs the name of each file right before it is proccessed. This can be useful if Prettier throws an error and you can't identify which file is causing the problem.`,
+        '--verbose': `Outputs the name of each file right before it is proccessed. This can be useful if Prettier throws an error and you can't identify which file is causing the problem.`,
         '--bail': 'Prevent `git commit` if any files are fixed.',
-        '--check':
-          `Check that files are correctly formatted, but don't format them. This is useful on CI to verify that all changed files in the current branch were correctly formatted.`,
+        '--check': `Check that files are correctly formatted, but don't format them. This is useful on CI to verify that all changed files in the current branch were correctly formatted.`,
         '--config': 'Path to a prettier config file.'
       },
       details: 'For more options, see https://prettier.io/docs/en/options.html'
@@ -31,38 +29,34 @@ export default function(api: IApi, config: IConfig) {
       const cwd = api.getCwd();
       const prettyQuickResult = prettier(
         cwd,
-        Object.assign(defaultConfig, opts, args,
-          {
-            onFoundSinceRevision: (scm, revision) => {
-              console.log(
-                `🔍  Finding changed files since ${chalk.bold(scm)} revision ${chalk.bold(
-                  revision
-                )}.`
-              );
-            },
-            onFoundChangedFiles: (changedFiles) => {
-              console.log(
-                `🎯  Found ${chalk.bold(changedFiles.length)} changed ${
-                  changedFiles.length === 1 ? 'file' : 'files'
-                }.`
-              );
-            },
-            onPartiallyStagedFile: (file) => {
-              console.log(`✗ Found ${chalk.bold('partially')} staged file ${file}.`);
-            },
-            onWriteFile: (file) => {
-              console.log(`✍️  Fixing up ${chalk.bold(file)}.`);
-            },
-            onCheckFile: (file, isFormatted) => {
-              if (!isFormatted) {
-                console.log(`⛔️  Check failed: ${chalk.bold(file)}`);
-              }
-            },
-            onExamineFile: (file) => {
-              console.log(`🔍  Examining ${chalk.bold(file)}.`);
+        Object.assign(defaultConfig, opts, args, {
+          onFoundSinceRevision: (scm, revision) => {
+            console.log(
+              `🔍  Finding changed files since ${chalk.bold(scm)} revision ${chalk.bold(revision)}.`
+            );
+          },
+          onFoundChangedFiles: (changedFiles) => {
+            console.log(
+              `🎯  Found ${chalk.bold(changedFiles.length)} changed ${
+                changedFiles.length === 1 ? 'file' : 'files'
+              }.`
+            );
+          },
+          onPartiallyStagedFile: (file) => {
+            console.log(`✗ Found ${chalk.bold('partially')} staged file ${file}.`);
+          },
+          onWriteFile: (file) => {
+            console.log(`✍️  Fixing up ${chalk.bold(file)}.`);
+          },
+          onCheckFile: (file, isFormatted) => {
+            if (!isFormatted) {
+              console.log(`⛔️  Check failed: ${chalk.bold(file)}`);
             }
+          },
+          onExamineFile: (file) => {
+            console.log(`🔍  Examining ${chalk.bold(file)}.`);
           }
-        )
+        })
       );
 
       if (prettyQuickResult.success) {
