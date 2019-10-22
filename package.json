@@ -9,6 +9,9 @@
     "build": "father-build --watch",
     "clean": "lerna clean",
     "prerelease": "father-build",
+    "lint": "node ./packages/walrus-cli/lib/cli.js lint",
+    "lint:style": "node ./packages/walrus-cli/lib/cli.js stylelint",
+    "prettier": "node ./packages/walrus-cli/lib/cli.js prettier",
     "commitlint": "node ./packages/walrus-cli/lib/cli.js commitlint --env HUSKY_GIT_PARAMS",
     "release": "yarn --pure-lockfile && node scripts/release.js"
   },
@@ -37,6 +40,7 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "yarn prettier",
       "commit-msg": "yarn commitlint"
     }
   },
