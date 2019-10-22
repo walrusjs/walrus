@@ -1,0 +1,21 @@
+{
+  "name": "@walrus/walrus-plugin-stylelint",
+  "version": "0.0.1",
+  "main": "./lib/index.js",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/walrus-plus/walrus/issues"
+  },
+  "dependencies": {
+    "@walrus/shared-utils": "^0.2.1",
+    "stylelint": "^10.0.1",
+    "stylelint-config-prettier": "^5.2.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.1.0",
+    "stylelint-order": "^3.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
