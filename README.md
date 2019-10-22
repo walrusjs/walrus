@@ -46,6 +46,7 @@ Frontend development tools
 * [@walrus/walrus-plugin-jest](https://github.com/walrus-plus/walrus/blob/master/packages/walrus-plugin-jest/README.md)
 * [@walrus/walrus-plugin-eslint](https://github.com/walrus-plus/walrus/blob/master/packages/walrus-plugin-eslint/README.md)
 * [@walrus/walrus-plugin-prettier](https://github.com/walrus-plus/walrus/blob/master/packages/walrus-plugin-prettier/README.md)
+* [@walrus/walrus-plugin-stylelint](https://github.com/walrus-plus/walrus/blob/master/packages/walrus-plugin-stylelint/README.md)
 * [@walrus/walrus-plugin-commitlint](https://github.com/walrus-plus/walrus/blob/master/packages/walrus-plugin-commitlint/README.md)
 
 ### 其他
