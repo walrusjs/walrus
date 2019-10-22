@@ -8,7 +8,7 @@ export default function(
   config: IConfig
 ) {
   api.registerCommand('commitlint', {
-    description: 'Lint your commit messages',
+    description: 'lint your commit messages',
     usage: 'walrus commitlint [input]',
     options: {
       '--color': 'toggle colored output',
@@ -22,6 +22,6 @@ export default function(
         }
         throw err;
       })
-    );;
+    );
   })
 }

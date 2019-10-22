@@ -18,10 +18,10 @@ export default function(api: IApi, config: IConfig) {
         '--pattern':
           'Filters the files for the given [minimatch](https://github.com/isaacs/minimatch) pattern.',
         '--verbose':
-          "Outputs the name of each file right before it is proccessed. This can be useful if Prettier throws an error and you can't identify which file is causing the problem.",
+          `Outputs the name of each file right before it is proccessed. This can be useful if Prettier throws an error and you can't identify which file is causing the problem.`,
         '--bail': 'Prevent `git commit` if any files are fixed.',
         '--check':
-          "Check that files are correctly formatted, but don't format them. This is useful on CI to verify that all changed files in the current branch were correctly formatted.",
+          `Check that files are correctly formatted, but don't format them. This is useful on CI to verify that all changed files in the current branch were correctly formatted.`,
         '--config': 'Path to a prettier config file.'
       },
       details: 'For more options, see https://prettier.io/docs/en/options.html'

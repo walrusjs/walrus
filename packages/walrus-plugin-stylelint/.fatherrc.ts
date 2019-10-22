@@ -1,6 +1,6 @@
 export default {
-  target: "node",
+  target: 'node',
   cjs: {
-    type: "babel"
+    type: 'babel'
   }
 };
