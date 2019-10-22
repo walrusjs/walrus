@@ -1,5 +1,5 @@
 {
-  "name": "@walrus/dev-plugin",
+  "name": "@walrus/example-plugin",
   "version": "0.2.1",
   "description": "dev walrus plugin",
   "private": true,

@@ -1,5 +1,5 @@
 {
-  "name": "@walrus/test-react",
+  "name": "@walrus/example-jest-react",
   "version": "0.2.1",
   "description": "walrus test react example",
   "main": "index.js",
