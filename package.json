@@ -9,6 +9,7 @@
     "build": "father-build --watch",
     "clean": "lerna clean",
     "prerelease": "father-build",
+    "test": "node ./packages/walrus-cli/lib/cli.js test",
     "lint": "node ./packages/walrus-cli/lib/cli.js lint",
     "lint:style": "node ./packages/walrus-cli/lib/cli.js stylelint",
     "prettier": "node ./packages/walrus-cli/lib/cli.js prettier",
