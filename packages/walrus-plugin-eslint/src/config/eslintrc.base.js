@@ -1,5 +1,3 @@
 module.exports = {
-  extends: [
-    '@walrus/eslint-config'
-  ]
+  extends: ['@walrus/eslint-config']
 };

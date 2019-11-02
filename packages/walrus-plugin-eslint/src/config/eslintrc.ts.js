@@ -1,6 +1,3 @@
 module.exports = {
-  extends: [
-    '@walrus/eslint-config',
-    '@walrus/eslint-config/typescript',
-  ]
+  extends: ['@walrus/eslint-config', '@walrus/eslint-config/typescript']
 };
