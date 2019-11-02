@@ -1,7 +1,7 @@
 module.exports = {
   extends: [
-    'alloy',
-    'alloy/react'
+    '@walrus/eslint-config',
+    '@walrus/eslint-config/react'
   ],
   settings: {
     react: {

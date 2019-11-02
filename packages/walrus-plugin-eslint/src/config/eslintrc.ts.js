@@ -1,6 +1,6 @@
 module.exports = {
   extends: [
-    'alloy',
-    'alloy/typescript',
+    '@walrus/eslint-config',
+    '@walrus/eslint-config/typescript',
   ]
 };

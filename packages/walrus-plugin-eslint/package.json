@@ -12,16 +12,15 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
+    "@walrus/eslint-config": "^1.0.0",
     "@walrus/shared-utils": "^0.2.2",
     "@walrus/types": "^0.2.2",
     "babel-eslint": "^10.0.3",
     "deglob": "^4.0.1",
     "eslint": "^6.5.1",
-    "eslint-config-alloy": "^3.0.0",
     "eslint-plugin-react": "^7.16.0",
     "get-stdin": "^7.0.0",
-    "pkg-conf": "^3.1.0",
-    "typescript": "^3.6.3"
+    "pkg-conf": "^3.1.0"
   },
   "devDependencies": {
     "@types/deglob": "^2.1.1",

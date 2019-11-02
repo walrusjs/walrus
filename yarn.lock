@@ -2582,6 +2582,11 @@
     lodash.unescape "4.0.1"
     semver "^6.3.0"
 
+"@walrus/eslint-config@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@walrus/eslint-config/-/eslint-config-1.0.0.tgz#3a54bf740453008e1449e3746582cbfd28acc89a"
+  integrity sha512-5JNC45MgXciLtzkAuACrTvqr3ZcWp5c/cELqS1jw3Ix3Vx+RN06/sYWAfFcmKvxCQfmywrqVU6ZtcUWV/HAOhQ==
+
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@zkochan/cmd-shim/-/cmd-shim-3.1.0.tgz#2ab8ed81f5bb5452a85f25758eb9b8681982fd2e"
@@ -4949,11 +4954,6 @@ escodegen@^1.9.1:
     optionator "^0.8.1"
   optionalDependencies:
     source-map "~0.6.1"
-
-eslint-config-alloy@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-alloy/-/eslint-config-alloy-3.0.0.tgz#4333c6189efc8d659a2ec2c27862dde4c095e1ba"
-  integrity sha512-kTHT4+1kT70SzXSJ7tkmb6JGbJGaSX87sg1cXzUSNKxAGjTwY6IJDGS8i+l3/OHxv+w1qXbZO8xqsJcE38kb0Q==
 
 eslint-plugin-react@^7.16.0:
   version "7.16.0"

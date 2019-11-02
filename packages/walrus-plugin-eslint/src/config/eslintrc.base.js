@@ -1,5 +1,5 @@
 module.exports = {
   extends: [
-    'alloy'
+    '@walrus/eslint-config'
   ]
 };
