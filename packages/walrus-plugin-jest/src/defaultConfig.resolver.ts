@@ -4,7 +4,13 @@ import createJestConfig from './jest-config/defaultConfig';
 const rootDir = process.cwd();
 
 export class DefaultConfigResolver {
-  resolveGlobal(): any {
-    return createJestConfig(resolve, rootDir);
+  private readonly rootDir: string;
+
+  constructor(rootDir) {
+    this.rootDir = rootDir;
+  }
+
+  resolveGlobal = ()=> {
+    return createJestConfig(resolve, this.rootDir);
   }
 }

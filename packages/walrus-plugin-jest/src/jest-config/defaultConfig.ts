@@ -11,7 +11,8 @@ const config = (resolve, rootDir) => {
     testEnvironment: 'jsdom',
 
     transform: {
-      '\\.(t|j)sx?$': resolve('transformers/babelTransform.js'),
+      '\\.jsx?$': resolve('transformers/babelTransform.js'),
+      '\\.tsx?$': require.resolve('ts-jest'),
       '^.+\\.css$': resolve('transformers/cssTransform.js'),
       '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': resolve('transformers/fileTransform.js'),
     },
@@ -19,7 +20,7 @@ const config = (resolve, rootDir) => {
       '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
       '^.+\\.module\\.(css|sass|scss|less)$',
     ],
-    moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
+    moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json', 'node'],
     moduleNameMapper: {
       '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
     },

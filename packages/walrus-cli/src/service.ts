@@ -13,7 +13,7 @@ import {
   ICommandFun,
   IRawArgs,
   IConfig,
-  IArgs
+  Args
 } from '@walrus/types';
 import helpCommand from './commands/help';
 import PluginAPI, { IPluginConfig } from './pluginAPI';
@@ -117,7 +117,7 @@ class Service {
    * 设置需要跳过的插件
    * @param args
    */
-  setPluginsToSkip(args: IArgs) {
+  setPluginsToSkip(args: Args) {
     const skipPlugins = args['skip-plugins'];
 
     this.pluginsToSkip = skipPlugins
@@ -253,7 +253,7 @@ class Service {
 
   async run (
     name: string,
-    args: IArgs = {},
+    args: Args = {},
     rawArgv: IRawArgs = []
   ) {
     this.setPluginsToSkip(args);

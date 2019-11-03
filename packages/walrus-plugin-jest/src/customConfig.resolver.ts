@@ -1,10 +1,10 @@
 import { join } from 'path';
+import { existsSync } from 'fs';
 import {
   Logger,
   getSystemPath,
   readPkg
 } from '@walrus/shared-utils';
-import {existsSync} from "fs";
 
 export class CustomConfigResolver {
   private logger: Logger;
@@ -13,7 +13,7 @@ export class CustomConfigResolver {
     this.logger = new Logger();
   }
 
-  resolveGlobal(projectRoot: string): any {
+  resolveGlobal = (projectRoot: string) => {
     const packageJsonPath = getSystemPath(projectRoot);
     const packageJson = readPkg.sync({
       cwd: packageJsonPath

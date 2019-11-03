@@ -5,6 +5,8 @@ export type IPluginOptions = {
   [key: string]: any
 }
 
+export type Target = 'node' | 'browser';
+
 export type IPlugin<T = IPluginOptions> = string | [string, T];
 
 interface IConfig {
@@ -13,6 +15,11 @@ interface IConfig {
    * 默认: react
    */
   frame?: 'react' | 'vue' | 'angular' | '';
+  /**
+   * 目标
+   * 默认: 'browser'
+   */
+  target?: Target;
   /**
    * 是否使用typescript
    * 默认: true

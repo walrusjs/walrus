@@ -19,14 +19,14 @@ export interface ICommandOpts {
   details?: string;
 }
 
-export type IArgs = {
+export type Args = {
   [key: string]: any;
 }
 
 export type IRawArgs = string[];
 
 export type ICommandFun = (
-  args: IArgs,
+  args: Args,
   rawArgs: IRawArgs,
   opts?: {
     [key: string]: any
