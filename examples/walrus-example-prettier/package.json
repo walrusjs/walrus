@@ -1,6 +1,6 @@
 {
   "name": "@walrus/example-prettier",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "walrus prettier example",
   "main": "index.js",
   "license": "MIT",
@@ -10,6 +10,6 @@
     "commitlint": "walrus commitlint"
   },
   "dependencies": {
-    "@walrus/cli": "^0.2.2"
+    "@walrus/cli": "^0.2.3"
   }
 }
