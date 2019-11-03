@@ -1,10 +1,6 @@
 import { join } from 'path';
 import { existsSync } from 'fs';
-import {
-  Logger,
-  getSystemPath,
-  readPkg
-} from '@walrus/shared-utils';
+import { Logger, getSystemPath, readPkg } from '@walrus/shared-utils';
 
 export class CustomConfigResolver {
   private logger: Logger;
@@ -20,6 +16,10 @@ export class CustomConfigResolver {
     });
     const workspaceJestConfigPath = getSystemPath(join(projectRoot, 'jest.config.js'));
 
-    return packageJson.jest || existsSync(workspaceJestConfigPath) && require(workspaceJestConfigPath) || {};
-  }
+    return (
+      packageJson.jest ||
+      (existsSync(workspaceJestConfigPath) && require(workspaceJestConfigPath)) ||
+      {}
+    );
+  };
 }

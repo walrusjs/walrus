@@ -2,13 +2,7 @@ import IConfig, { IPlugin } from './config';
 import { IPluginPrettierOptions, IProcessFilesOptions } from './plugin-prettier';
 import { IPluginCommitLintOptions } from './plugin-commitlint';
 
-export {
-  IConfig,
-  IPlugin,
-  IPluginPrettierOptions,
-  IProcessFilesOptions,
-  IPluginCommitLintOptions
-};
+export { IConfig, IPlugin, IPluginPrettierOptions, IProcessFilesOptions, IPluginCommitLintOptions };
 
 export interface ICommandOpts {
   description?: string;
@@ -21,7 +15,7 @@ export interface ICommandOpts {
 
 export type Args = {
   [key: string]: any;
-}
+};
 
 export type IRawArgs = string[];
 
@@ -29,7 +23,7 @@ export type ICommandFun = (
   args: Args,
   rawArgs: IRawArgs,
   opts?: {
-    [key: string]: any
+    [key: string]: any;
   }
 ) => void;
 

@@ -8,13 +8,7 @@ import {
   lodash,
   readPkg
 } from '@walrus/shared-utils';
-import {
-  ICommandOpts,
-  ICommandFun,
-  IRawArgs,
-  IConfig,
-  Args
-} from '@walrus/types';
+import { ICommandOpts, ICommandFun, IRawArgs, IConfig, Args } from '@walrus/types';
 import helpCommand from './commands/help';
 import PluginAPI, { IPluginConfig } from './pluginAPI';
 import { defaults } from './options';
@@ -24,7 +18,7 @@ export interface ICommands {
     fn: ICommandFun;
     opts: ICommandOpts;
     config: IPluginConfig;
-  }
+  };
 }
 
 export type IApplyFun = (pluginAPI: PluginAPI, config: IConfig) => void;
@@ -39,13 +33,13 @@ export interface IPlugin {
   };
   opts?: {
     [key: string]: any;
-  }
+  };
 }
 
 const logger = new Logger();
 
 function getInteriorPluginId(id) {
-  return id.replace(/^.\//, 'built-in:')
+  return id.replace(/^.\//, 'built-in:');
 }
 
 /**
@@ -54,14 +48,14 @@ function getInteriorPluginId(id) {
 function resolveWalrusCliPkg() {
   return readPkg.sync({
     cwd: join(__dirname, '..')
-  })
+  });
 }
 
 function idToPlugin(id: string) {
   return {
     id: getInteriorPluginId(id),
     apply: require(id)
-  }
+  };
 }
 
 class Service {
@@ -94,8 +88,8 @@ class Service {
     this.walrusCliPkg = resolveWalrusCliPkg();
     this.initialized = false;
     this.plugins = this.resolvePlugins(plugins, useBuiltIn);
-    this.modes = this.plugins.reduce((modes, { apply: { defaultModes }}) => {
-      return Object.assign(modes, defaultModes)
+    this.modes = this.plugins.reduce((modes, { apply: { defaultModes } }) => {
+      return Object.assign(modes, defaultModes);
     }, {});
   }
 
@@ -105,10 +99,10 @@ class Service {
   loadUserOptions() {
     this.context = this.context || process.cwd();
 
-    const userConfig = configLoader.loadSync([
-      'walrus.config.js',
-      'walrus.config.ts'
-    ], this.context);
+    const userConfig = configLoader.loadSync(
+      ['walrus.config.js', 'walrus.config.ts'],
+      this.context
+    );
 
     return userConfig.data || {};
   }
@@ -121,9 +115,11 @@ class Service {
     const skipPlugins = args['skip-plugins'];
 
     this.pluginsToSkip = skipPlugins
-      ? new Set(skipPlugins.split(',').map((id) => {
-        return this.pluginResolution.resolvePluginId(id);
-      }))
+      ? new Set(
+          skipPlugins.split(',').map((id) => {
+            return this.pluginResolution.resolvePluginId(id);
+          })
+        )
       : new Set();
   }
 
@@ -143,15 +139,13 @@ class Service {
     ];
 
     if (inlinePlugins) {
-      plugins = useBuiltIn
-        ? builtInPlugins.concat(inlinePlugins)
-        : inlinePlugins
+      plugins = useBuiltIn ? builtInPlugins.concat(inlinePlugins) : inlinePlugins;
     }
 
     // 获取 walrus-cli 中安装的插件
     if (this.walrusCliPkg) {
       const walrusCliPlugins = this.getPkgPlugin(this.walrusCliPkg);
-      plugins = builtInPlugins.concat(walrusCliPlugins)
+      plugins = builtInPlugins.concat(walrusCliPlugins);
     }
 
     return plugins;
@@ -169,18 +163,18 @@ class Service {
     return Object.keys(pkg.devDependencies || {})
       .concat(Object.keys(pkg.dependencies || {}))
       .filter(this.pluginResolution.isPlugin)
-      .map(id => {
+      .map((id) => {
         if (pkg.optionalDependencies && id in pkg.optionalDependencies) {
           let apply = () => {};
           try {
-            apply = require(id)
+            apply = require(id);
           } catch (e) {
-            logger.warn(`Optional dependency ${id} is not installed.`)
+            logger.warn(`Optional dependency ${id} is not installed.`);
           }
 
-          return { id, apply }
+          return { id, apply };
         } else {
-          return idToPlugin(id)
+          return idToPlugin(id);
         }
       });
   }
@@ -195,12 +189,10 @@ class Service {
   resolvePkg(inlinePkg?, context: string = this.context) {
     if (inlinePkg) {
       return inlinePkg;
-    }
-    else if (existsSync(join(context, 'package.json'))) {
-      return readPkg.sync({ cwd: context })
-    }
-    else {
-      return {}
+    } else if (existsSync(join(context, 'package.json'))) {
+      return readPkg.sync({ cwd: context });
+    } else {
+      return {};
     }
   }
 
@@ -220,23 +212,23 @@ class Service {
     }
 
     const userPlugins = (this.projectOptions.plugins || [])
-      .map(item => {
+      .map((item) => {
         if (lodash.isString(item)) {
           return {
             id: getInteriorPluginId(lodash.uniqueId('plugin')),
             apply: require(item),
             opts: {}
-          }
+          };
         }
         if (lodash.isArray(item)) {
           return {
             id: getInteriorPluginId(lodash.uniqueId('plugin')),
             apply: require(item[0]),
             opts: item[1] || {}
-          }
+          };
         }
       })
-      .filter(_ => _);
+      .filter((_) => _);
 
     this.plugins = this.plugins.concat(userPlugins);
 
@@ -244,18 +236,14 @@ class Service {
     this.plugins.forEach(({ id, apply, opts }) => {
       if (this.pluginsToSkip.has(id)) return;
       if (lodash.isFunction(apply)) {
-        apply(new PluginAPI(id, this, opts), this.projectOptions)
+        apply(new PluginAPI(id, this, opts), this.projectOptions);
       } else {
-        apply.default(new PluginAPI(id, this, opts), this.projectOptions)
+        apply.default(new PluginAPI(id, this, opts), this.projectOptions);
       }
-    })
+    });
   }
 
-  async run (
-    name: string,
-    args: Args = {},
-    rawArgv: IRawArgs = []
-  ) {
+  async run(name: string, args: Args = {}, rawArgv: IRawArgs = []) {
     this.setPluginsToSkip(args);
 
     this.init();
@@ -265,14 +253,14 @@ class Service {
 
     if (!command && name) {
       logger.error(`command "${name}" does not exist.`);
-      process.exit(1)
+      process.exit(1);
     }
 
     if (!command || args.help || args.h) {
-      command = this.commands.help
+      command = this.commands.help;
     } else {
       args._.shift(); // remove command itself
-      rawArgv.shift()
+      rawArgv.shift();
     }
 
     const { fn, config } = command;

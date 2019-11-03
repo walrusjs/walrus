@@ -10,7 +10,7 @@ export class DefaultConfigResolver {
     this.rootDir = rootDir;
   }
 
-  resolveGlobal = ()=> {
+  resolveGlobal = () => {
     return createJestConfig(resolve, this.rootDir);
-  }
+  };
 }

@@ -2,8 +2,8 @@ import { IPluginPrettierOptions } from './plugin-prettier';
 import { IPluginCommitLintOptions } from './plugin-commitlint';
 
 export type IPluginOptions = {
-  [key: string]: any
-}
+  [key: string]: any;
+};
 
 export type Target = 'node' | 'browser';
 
