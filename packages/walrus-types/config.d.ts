@@ -13,7 +13,7 @@ export type ResolvePlugin<T = PluginOptions> = string | [string, T];
  * name应为插件包的名称，不带 `walrus-plugin-` 前缀。
  * 该值将用作其选项，传递true等效于一个空对象，false用于禁用内置插件。
  */
-export interface Plugins<T = PluginOptions>  {
+export interface Plugins<T = PluginOptions> {
   [name: string]: boolean | PluginOptions;
 }
 
@@ -41,5 +41,5 @@ export interface Config {
   /**
    * 需要导入的插件
    */
-  resolvePlugins?: ResolvePlugin[]
+  resolvePlugins?: ResolvePlugin[];
 }

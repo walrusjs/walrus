@@ -11,8 +11,10 @@ class PluginResolution {
   constructor(namespace: string, officialPlugins: string[] = []) {
     this.namespace = namespace;
     this.officialPlugins = officialPlugins;
-    this.pluginRegExp = new RegExp(`^(@${this.namespace}\\/|${this.namespace}-|@[\\w-]+(\\.)?[\\w-]+\\/${this.namespace}-)plugin-`);
-  };
+    this.pluginRegExp = new RegExp(
+      `^(@${this.namespace}\\/|${this.namespace}-|@[\\w-]+(\\.)?[\\w-]+\\/${this.namespace}-)plugin-`
+    );
+  }
 
   /**
    * 判断是否是插件
@@ -39,7 +41,7 @@ class PluginResolution {
 
     // 如果是内置插件 则返回 @{namespace}/plugin-{id}
     if (this.officialPlugins.includes(id)) {
-      return `@${this.namespace}/plugin-${id}`
+      return `@${this.namespace}/plugin-${id}`;
     }
 
     // scoped short
@@ -51,16 +53,16 @@ class PluginResolution {
         const shortId = id.replace(scopeRE, '');
 
         if (scope === `@${this.namespace}/`) {
-          return  `${scope}-plugin-${shortId}`
+          return `${scope}-plugin-${shortId}`;
         } else {
-          return `${scope}${this.namespace}-plugin-${shortId}`
+          return `${scope}${this.namespace}-plugin-${shortId}`;
         }
       }
     }
 
     // default short
     // e.g. foo
-    return `${this.namespace}-plugin-${id}`
+    return `${this.namespace}-plugin-${id}`;
   };
 
   /**
@@ -77,8 +79,8 @@ class PluginResolution {
       short === input ||
       // input is short with scope
       short === input.replace(scopeRE, '')
-    )
-  }
+    );
+  };
 }
 
 export default PluginResolution;

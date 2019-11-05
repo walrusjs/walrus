@@ -1,12 +1,6 @@
 #!/usr/bin/env node
 
-import {
-  chalk,
-  semver,
-  Logger,
-  minimist,
-  checkNodeVersion
-} from '@walrus/shared-utils';
+import { chalk, semver, Logger, minimist, checkNodeVersion } from '@walrus/shared-utils';
 import Service from './service';
 
 const logger = new Logger();
@@ -18,11 +12,13 @@ checkNodeVersion(requiredVersion, 'walrus-cli');
 
 // Node版本为9.x则给出警告
 if (semver.satisfies(process.version, '9.x')) {
-  console.log(chalk.red(
-    `You are using Node ${process.version}.\n` +
-    `Node.js 9.x has already reached end-of-life and will not be supported in future major releases.\n` +
-    `It's strongly recommended to use an active LTS version instead.`
-  ))
+  console.log(
+    chalk.red(
+      `You are using Node ${process.version}.\n` +
+        `Node.js 9.x has already reached end-of-life and will not be supported in future major releases.\n` +
+        `It's strongly recommended to use an active LTS version instead.`
+    )
+  );
 }
 
 const rawArgv = process.argv.slice(2);
@@ -33,8 +29,7 @@ const args = minimist(rawArgv, {
 
 const command = args._[0];
 
-service.run(command, args, rawArgv)
-  .catch(err => {
-    logger.error(err);
-    process.exit(1);
-  });
+service.run(command, args, rawArgv).catch((err) => {
+  logger.error(err);
+  process.exit(1);
+});

@@ -3,11 +3,7 @@ import * as prettier from 'prettier';
 import { ProcessFilesOptions } from '@walrus/types';
 import { join } from 'path';
 
-const processFiles = (
-  directory: string,
-  files: string[],
-  opts: ProcessFilesOptions = {}
-) => {
+const processFiles = (directory: string, files: string[], opts: ProcessFilesOptions = {}) => {
   const { check, config, onExamineFile, onCheckFile, onWriteFile } = opts;
   for (const relative of files) {
     onExamineFile && onExamineFile(relative);

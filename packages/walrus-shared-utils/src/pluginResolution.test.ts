@@ -8,11 +8,11 @@ beforeEach(() => {
 
 describe('PluginResolution', () => {
   it('namespace', () => {
-    expect(pluginResolution.namespace).toEqual('walrus')
+    expect(pluginResolution.namespace).toEqual('walrus');
   });
 
   it('officialPlugins', () => {
-    expect(pluginResolution.officialPlugins).toEqual(['eslint', 'jest'])
+    expect(pluginResolution.officialPlugins).toEqual(['eslint', 'jest']);
   });
 
   describe('isPlugin', () => {
@@ -27,7 +27,5 @@ describe('PluginResolution', () => {
       expect(pluginResolution.isPlugin('walrus-plugin-jest')).toEqual(true);
       expect(pluginResolution.isPlugin('walrus-plus-plugin-jest')).toEqual(false);
     });
-  })
+  });
 });
-
-

@@ -15,20 +15,13 @@ const lint = require('@commitlint/lint');
 const stdin = require('get-stdin');
 const pkg = require('../package.json');
 
-export default async function commitLint(
-  raw: string[] = [],
-  config: PluginCommitLintOptions = {}
-) {
+export default async function commitLint(raw: string[] = [], config: PluginCommitLintOptions = {}) {
   const options = Object.assign({}, defaultOptions, config);
 
   if (options.env) {
     if (!(options.env in process.env)) {
       throw new Error(
-        `Recieved '${
-          options.env
-          }' as value for --env, but environment variable '${
-          options.env
-          }' is not available globally`
+        `Recieved '${options.env}' as value for --env, but environment variable '${options.env}' is not available globally`
       );
     }
     options.edit = process.env[options.env];
@@ -41,8 +34,8 @@ export default async function commitLint(
   const input = await (fromStdin ? stdin() : read(range, { cwd: options.cwd }));
 
   const messages = (Array.isArray(input) ? input : [input])
-    .filter(message => typeof message === 'string')
-    .filter(message => message.trim() !== '')
+    .filter((message) => typeof message === 'string')
+    .filter((message) => message.trim() !== '')
     .filter(Boolean);
 
   if (messages.length === 0 && !checkFromRepository(options)) {
@@ -92,7 +85,7 @@ export default async function commitLint(
     opts.parserOpts['commentChar'] = '#';
   }
 
-  const lints = messages.map(message => lint(message, loaded.rules, opts));
+  const lints = messages.map((message) => lint(message, loaded.rules, opts));
 
   // @ts-ignore
   const results = await Promise.all(lints);

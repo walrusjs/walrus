@@ -107,25 +107,16 @@ class Service {
    */
   async resolvePlugins() {
     const pluginsOptions: { [key: string]: any } = {
-      eslint:
-        this.config.plugins.eslint !== false &&
-        merge({}, this.config.plugins.eslint),
+      eslint: this.config.plugins.eslint !== false && merge({}, this.config.plugins.eslint),
 
       commitlint:
-        this.config.plugins.commitlint !== false &&
-        merge({}, this.config.plugins.commitlint),
+        this.config.plugins.commitlint !== false && merge({}, this.config.plugins.commitlint),
 
-      jest:
-        this.config.plugins.jest !== false &&
-        merge({}, this.config.plugins.jest),
+      jest: this.config.plugins.jest !== false && merge({}, this.config.plugins.jest),
 
-      prettier:
-        this.config.plugins.jest !== false &&
-        merge({}, this.config.plugins.prettier),
+      prettier: this.config.plugins.jest !== false && merge({}, this.config.plugins.prettier),
 
-      stylelint:
-        this.config.plugins.stylelint !== false &&
-        merge({}, this.config.plugins.stylelint)
+      stylelint: this.config.plugins.stylelint !== false && merge({}, this.config.plugins.stylelint)
     };
 
     // 内置插件
@@ -158,7 +149,7 @@ class Service {
 
     // 需要导入的插件
     if (lodash.isArray(this.config.resolvePlugins)) {
-      this.config.resolvePlugins.forEach(item => {
+      this.config.resolvePlugins.forEach((item) => {
         if (lodash.isString(item)) {
           plugins.push({
             id: getInteriorPluginId(lodash.uniqueId('plugin')),
@@ -188,19 +179,19 @@ class Service {
     let plugin = null;
 
     if (isOfficialBuiltIn) {
-      plugin = require(`@walrus/plugin-${name}`)
+      plugin = require(`@walrus/plugin-${name}`);
     }
 
     if (isBuiltIn) {
-      require(`walrus-plugin-${name}`)
+      require(`walrus-plugin-${name}`);
     }
 
     if (!plugin) {
-      plugin = this.localRequire(this.localRequire(`walrus-plugin-${name}`))
+      plugin = this.localRequire(this.localRequire(`walrus-plugin-${name}`));
     }
 
     if (!plugin && name.charAt(0) === '@') {
-      plugin = this.localRequire(this.localRequire(name))
+      plugin = this.localRequire(this.localRequire(name));
     }
 
     if (plugin) {
@@ -236,7 +227,7 @@ class Service {
       return;
     }
     this.initialized = true;
-    this.plugins = await this.resolvePlugins() as any;
+    this.plugins = (await this.resolvePlugins()) as any;
     this.modes = this.plugins.reduce((modes, { apply: { defaultModes } }) => {
       return Object.assign(modes, defaultModes);
     }, {});

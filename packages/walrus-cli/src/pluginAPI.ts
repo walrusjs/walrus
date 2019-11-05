@@ -14,11 +14,7 @@ class PluginAPI {
   private readonly pluginConfig: PluginConfig;
   private service: Server;
 
-  constructor (
-    id: string,
-    service,
-    pluginConfig: PluginConfig
-  ) {
+  constructor(id: string, service, pluginConfig: PluginConfig) {
     this.id = id;
     this.service = service;
     this.pluginConfig = pluginConfig;
@@ -38,7 +34,7 @@ class PluginAPI {
    * @return {string} 解析后的绝对路径
    */
   resolve(path: string): string {
-    return resolve(this.service.context, path)
+    return resolve(this.service.context, path);
   }
 
   /**
@@ -46,7 +42,7 @@ class PluginAPI {
    * @param id
    */
   hasPlugin(id: string): boolean {
-    return this.service.plugins.some(p => pluginResolution.matchesPluginId(id, p.id))
+    return this.service.plugins.some((p) => pluginResolution.matchesPluginId(id, p.id));
   }
 
   /**
@@ -65,13 +61,13 @@ class PluginAPI {
   registerCommand(name: string, opts: CommandOpts, fn: CommandFun) {
     if (lodash.isFunction(opts)) {
       fn = opts;
-      opts = null
+      opts = null;
     }
     this.service.commands[name] = {
       fn,
       opts: opts || {},
       config: this.pluginConfig
-    }
+    };
   }
 }
 
