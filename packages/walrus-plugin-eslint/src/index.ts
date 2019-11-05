@@ -2,7 +2,7 @@
 
 import { join } from 'path';
 import * as eslint from 'eslint';
-import { IApi, IConfig } from '@walrus/types';
+import { API, Config } from '@walrus/types';
 import { readPkg } from '@walrus/shared-utils';
 import cli from './cli';
 
@@ -20,7 +20,7 @@ const options = {
   version: pkg.version
 };
 
-export default function(api: IApi, config: IConfig) {
+export default function(api: API, config: Config) {
   api.registerCommand('lint', {
     description: 'lint and fix source files',
     usage: 'walrus lint [options] [...files]',
@@ -39,12 +39,12 @@ export default function(api: IApi, config: IConfig) {
     // react
     if (config.frame === 'react') {
       options.eslintConfig.configFile = join(__dirname, './config/eslintrc.react.js');
-      if (config.useTypescript) {
+      if (config.useTS) {
         options.eslintConfig.configFile = join(__dirname, './config/eslintrc.react-ts.js');
       }
     }
     // 无框架
-    if (config.frame === '' && config.useTypescript) {
+    if (!config.frame && config.useTS) {
       options.eslintConfig.configFile = join(__dirname, './config/eslintrc.ts.js')
     }
     cli(options);

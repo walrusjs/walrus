@@ -1,4 +1,4 @@
-import { IApi, IConfig } from '@walrus/types';
+import { API, Config } from '@walrus/types';
 import { run } from 'jest';
 import { DefaultConfigResolver } from './defaultConfig.resolver';
 import { CustomConfigResolver } from './customConfig.resolver';
@@ -6,7 +6,7 @@ import { JestConfigurationBuilder } from './jestConfigurationBuilder';
 
 const debug = require('debug')('walrus-plugin-jest');
 
-export default function(api: IApi, conf: IConfig) {
+export default function(api: API, conf: Config) {
   api.registerCommand(
     'test',
     {

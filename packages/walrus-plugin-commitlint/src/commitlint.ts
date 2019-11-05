@@ -1,4 +1,4 @@
-import { IPluginCommitLintOptions } from '@walrus/types';
+import { PluginCommitLintOptions } from '@walrus/types';
 import { lodash } from '@walrus/shared-utils';
 import defaultOptions from './defaultConfig';
 import {
@@ -17,7 +17,7 @@ const pkg = require('../package.json');
 
 export default async function commitLint(
   raw: string[] = [],
-  config: IPluginCommitLintOptions = {}
+  config: PluginCommitLintOptions = {}
 ) {
   const options = Object.assign({}, defaultOptions, config);
 

@@ -1,9 +1,9 @@
-import { IApi, IConfig } from '@walrus/types';
+import { API, Config } from '@walrus/types';
 import commitLint from './commitlint';
 
 const pkg = require('../package.json');
 
-export default function(api: IApi, config: IConfig) {
+export default function(api: API, config: Config) {
   api.registerCommand(
     'commitlint',
     {
@@ -14,8 +14,8 @@ export default function(api: IApi, config: IConfig) {
         '--config [file]': 'path to the config file'
       }
     },
-    (args) => {
-      commitLint(args._, Object.assign({}, config.pluginCommitLint, args)).catch((err) =>
+    (args, rawArgs, opts) => {
+      commitLint(args._, Object.assign({}, opts, args)).catch((err) =>
         setTimeout(() => {
           if (err.type === pkg.name) {
             process.exit(1);

@@ -1,5 +1,5 @@
 {
-  "name": "@walrus/walrus-plugin-commitlint",
+  "name": "@walrus/plugin-commitlint",
   "version": "0.2.3",
   "description": "walrus plugin commitlint",
   "main": "lib/index.js",

@@ -1,5 +1,5 @@
 {
-  "name": "@walrus/walrus-plugin-jest",
+  "name": "@walrus/plugin-jest",
   "version": "0.2.3",
   "main": "./lib/index.js",
   "license": "MIT",

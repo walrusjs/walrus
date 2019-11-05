@@ -1,22 +1,23 @@
 import { resolve } from 'path';
+import { CommandOpts, CommandFun } from '@walrus/types';
 import { PluginResolution, lodash } from '@walrus/shared-utils';
 import Server from './service';
 
-export interface IPluginConfig {
+export interface PluginConfig {
   [key: string]: any;
 }
 
-const pluginResolution = new PluginResolution();
+const pluginResolution = new PluginResolution('walrus');
 
 class PluginAPI {
   private id: string;
-  private readonly pluginConfig: IPluginConfig;
+  private readonly pluginConfig: PluginConfig;
   private service: Server;
 
   constructor (
     id: string,
     service,
-    pluginConfig: IPluginConfig
+    pluginConfig: PluginConfig
   ) {
     this.id = id;
     this.service = service;
@@ -61,7 +62,7 @@ class PluginAPI {
    * @param {function} fn
    *   (args: { [string]: string }, rawArgs: string[]) => ?Promise
    */
-  registerCommand(name: string, opts, fn) {
+  registerCommand(name: string, opts: CommandOpts, fn: CommandFun) {
     if (lodash.isFunction(opts)) {
       fn = opts;
       opts = null

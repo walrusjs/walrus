@@ -1,12 +1,12 @@
 import { readFileSync, writeFileSync } from 'fs';
 import * as prettier from 'prettier';
-import { IProcessFilesOptions } from '@walrus/types';
+import { ProcessFilesOptions } from '@walrus/types';
 import { join } from 'path';
 
 const processFiles = (
   directory: string,
   files: string[],
-  opts: IProcessFilesOptions = {}
+  opts: ProcessFilesOptions = {}
 ) => {
   const { check, config, onExamineFile, onCheckFile, onWriteFile } = opts;
   for (const relative of files) {

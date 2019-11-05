@@ -1,11 +1,11 @@
-import { IPluginPrettierOptions } from '@walrus/types';
+import { PluginPrettierOptions } from '@walrus/types';
 import scms from './scms';
 import createIgnorer from './createIgnorer';
 import isSupportedExtension from './isSupportedExtension';
 import createMatcher from './createMatcher';
 import processFiles from './processFiles';
 
-export default (currentDirectory: string, options: IPluginPrettierOptions = {}) => {
+export default (currentDirectory: string, options: PluginPrettierOptions = {}) => {
   const scm = scms(currentDirectory);
   const {
     staged,

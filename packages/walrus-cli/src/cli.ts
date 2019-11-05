@@ -10,7 +10,7 @@ import {
 import Service from './service';
 
 const logger = new Logger();
-const service = new Service(process.cwd());
+const service = new Service();
 const requiredVersion = require('../package.json').engines.node;
 
 // 检查Node版本

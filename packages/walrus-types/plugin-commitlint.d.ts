@@ -1,4 +1,4 @@
-export interface IPluginCommitLintOptions {
+export interface PluginCommitLintOptions {
   // 执行的目录
   cwd?: string;
   env?: string;

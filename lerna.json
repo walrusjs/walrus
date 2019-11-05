@@ -2,10 +2,7 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "version": "0.2.3",
-  "packages": [
-    "packages/*",
-    "examples/*"
-  ],
+  "packages": ["packages/*", "examples/*"],
   "changelog": {
     "repo": "walrus",
     "labels": {

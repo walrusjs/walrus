@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import { chalk } from '@walrus/shared-utils';
-import { IApi } from '@walrus/types';
+import { API } from '@walrus/types';
 import stylelint from 'stylelint';
 import lintConfig from './config/stylelint.config.js';
 
-export default function(api: IApi) {
+export default function(api: API) {
   api.registerCommand(
     'stylelint',
     {

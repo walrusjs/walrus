@@ -1,45 +1,45 @@
-import { IPluginPrettierOptions } from './plugin-prettier';
-import { IPluginCommitLintOptions } from './plugin-commitlint';
-
-export type IPluginOptions = {
+// 插件配置
+export interface PluginOptions {
   [key: string]: any;
-};
+}
 
+// 指定目标环境
 export type Target = 'node' | 'browser';
 
-export type IPlugin<T = IPluginOptions> = string | [string, T];
+export type ResolvePlugin<T = PluginOptions> = string | [string, T];
 
-interface IConfig {
+/**
+ * 插件类型定义
+ * name应为插件包的名称，不带 `walrus-plugin-` 前缀。
+ * 该值将用作其选项，传递true等效于一个空对象，false用于禁用内置插件。
+ */
+export interface Plugins<T = PluginOptions>  {
+  [name: string]: boolean | PluginOptions;
+}
+
+export interface Config {
   /**
    * 当前项目使用的框架
    * 默认: react
    */
-  frame?: 'react' | 'vue' | 'angular' | '';
-  /**
-   * 目标
-   * 默认: 'browser'
-   */
-  target?: Target;
+  frame?: 'react' | 'vue' | 'angular';
   /**
    * 是否使用typescript
    * 默认: true
    */
-  useTypescript?: boolean;
+  useTS?: boolean;
   /**
-   * 是否自动解析package.json中的插件
-   * 默认: false
+   * 目标环境
+   * 默认: 'browser'
    */
-  autoResolvePlugin?: boolean;
+  target?: Target;
   /**
-   * 插件集合 社区插件 或者 自定义插件
-   * 默认: []
+   * 插件配置
+   * 默认: {}
    */
-  plugins?: IPlugin[];
+  plugins?: Plugins;
   /**
-   * prettier插件相关配置
+   * 需要导入的插件
    */
-  pluginPrettier?: IPluginPrettierOptions;
-  pluginCommitLint?: IPluginCommitLintOptions;
+  resolvePlugins?: ResolvePlugin[]
 }
-
-export default IConfig;

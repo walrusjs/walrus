@@ -1,4 +1,4 @@
-export interface IProcessFilesOptions {
+export interface ProcessFilesOptions {
   // 检查文件格式是否正确，但不要格式化。
   check?: boolean;
   config?: string;
@@ -7,7 +7,7 @@ export interface IProcessFilesOptions {
   onWriteFile?: (relative) => void;
 }
 
-export interface IPluginPrettierOptions extends IProcessFilesOptions {
+export interface PluginPrettierOptions extends ProcessFilesOptions {
   since?: string;
   // 是否开启暂存模式
   staged?: boolean;

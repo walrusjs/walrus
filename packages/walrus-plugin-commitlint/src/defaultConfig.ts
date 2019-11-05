@@ -1,7 +1,7 @@
 import { join } from 'path';
-import { IPluginCommitLintOptions } from '@walrus/types';
+import { PluginCommitLintOptions } from '@walrus/types';
 
-const defaultOptions: IPluginCommitLintOptions = {
+const defaultOptions: PluginCommitLintOptions = {
   env: null,
   color: true,
   edit: false,

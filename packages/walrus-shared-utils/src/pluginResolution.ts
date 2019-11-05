@@ -1,26 +1,35 @@
 const scopeRE = /^@[\w-]+(\.)?[\w-]+\//;
 
+/**
+ * 插件解析工具
+ */
 class PluginResolution {
-  private readonly namespace: string;
-  private officialPlugins: string[];
-  private pluginRegExp: RegExp;
+  public namespace: string;
+  public officialPlugins: string[];
+  private readonly pluginRegExp: RegExp;
 
-  constructor(namespace?: string) {
-    this.namespace = namespace || 'walrus';
-    this.officialPlugins = [
-      'eslint'
-    ];
+  constructor(namespace: string, officialPlugins: string[] = []) {
+    this.namespace = namespace;
+    this.officialPlugins = officialPlugins;
     this.pluginRegExp = new RegExp(`^(@${this.namespace}\\/|${this.namespace}-|@[\\w-]+(\\.)?[\\w-]+\\/${this.namespace}-)plugin-`);
   };
 
   /**
    * 判断是否是插件
+   * 三种格式
+   *  @{namespace}/plugin-* >> @walrus/plugin-eslint
+   *  {namespace}-plugin-* >> walrus-plugin-eslint
+   *  @{*}/walrus-plugin-* >> @bar/walrus-plugin-eslint
    * @param id
    */
   isPlugin = (id: string): boolean => {
     return this.pluginRegExp.test(id);
   };
 
+  /**
+   * 解析插件ID
+   * @param id
+   */
   resolvePluginId = (id: string): string => {
     // already full id
     // e.g. walrus-plugin-foo, @walrus/plugin-foo, @bar/walrus-plugin-foo
@@ -28,8 +37,9 @@ class PluginResolution {
       return id;
     }
 
+    // 如果是内置插件 则返回 @{namespace}/plugin-{id}
     if (this.officialPlugins.includes(id)) {
-      return `@walrus/plugin-${id}`
+      return `@${this.namespace}/plugin-${id}`
     }
 
     // scoped short
@@ -39,15 +49,25 @@ class PluginResolution {
       if (scopeMatch) {
         const scope = scopeMatch[0];
         const shortId = id.replace(scopeRE, '');
-        return `${scope}${scope === '@walrus/' ? `` : `walrus-`}-plugin-${shortId}`
+
+        if (scope === `@${this.namespace}/`) {
+          return  `${scope}-plugin-${shortId}`
+        } else {
+          return `${scope}${this.namespace}-plugin-${shortId}`
+        }
       }
     }
 
     // default short
     // e.g. foo
-    return `walrus-plugin-${id}`
+    return `${this.namespace}-plugin-${id}`
   };
 
+  /**
+   * 插件ID是否匹配
+   * @param input
+   * @param full
+   */
   matchesPluginId = (input, full) => {
     const short = full.replace(this.pluginRegExp, '');
     return (

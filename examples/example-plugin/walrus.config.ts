@@ -1,8 +1,8 @@
-import { IConfig } from '@walrus/types';
+import { Config } from '@walrus/types';
 import { join } from 'path';
 
-const config: IConfig = {
-  plugins: [
+const config: Config = {
+  resolvePlugins: [
     [
       join(__dirname, './lib/index.js'),
       {

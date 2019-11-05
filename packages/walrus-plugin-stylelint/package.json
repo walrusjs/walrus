@@ -1,5 +1,5 @@
 {
-  "name": "@walrus/walrus-plugin-stylelint",
+  "name": "@walrus/plugin-stylelint",
   "version": "0.2.3",
   "main": "./lib/index.js",
   "license": "MIT",

@@ -1,7 +1,7 @@
-import { IPluginPrettierOptions } from '@walrus/types';
+import { PluginPrettierOptions } from '@walrus/types';
 import { join } from 'path';
 
-const defaultOptions: IPluginPrettierOptions = {
+const defaultOptions: PluginPrettierOptions = {
   config: join(__dirname, 'prettier.config.js')
 };
 

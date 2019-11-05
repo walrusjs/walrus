@@ -1,5 +1,6 @@
 import { existsSync } from 'fs';
 import { join } from 'path';
+import * as resolveFrom from 'resolve-from';
 import {
   configLoader,
   PluginResolution,
@@ -8,25 +9,25 @@ import {
   lodash,
   readPkg
 } from '@walrus/shared-utils';
-import { ICommandOpts, ICommandFun, IRawArgs, IConfig, Args } from '@walrus/types';
+import { CommandOpts, CommandFun, RawArgs, Config, Args } from '@walrus/types';
 import helpCommand from './commands/help';
-import PluginAPI, { IPluginConfig } from './pluginAPI';
-import { defaults } from './options';
+import PluginAPI, { PluginConfig } from './pluginAPI';
+import { DEFAULT_CONFIG_FILENAMES } from './config';
 
-export interface ICommands {
+export interface Commands {
   [name: string]: {
-    fn: ICommandFun;
-    opts: ICommandOpts;
-    config: IPluginConfig;
+    fn: CommandFun;
+    opts: CommandOpts;
+    config: PluginConfig;
   };
 }
 
-export type IApplyFun = (pluginAPI: PluginAPI, config: IConfig) => void;
+export type ApplyFun = (pluginAPI: PluginAPI, config: Config) => void;
 
-export interface IPlugin {
+export interface Plugin {
   id: string;
   apply: {
-    default?: IApplyFun;
+    default?: ApplyFun;
     defaultModes?: {
       [key: string]: string;
     };
@@ -37,6 +38,7 @@ export interface IPlugin {
 }
 
 const logger = new Logger();
+const merge = lodash.merge;
 
 function getInteriorPluginId(id) {
   return id.replace(/^.\//, 'built-in:');
@@ -51,86 +53,82 @@ function resolveWalrusCliPkg() {
   });
 }
 
-function idToPlugin(id: string) {
-  return {
-    id: getInteriorPluginId(id),
-    apply: require(id)
-  };
-}
-
 class Service {
   private initialized: boolean;
   public context: string;
-  public plugins: IPlugin[];
+  public config: Config;
+  public plugins: Plugin[];
   public pkg: readPkg.PackageJson;
   public walrusCliPkg: readPkg.PackageJson;
-  public projectOptions: IConfig;
   private pluginResolution: PluginResolution;
-  protected pluginsToSkip: Set<any>;
-  public commands: ICommands;
+  // 所有的命令
+  public commands: Commands;
   public modes: {
     [key: string]: string;
   };
 
-  constructor(
-    context: string,
-    options?: {
-      plugins?: any[];
-      pkg?: readPkg.PackageJson;
-      useBuiltIn?: boolean;
-    }
-  ) {
-    const { plugins, pkg, useBuiltIn } = options || {};
+  constructor(context: string = process.cwd(), config?: Config) {
     this.commands = {};
     this.context = context;
-    this.pluginResolution = new PluginResolution();
-    this.pkg = this.resolvePkg(pkg);
+    this.pluginResolution = new PluginResolution('walrus');
+    this.pkg = this.resolvePkg();
+    this.config = this.normalizeConfig(config || {});
     this.walrusCliPkg = resolveWalrusCliPkg();
     this.initialized = false;
-    this.plugins = this.resolvePlugins(plugins, useBuiltIn);
-    this.modes = this.plugins.reduce((modes, { apply: { defaultModes } }) => {
-      return Object.assign(modes, defaultModes);
-    }, {});
   }
 
   /**
    * 获取用户配置
    */
-  loadUserOptions() {
+  loadUserOptions(): Config {
     this.context = this.context || process.cwd();
-
-    const userConfig = configLoader.loadSync(
-      ['walrus.config.js', 'walrus.config.ts'],
-      this.context
-    );
+    // 根据配置依次读取配置文件
+    const userConfig = configLoader.loadSync(DEFAULT_CONFIG_FILENAMES, this.context);
 
     return userConfig.data || {};
   }
 
-  /**
-   * 设置需要跳过的插件
-   * @param args
-   */
-  setPluginsToSkip(args: Args) {
-    const skipPlugins = args['skip-plugins'];
+  normalizeConfig = (config: Config): Config => {
+    const userConfig = this.loadUserOptions();
 
-    this.pluginsToSkip = skipPlugins
-      ? new Set(
-          skipPlugins.split(',').map((id) => {
-            return this.pluginResolution.resolvePluginId(id);
-          })
-        )
-      : new Set();
-  }
+    const result = merge({}, userConfig, config, {
+      frame: config.frame || userConfig.frame || 'react',
+      useTS: config.useTS || userConfig.useTS || true,
+      target: config.target || userConfig.target || 'browser'
+    });
+
+    result.plugins = {};
+
+    return result;
+  };
 
   /**
    * 解析插件
-   * @param inlinePlugins
-   * @param useBuiltIn
    */
-  resolvePlugins(inlinePlugins, useBuiltIn) {
-    let plugins;
+  async resolvePlugins() {
+    const pluginsOptions: { [key: string]: any } = {
+      eslint:
+        this.config.plugins.eslint !== false &&
+        merge({}, this.config.plugins.eslint),
 
+      commitlint:
+        this.config.plugins.commitlint !== false &&
+        merge({}, this.config.plugins.commitlint),
+
+      jest:
+        this.config.plugins.jest !== false &&
+        merge({}, this.config.plugins.jest),
+
+      prettier:
+        this.config.plugins.jest !== false &&
+        merge({}, this.config.plugins.prettier),
+
+      stylelint:
+        this.config.plugins.stylelint !== false &&
+        merge({}, this.config.plugins.stylelint)
+    };
+
+    // 内置插件
     const builtInPlugins = [
       {
         id: getInteriorPluginId('./commands/help'),
@@ -138,115 +136,125 @@ class Service {
       }
     ];
 
-    if (inlinePlugins) {
-      plugins = useBuiltIn ? builtInPlugins.concat(inlinePlugins) : inlinePlugins;
+    for (const name of Object.keys(this.config.plugins)) {
+      if (pluginsOptions[name] === undefined) {
+        Object.assign(pluginsOptions, { [name]: this.config.plugins[name] });
+      }
     }
 
-    // 获取 walrus-cli 中安装的插件
-    if (this.walrusCliPkg) {
-      const walrusCliPlugins = this.getPkgPlugin(this.walrusCliPkg);
-      plugins = builtInPlugins.concat(walrusCliPlugins);
-    }
+    const plugins = await Promise.all(
+      Object.keys(pluginsOptions)
+        .filter((name) => pluginsOptions[name])
+        .map(async (name) => {
+          const plugin = await this.getPlugin(name);
+          if (!plugin || !plugin.default) return null;
+          return {
+            id: this.pluginResolution.resolvePluginId(name),
+            apply: plugin,
+            opts: pluginsOptions[name] || {}
+          };
+        })
+    );
 
-    return plugins;
-  }
-
-  /**
-   * 解析用户插件
-   */
-  resolveUserPlugins() {
-    // 获取项目中安装的插件
-    return this.getPkgPlugin(this.pkg);
-  }
-
-  private getPkgPlugin(pkg: readPkg.PackageJson) {
-    return Object.keys(pkg.devDependencies || {})
-      .concat(Object.keys(pkg.dependencies || {}))
-      .filter(this.pluginResolution.isPlugin)
-      .map((id) => {
-        if (pkg.optionalDependencies && id in pkg.optionalDependencies) {
-          let apply = () => {};
-          try {
-            apply = require(id);
-          } catch (e) {
-            logger.warn(`Optional dependency ${id} is not installed.`);
-          }
-
-          return { id, apply };
-        } else {
-          return idToPlugin(id);
+    // 需要导入的插件
+    if (lodash.isArray(this.config.resolvePlugins)) {
+      this.config.resolvePlugins.forEach(item => {
+        if (lodash.isString(item)) {
+          plugins.push({
+            id: getInteriorPluginId(lodash.uniqueId('plugin')),
+            apply: require(item),
+            opts: {}
+          });
+        }
+        if (lodash.isArray(item)) {
+          plugins.push({
+            id: getInteriorPluginId(lodash.uniqueId('plugin')),
+            apply: require(item[0]),
+            opts: item[1] || {}
+          });
         }
       });
+    }
+
+    return builtInPlugins.concat(plugins);
+  }
+
+  getPlugin = (name: string) => {
+    // 是否是@walrus/plugin-*形式的内置包
+    const isOfficialBuiltIn = require('../package').dependencies[`@walrus/plugin-${name}`];
+    // 是否是walrus-plugin-*形式的内置包
+    const isBuiltIn = require('../package').dependencies[`walrus-plugin-${name}`];
+
+    let plugin = null;
+
+    if (isOfficialBuiltIn) {
+      plugin = require(`@walrus/plugin-${name}`)
+    }
+
+    if (isBuiltIn) {
+      require(`walrus-plugin-${name}`)
+    }
+
+    if (!plugin) {
+      plugin = this.localRequire(this.localRequire(`walrus-plugin-${name}`))
+    }
+
+    if (!plugin && name.charAt(0) === '@') {
+      plugin = this.localRequire(this.localRequire(name))
+    }
+
+    if (plugin) {
+      return plugin;
+    } else {
+      logger.warn(`Optional dependency ${name} is not installed.`);
+      return null;
+    }
+  };
+
+  localRequire(name: string, { silent, cwd }: { silent?: boolean; cwd?: string } = {}) {
+    cwd = cwd || this.context;
+    const resolved = silent ? resolveFrom.silent(cwd, name) : resolveFrom(cwd, name);
+    return resolved && require(resolved);
   }
 
   /**
    * 解析package.json
    *
-   * @param inlinePkg
    * @param context 当前工作目录
    * @return 返回解析后的Json对象
    */
-  resolvePkg(inlinePkg?, context: string = this.context) {
-    if (inlinePkg) {
-      return inlinePkg;
-    } else if (existsSync(join(context, 'package.json'))) {
+  resolvePkg(context: string = this.context) {
+    if (existsSync(join(context, 'package.json'))) {
       return readPkg.sync({ cwd: context });
     } else {
       return {};
     }
   }
 
-  init() {
+  async init() {
     if (this.initialized) {
       return;
     }
     this.initialized = true;
-    const userOptions = this.loadUserOptions();
-    this.projectOptions = lodash.defaultsDeep(userOptions, defaults());
+    this.plugins = await this.resolvePlugins() as any;
+    this.modes = this.plugins.reduce((modes, { apply: { defaultModes } }) => {
+      return Object.assign(modes, defaultModes);
+    }, {});
 
-    debug('walrus:project-config')(this.projectOptions);
-
-    // 是否自动解析用户`package.json`中的插件
-    if (this.projectOptions.autoResolvePlugin) {
-      this.plugins = this.plugins.concat(this.resolveUserPlugins());
-    }
-
-    const userPlugins = (this.projectOptions.plugins || [])
-      .map((item) => {
-        if (lodash.isString(item)) {
-          return {
-            id: getInteriorPluginId(lodash.uniqueId('plugin')),
-            apply: require(item),
-            opts: {}
-          };
-        }
-        if (lodash.isArray(item)) {
-          return {
-            id: getInteriorPluginId(lodash.uniqueId('plugin')),
-            apply: require(item[0]),
-            opts: item[1] || {}
-          };
-        }
-      })
-      .filter((_) => _);
-
-    this.plugins = this.plugins.concat(userPlugins);
+    debug('walrus:project-config')(this.config);
 
     // apply plugins.
     this.plugins.forEach(({ id, apply, opts }) => {
-      if (this.pluginsToSkip.has(id)) return;
       if (lodash.isFunction(apply)) {
-        apply(new PluginAPI(id, this, opts), this.projectOptions);
+        apply(new PluginAPI(id, this, opts), this.config);
       } else {
-        apply.default(new PluginAPI(id, this, opts), this.projectOptions);
+        apply.default(new PluginAPI(id, this, opts), this.config);
       }
     });
   }
 
-  async run(name: string, args: Args = {}, rawArgv: IRawArgs = []) {
-    this.setPluginsToSkip(args);
-
-    this.init();
+  async run(name: string, args: Args = {}, rawArgv: RawArgs = []) {
+    await this.init();
 
     args._ = args._ || [];
     let command = this.commands[name];
@@ -275,4 +283,5 @@ class Service {
   }
 }
 
+// @ts-ignore
 export default Service;

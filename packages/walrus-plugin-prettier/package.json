@@ -1,5 +1,5 @@
 {
-  "name": "@walrus/walrus-plugin-prettier",
+  "name": "@walrus/plugin-prettier",
   "version": "0.2.3",
   "description": "walrus prettier plugin",
   "main": "./lib/index.js",

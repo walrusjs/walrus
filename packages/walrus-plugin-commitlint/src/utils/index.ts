@@ -1,5 +1,5 @@
 import { lodash } from '@walrus/shared-utils';
-import { IPluginCommitLintOptions } from '@walrus/types';
+import { PluginCommitLintOptions } from '@walrus/types';
 
 const resolveFrom = require('resolve-from');
 const resolveGlobal = require('resolve-global');
@@ -8,7 +8,7 @@ const resolveGlobal = require('resolve-global');
  * 是否从历史中检查
  * @param opts
  */
-export function checkFromHistory(opts: IPluginCommitLintOptions) {
+export function checkFromHistory(opts: PluginCommitLintOptions) {
   return lodash.isString(opts.from) || lodash.isString(opts.to);
 }
 
@@ -16,7 +16,7 @@ export function checkFromHistory(opts: IPluginCommitLintOptions) {
  * 是否从编辑中检查
  * @param opts
  */
-export function checkFromEdit(opts: IPluginCommitLintOptions) {
+export function checkFromEdit(opts: PluginCommitLintOptions) {
   return Boolean(opts.edit) || opts.env;
 }
 
@@ -24,7 +24,7 @@ export function checkFromEdit(opts: IPluginCommitLintOptions) {
  * 是否从存储库中建议
  * @param opts
  */
-export function checkFromRepository(opts: IPluginCommitLintOptions) {
+export function checkFromRepository(opts: PluginCommitLintOptions) {
   return checkFromHistory(opts) || checkFromEdit(opts);
 }
 
@@ -33,7 +33,7 @@ export function checkFromRepository(opts: IPluginCommitLintOptions) {
  * @param input
  * @param opts
  */
-export function checkFromStdin(input: string[], opts: IPluginCommitLintOptions) {
+export function checkFromStdin(input: string[], opts: PluginCommitLintOptions) {
   return input.length === 0 && !checkFromRepository(opts);
 }
 

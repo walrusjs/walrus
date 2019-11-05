@@ -1,6 +1,6 @@
-import { IApi, IConfig } from '@walrus/types';
+import { API, Config } from '@walrus/types';
 
-export default function(api: IApi, config: IConfig) {
+export default function(api: API, config: Config) {
   api.registerCommand(
     'example',
     {
