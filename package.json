@@ -14,7 +14,7 @@
     "lint:style": "node ./packages/walrus-cli/lib/cli.js stylelint",
     "prettier": "node ./packages/walrus-cli/lib/cli.js prettier",
     "commitlint": "node ./packages/walrus-cli/lib/cli.js commitlint --env HUSKY_GIT_PARAMS",
-    "release": "yarn --pure-lockfile && node scripts/release.js"
+    "release": "node ./packages/walrus-cli/lib/cli.js release"
   },
   "devDependencies": {
     "@types/assert": "^1.4.3",
@@ -22,6 +22,7 @@
     "@types/lodash": "^4.14.138",
     "@types/mustache": "^0.8.32",
     "@types/node": "^12.7.5",
+    "@walrus/plugin-lerna-release": "^1.0.3",
     "chalk": "^2.4.2",
     "execa": "^2.0.4",
     "father-build": "^1.9.5",

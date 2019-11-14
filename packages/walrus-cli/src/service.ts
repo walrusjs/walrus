@@ -1,6 +1,5 @@
 import { existsSync } from 'fs';
 import { join } from 'path';
-import * as resolveFrom from 'resolve-from';
 import {
   configLoader,
   PluginResolution,
@@ -39,6 +38,7 @@ export interface Plugin {
 
 const logger = new Logger();
 const merge = lodash.merge;
+const resolveFrom = require('resolve-from');
 
 function getInteriorPluginId(id) {
   return id.replace(/^.\//, 'built-in:');
@@ -97,7 +97,7 @@ class Service {
       target: config.target || userConfig.target || 'browser'
     });
 
-    result.plugins = {};
+    result.plugins = result.plugins || {};
 
     return result;
   };
@@ -137,8 +137,15 @@ class Service {
       Object.keys(pluginsOptions)
         .filter((name) => pluginsOptions[name])
         .map(async (name) => {
-          const plugin = await this.getPlugin(name);
-          if (!plugin || !plugin.default) return null;
+          let plugin = await this.getPlugin(name);
+          if (!plugin) return null;
+
+          if (!plugin.default) {
+            plugin = {
+              default: plugin
+            }
+          }
+
           return {
             id: this.pluginResolution.resolvePluginId(name),
             apply: plugin,
@@ -167,7 +174,7 @@ class Service {
       });
     }
 
-    return builtInPlugins.concat(plugins);
+    return builtInPlugins.concat(plugins).filter(_ => _);
   }
 
   getPlugin = (name: string) => {
@@ -178,20 +185,29 @@ class Service {
 
     let plugin = null;
 
+    // 内置插件
     if (isOfficialBuiltIn) {
-      plugin = require(`@walrus/plugin-${name}`);
+      return require(`@walrus/plugin-${name}`);
     }
 
     if (isBuiltIn) {
-      require(`walrus-plugin-${name}`);
+      return require(`walrus-plugin-${name}`);
+    }
+
+    // 用户安装官方插件
+    if (
+      (this.pkg.dependencies && this.pkg.dependencies[`@walrus/plugin-${name}`]) ||
+      (this.pkg.devDependencies && this.pkg.devDependencies[`@walrus/plugin-${name}`])
+    ) {
+      return require(`@walrus/plugin-${name}`);
     }
 
     if (!plugin) {
-      plugin = this.localRequire(this.localRequire(`walrus-plugin-${name}`));
+      plugin = this.localRequire(`walrus-plugin-${name}`);
     }
 
     if (!plugin && name.charAt(0) === '@') {
-      plugin = this.localRequire(this.localRequire(name));
+      plugin = this.localRequire(name);
     }
 
     if (plugin) {
