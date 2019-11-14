@@ -1,6 +1,6 @@
 {
   "name": "@walrus/example-plugin",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "dev walrus plugin",
   "private": true,
   "main": "lib/index.js",
@@ -10,7 +10,7 @@
     "start": "walrus example"
   },
   "devDependencies": {
-    "@walrus/cli": "^0.3.0",
+    "@walrus/cli": "^0.3.1",
     "father-build": "^1.12.0"
   }
 }
