@@ -143,7 +143,7 @@ class Service {
           if (!plugin.default) {
             plugin = {
               default: plugin
-            }
+            };
           }
 
           return {
@@ -174,7 +174,7 @@ class Service {
       });
     }
 
-    return builtInPlugins.concat(plugins).filter(_ => _);
+    return builtInPlugins.concat(plugins).filter((_) => _);
   }
 
   getPlugin = (name: string) => {
