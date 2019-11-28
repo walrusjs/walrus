@@ -45,11 +45,11 @@ Frontend development tools
 
 ### 内置
 
-- [@walrus/plugin-jest](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-jest/README.md) 封装Jest
-- [@walrus/plugin-eslint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-eslint/README.md) 封装ESLint
-- [@walrus/plugin-prettier](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-prettier/README.md) 封装Prettier
-- [@walrus/plugin-stylelint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-stylelint/README.md) 封装StyleLint
-- [@walrus/plugin-commitlint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-commitlint/README.md) 封装CommitLint
+- [@walrus/plugin-jest](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-jest/README.md) 封装 Jest
+- [@walrus/plugin-eslint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-eslint/README.md) 封装 ESLint
+- [@walrus/plugin-prettier](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-prettier/README.md) 封装 Prettier
+- [@walrus/plugin-stylelint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-stylelint/README.md) 封装 StyleLint
+- [@walrus/plugin-commitlint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-commitlint/README.md) 封装 CommitLint
 
 ### 其他
 
@@ -148,8 +148,8 @@ yarn bootstarp
 
 ## 🌟 社区
 
-| Github Issue                                                  | 钉钉群                                                                                     | 微信群                                                                                   |
-| ------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| Github Issue                                               | 钉钉群                                                                                     | 微信群                                                                                   |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
 | [walrus/issues](https://github.com/walrusjs/walrus/issues) | <img src="https://github.com/alitajs/alita/blob/master/public/dingding.png" width="100" /> | <img src="https://github.com/alitajs/alita/blob/master/public/wechat.png" width="100" /> |
 
 ## License
