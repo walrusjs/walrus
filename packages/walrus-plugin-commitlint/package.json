@@ -10,6 +10,7 @@
   "dependencies": {
     "@commitlint/format": "^8.2.0",
     "@commitlint/lint": "^8.2.0",
+    "@commitlint/load": "^8.2.0",
     "@commitlint/read": "^8.2.0",
     "@walrus/shared-utils": "^0.3.1",
     "@walrus/types": "^0.3.1",

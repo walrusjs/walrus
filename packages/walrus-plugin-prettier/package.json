@@ -9,17 +9,16 @@
     "lib"
   ],
   "dependencies": {
-    "@commitlint/load": "^8.2.0",
     "@walrus/shared-utils": "^0.3.1",
     "@walrus/types": "^0.3.1",
-    "execa": "^3.2.0",
+    "execa": "^3.4.0",
     "find-up": "^4.1.0",
     "ignore": "^5.1.4",
     "multimatch": "^4.0.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.19.1"
   },
   "devDependencies": {
-    "@types/prettier": "^1.18.3"
+    "@types/prettier": "^1.19.0"
   },
   "publishConfig": {
     "access": "public"
