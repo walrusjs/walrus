@@ -64,6 +64,6 @@ class Logger {
   };
 }
 
-const test = 131313
+const test = 131313;
 
-export default Logger
+export default Logger;

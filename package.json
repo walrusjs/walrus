@@ -12,7 +12,7 @@
     "test": "node ./packages/walrus-cli/lib/cli.js test",
     "lint": "node ./packages/walrus-cli/lib/cli.js lint",
     "lint:style": "node ./packages/walrus-cli/lib/cli.js stylelint",
-    "prettier": "node ./packages/walrus-cli/lib/cli.js prettier",
+    "prettier": "node ./packages/walrus-cli/lib/cli.js prettier --staged",
     "commitlint": "node ./packages/walrus-cli/lib/cli.js commitlint --env HUSKY_GIT_PARAMS",
     "release": "node ./packages/walrus-cli/lib/cli.js release"
   },
