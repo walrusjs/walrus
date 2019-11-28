@@ -10,8 +10,10 @@
 Frontend development tools 
 </div>
 
-[![Alita](https://img.shields.io/badge/alitajs-walrus-blue.svg)](https://github.com/walrus-plus/walrus)
+[![Alita](https://img.shields.io/badge/alitajs-walrus-blue.svg)](https://github.com/alitajs)
 [![NPM version](https://img.shields.io/npm/v/@walrus/cli.svg?style=flat)](https://npmjs.org/package/@walrus/cli)
+[![NPM downloads](http://img.shields.io/npm/dm/@walrus/cli.svg?style=flat)](https://npmjs.org/package/@walrus/cli)
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org)
 
 ## 项目由来以及定位
 
@@ -30,12 +32,12 @@ Frontend development tools
 
 **项目定位:**
 
-不造轮子，只封装已有的成熟工具，会根据工作经验，开发一些实用的插件
+不造轮子，封装已有的成熟工具，会根据工作经验，开发一些实用的插件
 
 ## ✨ 特性
 
 - 🚀 零配置，配置已内置
-- 💅 内置支持 jest、eslint、stylelint 等
+- 💅 内置支持 jest、eslint、stylelint、prettier、commitlint
 - 🎉 插件体系，所有功能通过插件实现
 - 💻 使用 TypeScript 编写
 
@@ -43,16 +45,16 @@ Frontend development tools
 
 ### 内置
 
-- [@walrus/walrus-plugin-jest](https://github.com/walrus-plus/walrus/blob/master/packages/walrus-plugin-jest/README.md)
-- [@walrus/walrus-plugin-eslint](https://github.com/walrus-plus/walrus/blob/master/packages/walrus-plugin-eslint/README.md)
-- [@walrus/walrus-plugin-prettier](https://github.com/walrus-plus/walrus/blob/master/packages/walrus-plugin-prettier/README.md)
-- [@walrus/walrus-plugin-stylelint](https://github.com/walrus-plus/walrus/blob/master/packages/walrus-plugin-stylelint/README.md)
-- [@walrus/walrus-plugin-commitlint](https://github.com/walrus-plus/walrus/blob/master/packages/walrus-plugin-commitlint/README.md)
+- [@walrus/plugin-jest](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-jest/README.md)
+- [@walrus/plugin-eslint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-eslint/README.md)
+- [@walrus/plugin-prettier](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-prettier/README.md)
+- [@walrus/plugin-stylelint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-stylelint/README.md)
+- [@walrus/plugin-commitlint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-commitlint/README.md)
 
 ### 其他
 
-- [@walrus/walrus-plugin-update-config](https://github.com/walrus-plus/walrus-plugin-update-config)
-- [@walrus/walrus-plugin-replace-keywords](https://github.com/walrus-plus/walrus-plugin-replace-keywords)
+- [@walrus/plugin-replace](https://github.com/walrusjs/walrus-plugin-replace)
+- [@walrus/plugin-release](https://github.com/walrusjs/walrus-plugin-release)
 
 ### 社区
 
@@ -152,4 +154,4 @@ yarn bootstarp
 
 ## License
 
-[MIT](https://github.com/walrus-plus/walrus/blob/master/LICENSE)
+[MIT](https://github.com/walrusjs/walrus/blob/master/LICENSE)
