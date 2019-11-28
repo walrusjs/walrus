@@ -1,11 +1,16 @@
 import { PluginPrettierOptions } from '@walrus/types';
 import scms from './scms';
-import createIgnorer from './createIgnorer';
-import isSupportedExtension from './isSupportedExtension';
-import createMatcher from './createMatcher';
-import processFiles from './processFiles';
+import createIgnorer from './create-ignorer';
+import isSupportedExtension from './is-supported-extension';
+import createMatcher from './create-matcher';
+import processFiles from './process-files';
 
-export default (currentDirectory: string, options: PluginPrettierOptions = {}) => {
+/**
+ * 美化程序封装
+ * @param currentDirectory 当前目录
+ * @param options 配置参数
+ */
+const prettier = (currentDirectory: string, options: PluginPrettierOptions = {}) => {
   const scm = scms(currentDirectory);
   const {
     staged,
@@ -24,6 +29,7 @@ export default (currentDirectory: string, options: PluginPrettierOptions = {}) =
     onFoundChangedFiles,
     pattern
   } = options;
+
   if (!scm) {
     throw new Error('Unable to detect a source control manager.');
   }
@@ -88,3 +94,5 @@ export default (currentDirectory: string, options: PluginPrettierOptions = {}) =
     errors: Array.from(failReasons)
   };
 };
+
+export default prettier;

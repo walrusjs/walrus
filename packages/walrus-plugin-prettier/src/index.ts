@@ -1,7 +1,7 @@
 import { API, Config } from '@walrus/types';
 import { chalk } from '@walrus/shared-utils';
 import prettier from './prettier';
-import defaultConfig from './defaultConfig';
+import defaultConfig from './default-config';
 
 export default function(api: API, config: Config) {
   api.registerCommand(

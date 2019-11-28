@@ -1,11 +1,12 @@
 import * as multimatch from 'multimatch';
+import { _ } from '@walrus/shared-utils';
 import { normalize } from 'path';
 
 export default (pattern) => {
   // Match everything if no pattern was given
-  if (typeof pattern !== 'string' && !Array.isArray(pattern)) {
+  if (!_.isString(pattern) && !_.isArray(pattern)) {
     return () => true;
   }
-  const patterns = Array.isArray(pattern) ? pattern : [pattern];
+  const patterns = _.isArray(pattern) ? pattern : [pattern];
   return (file) => multimatch(normalize(file), patterns, { dot: true }).length > 0;
 };
