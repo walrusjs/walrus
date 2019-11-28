@@ -1,4 +1,4 @@
-import slash from 'slash2';
+const slash = require('slash');
 
 /**
  * Convert Windows backslash paths to slash paths

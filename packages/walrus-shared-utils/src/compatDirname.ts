@@ -1,6 +1,6 @@
 import { dirname, join } from 'path';
 import { existsSync } from 'fs';
-import winPath from './winPath';
+import winPath from './win-path';
 
 /**
  * Find module path

@@ -1,5 +1,5 @@
 import * as multimatch from 'multimatch';
-const path = require('path');
+import { normalize } from 'path';
 
 export default (pattern) => {
   // Match everything if no pattern was given
@@ -7,5 +7,5 @@ export default (pattern) => {
     return () => true;
   }
   const patterns = Array.isArray(pattern) ? pattern : [pattern];
-  return (file) => multimatch(path.normalize(file), patterns, { dot: true }).length > 0;
+  return (file) => multimatch(normalize(file), patterns, { dot: true }).length > 0;
 };

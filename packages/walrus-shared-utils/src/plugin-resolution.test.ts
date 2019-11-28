@@ -1,4 +1,4 @@
-import PluginResolution from './PluginResolution';
+import PluginResolution from './plugin-resolution';
 
 let pluginResolution = null;
 

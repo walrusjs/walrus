@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import { CommandOpts, CommandFun } from '@walrus/types';
-import { PluginResolution, lodash } from '@walrus/shared-utils';
+import { PluginResolution, _ } from '@walrus/shared-utils';
 import Server from './service';
 
 export interface PluginConfig {
@@ -59,7 +59,7 @@ class PluginAPI {
    *   (args: { [string]: string }, rawArgs: string[]) => ?Promise
    */
   registerCommand(name: string, opts: CommandOpts, fn: CommandFun) {
-    if (lodash.isFunction(opts)) {
+    if (_.isFunction(opts)) {
       fn = opts;
       opts = null;
     }

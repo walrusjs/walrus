@@ -11,6 +11,7 @@
   ],
   "license": "MIT",
   "keywords": [
+    "walrus",
     "walrus-cli"
   ],
   "dependencies": {

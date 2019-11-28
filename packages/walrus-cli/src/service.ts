@@ -1,15 +1,15 @@
 import { existsSync } from 'fs';
 import { join } from 'path';
 import {
+  _,
+  debug,
+  readPkg,
   configLoader,
   PluginResolution,
-  Logger,
-  debug,
-  lodash,
-  readPkg
 } from '@walrus/shared-utils';
 import { CommandOpts, CommandFun, RawArgs, Config, Args } from '@walrus/types';
 import helpCommand from './commands/help';
+import custom from './custom';
 import PluginAPI, { PluginConfig } from './pluginAPI';
 import { DEFAULT_CONFIG_FILENAMES } from './config';
 
@@ -36,8 +36,7 @@ export interface Plugin {
   };
 }
 
-const logger = new Logger();
-const merge = lodash.merge;
+const merge = _.merge;
 const resolveFrom = require('resolve-from');
 
 function getInteriorPluginId(id) {
@@ -155,18 +154,18 @@ class Service {
     );
 
     // 需要导入的插件
-    if (lodash.isArray(this.config.resolvePlugins)) {
+    if (_.isArray(this.config.resolvePlugins)) {
       this.config.resolvePlugins.forEach((item) => {
-        if (lodash.isString(item)) {
+        if (_.isString(item)) {
           plugins.push({
-            id: getInteriorPluginId(lodash.uniqueId('plugin')),
+            id: getInteriorPluginId(_.uniqueId('plugin')),
             apply: require(item),
             opts: {}
           });
         }
-        if (lodash.isArray(item)) {
+        if (_.isArray(item)) {
           plugins.push({
-            id: getInteriorPluginId(lodash.uniqueId('plugin')),
+            id: getInteriorPluginId(_.uniqueId('plugin')),
             apply: require(item[0]),
             opts: item[1] || {}
           });
@@ -213,7 +212,7 @@ class Service {
     if (plugin) {
       return plugin;
     } else {
-      logger.warn(`Optional dependency ${name} is not installed.`);
+      custom.warn(`Optional dependency ${name} is not installed.`);
       return null;
     }
   };
@@ -252,7 +251,7 @@ class Service {
 
     // apply plugins.
     this.plugins.forEach(({ id, apply, opts }) => {
-      if (lodash.isFunction(apply)) {
+      if (_.isFunction(apply)) {
         apply(new PluginAPI(id, this, opts), this.config);
       } else {
         apply.default(new PluginAPI(id, this, opts), this.config);
@@ -267,7 +266,7 @@ class Service {
     let command = this.commands[name];
 
     if (!command && name) {
-      logger.error(`command "${name}" does not exist.`);
+      custom.error(`command "${name}" does not exist.`);
       process.exit(1);
     }
 
@@ -280,10 +279,10 @@ class Service {
 
     const { fn, config } = command;
 
-    if (lodash.isFunction(fn)) {
+    if (_.isFunction(fn)) {
       return fn(args, rawArgv, config);
     }
-    if (lodash.isObject(fn)) {
+    if (_.isObject(fn)) {
       // @ts-ignore
       return fn.default(args, rawArgv, config);
     }

@@ -1,4 +1,4 @@
-import { lodash } from '@walrus/shared-utils';
+import { _ } from '@walrus/shared-utils';
 import { DefaultConfigResolver } from './defaultConfig.resolver';
 import { CustomConfigResolver } from './customConfig.resolver';
 
@@ -16,6 +16,6 @@ export class JestConfigurationBuilder {
     const globalDefaultConfig = this.defaultConfigResolver.resolveGlobal();
     const globalCustomConfig = this.customConfigResolver.resolveGlobal(projectRoot);
 
-    return lodash.mergeWith(globalDefaultConfig, globalCustomConfig);
+    return _.mergeWith(globalDefaultConfig, globalCustomConfig);
   }
 }

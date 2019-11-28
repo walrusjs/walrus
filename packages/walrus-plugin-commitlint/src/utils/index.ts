@@ -1,4 +1,4 @@
-import { lodash } from '@walrus/shared-utils';
+import { _ } from '@walrus/shared-utils';
 import { PluginCommitLintOptions } from '@walrus/types';
 
 const resolveFrom = require('resolve-from');
@@ -9,7 +9,7 @@ const resolveGlobal = require('resolve-global');
  * @param opts
  */
 export function checkFromHistory(opts: PluginCommitLintOptions) {
-  return lodash.isString(opts.from) || lodash.isString(opts.to);
+  return _.isString(opts.from) || _.isString(opts.to);
 }
 
 /**
@@ -67,7 +67,7 @@ export function loadFormatter(config, flags) {
   if (modulePath) {
     const moduleInstance = require(modulePath);
 
-    if (lodash.isFunction(moduleInstance.default)) {
+    if (_.isFunction(moduleInstance.default)) {
       return moduleInstance.default;
     }
 

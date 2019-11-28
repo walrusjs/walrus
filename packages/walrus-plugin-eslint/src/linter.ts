@@ -3,7 +3,7 @@ import { join, dirname } from 'path';
 import * as eslint from 'eslint';
 import { CLIEngine } from 'eslint';
 import pkgConf from 'pkg-conf';
-import { lodash } from '@walrus/shared-utils';
+import { _ } from '@walrus/shared-utils';
 
 export type IParseOpts = (opts: string, packageOpts: any, rootDir: string) => {};
 
@@ -97,7 +97,7 @@ class Linter {
   };
 
   lintText = (text, opts, cb) => {
-    if (lodash.isFunction(opts)) {
+    if (_.isFunction(opts)) {
       return this.lintText(text, null, opts);
     }
     let result;
@@ -115,11 +115,11 @@ class Linter {
     callback: (error, result?) => void
   ) => {
     const self = this;
-    if (lodash.isFunction(opts)) {
+    if (_.isFunction(opts)) {
       return self.lintFiles(files, null, opts);
     }
     opts = self.parseOpts(opts);
-    if (lodash.isString(files)) {
+    if (_.isString(files)) {
       files = [files];
     }
     if (files.length === 0) {
@@ -168,7 +168,7 @@ class Linter {
     if (!opts.cwd) opts.cwd = self.cwd;
 
     // 如果未提供usePackageJson选择，默认为true
-    const usePackageJson = !lodash.isNil(opts.usePackageJson)
+    const usePackageJson = !_.isNil(opts.usePackageJson)
       ? opts.usePackageJson
       : true;
 
@@ -220,7 +220,7 @@ class Linter {
     // 添加Env
     function addEnvs(envs) {
       if (!envs) return;
-      if (!lodash.isArray(envs) && !lodash.isString(envs)) {
+      if (!_.isArray(envs) && !_.isString(envs)) {
         // envs can be an object in `package.json`
         envs = Object.keys(envs).filter(function (env) { return envs[env] })
       }

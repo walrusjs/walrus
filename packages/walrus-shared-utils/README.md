@@ -30,18 +30,23 @@ if (lodash.isBoolean(result)) {
 
 ## 🎉 目录
 
-- [lodash](#lodash)
-- [isLinux](#isLinux)
-- [isWindows](#isWindows)
-- [isMacintosh](#isMacintosh)
-- [isUrl](#isUrl)
-- [clearConsole](#clearConsole)
-- [Logger](#Logger)
-- [compatDirname](#compatDirname)
-- [configLoader](#configLoader)
-- [checkNodeVersion](#checkNodeVersion)
-- [chalk](#chalk)
-- [semver](#semver)
+- [📦 Install](#%f0%9f%93%a6-install)
+- [🔨 Usage](#%f0%9f%94%a8-usage)
+- [🎉 目录](#%f0%9f%8e%89-%e7%9b%ae%e5%bd%95)
+- [✨ API](#%e2%9c%a8-api)
+  - [lodash](#lodash)
+  - [isLinux](#islinux)
+  - [isMacintosh](#ismacintosh)
+  - [isWindows](#iswindows)
+  - [isUrl](#isurl)
+  - [clearConsole](#clearconsole)
+  - [Logger](#logger)
+  - [compatDirname](#compatdirname)
+  - [configLoader](#configloader)
+  - [checkNodeVersion](#checknodeversion)
+  - [chalk](#chalk)
+  - [signale](#signale)
+  - [semver](#semver)
 
 ## ✨ API
 
@@ -222,6 +227,18 @@ checkNodeVersion(checkNodeVersion, '@walrus/cli')
 
 ```
 import { chalk } form '@walrus/shared-utils';
+```
+
+### signale
+
+可扩展的日志记录器
+
+> 导出`signale`, 具体文档请查看[signale](https://github.com/klaussinani/signale/blob/master/docs/readme.zh_CN.md)
+
+- 使用:
+
+```
+import { signale } form '@walrus/shared-utils';
 ```
 
 ### semver

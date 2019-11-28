@@ -1,5 +1,5 @@
 import { PluginCommitLintOptions } from '@walrus/types';
-import { lodash } from '@walrus/shared-utils';
+import { _ } from '@walrus/shared-utils';
 import defaultOptions from './defaultConfig';
 import {
   checkFromStdin,
@@ -29,7 +29,7 @@ export default async function commitLint(raw: string[] = [], config: PluginCommi
 
   const fromStdin = checkFromStdin(raw, options);
 
-  const range = lodash.pick(options, 'edit', 'from', 'to');
+  const range = _.pick(options, 'edit', 'from', 'to');
 
   const input = await (fromStdin ? stdin() : read(range, { cwd: options.cwd }));
 
