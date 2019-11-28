@@ -40,7 +40,6 @@ if (lodash.isBoolean(result)) {
   - [isWindows](#iswindows)
   - [isUrl](#isurl)
   - [clearConsole](#clearconsole)
-  - [Logger](#logger)
   - [compatDirname](#compatdirname)
   - [configLoader](#configloader)
   - [checkNodeVersion](#checknodeversion)
@@ -137,30 +136,6 @@ import { clearConsole } form '@walrus/shared-utils';
 ```
 
 - 描述: 清空控制台
-
-### Logger
-
-- 使用:
-
-```
-import { Logger } form '@walrus/shared-utils';
-
-const logger = new Logger();
-
-logger.log('log output');
-logger.info('info output');
-logger.done('done output');
-logger.warn('warn output');
-logger.error('error output');
-```
-
-- 类型:
-
-```
-class
-```
-
-- 描述: 日志输出
 
 ### compatDirname
 

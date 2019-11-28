@@ -3,6 +3,7 @@ const minimist = require('minimist');
 
 export { default as compatDirname } from './compat-dirname';
 
+export { default as Logger } from './logger';
 // 日志记录器
 export * from './signale';
 // 导出lodash

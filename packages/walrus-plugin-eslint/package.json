@@ -10,21 +10,21 @@
     "url": "https://github.com/walrus-plus/walrus/issues"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.3.3",
-    "@typescript-eslint/parser": "^2.3.3",
+    "@typescript-eslint/eslint-plugin": "^2.9.0",
+    "@typescript-eslint/parser": "^2.9.0",
     "@walrus/eslint-config": "^1.0.0",
     "@walrus/shared-utils": "^0.3.1",
     "@walrus/types": "^0.3.1",
     "babel-eslint": "^10.0.3",
     "deglob": "^4.0.1",
-    "eslint": "^6.5.1",
+    "eslint": "^6.7.1",
     "eslint-plugin-react": "^7.16.0",
     "get-stdin": "^7.0.0",
     "pkg-conf": "^3.1.0"
   },
   "devDependencies": {
     "@types/deglob": "^2.1.1",
-    "@types/eslint": "^6.1.2"
+    "@types/eslint": "^6.1.3"
   },
   "publishConfig": {
     "access": "public"
