@@ -8,10 +8,17 @@ import { satisfies } from 'semver';
  */
 export default function checkNodeVersion(wanted, id) {
   if (!satisfies(process.version, wanted)) {
-    console.log(chalk.red(
-      'You are using Node ' + process.version + ', but this version of ' + id +
-      ' requires Node ' + wanted + '.\nPlease upgrade your Node version.'
-    ));
-    process.exit(1)
+    console.log(
+      chalk.red(
+        'You are using Node ' +
+          process.version +
+          ', but this version of ' +
+          id +
+          ' requires Node ' +
+          wanted +
+          '.\nPlease upgrade your Node version.'
+      )
+    );
+    process.exit(1);
   }
 }

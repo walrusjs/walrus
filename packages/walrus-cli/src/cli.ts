@@ -16,8 +16,8 @@ checkNodeVersion(requiredVersion, 'walrus-cli');
 if (semver.satisfies(process.version, '9.x')) {
   custom.error(
     `You are using Node ${process.version}.\n` +
-    `Node.js 9.x has already reached end-of-life and will not be supported in future major releases.\n` +
-    `It's strongly recommended to use an active LTS version instead.`
+      `Node.js 9.x has already reached end-of-life and will not be supported in future major releases.\n` +
+      `It's strongly recommended to use an active LTS version instead.`
   );
 }
 
@@ -29,8 +29,7 @@ const args = minimist(rawArgv, {
 
 const command = args._[0];
 
-service.run(command, args, rawArgv)
-  .catch((err) => {
-    custom.error(err);
-    process.exit(1);
-  });
+service.run(command, args, rawArgv).catch((err) => {
+  custom.error(err);
+  process.exit(1);
+});

@@ -27,7 +27,4 @@ export { default as PluginResolution } from './plugin-resolution';
 // 检查Node版本
 export { default as checkNodeVersion } from './check-node-version';
 
-export {
-  debug,
-  minimist
-}
+export { debug, minimist };

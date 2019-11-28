@@ -4,7 +4,7 @@
 [![NPM version](https://img.shields.io/npm/v/@walrus/shared-utils.svg?style=flat)](https://npmjs.org/package/@walrus/shared-utils)
 [![NPM downloads](http://img.shields.io/npm/dm/@walrus/shared-utils.svg?style=flat)](https://npmjs.org/package/@walrus/shared-utils)
 
-> 项目集成了多种工具方法，可作为cli的依赖包
+> 项目集成了多种工具方法，可作为 cli 的依赖包
 
 ## 📦 Install
 
@@ -50,7 +50,7 @@ if (lodash.isBoolean(result)) {
 
 ## ✨ API
 
-### lodash 
+### lodash
 
 ```
 import { lodash } form '@walrus/shared-utils';
@@ -72,7 +72,7 @@ import { isLinux } form '@walrus/shared-utils';
 () => boolean;
 ```
 
-- 描述: 是否是Linux系统
+- 描述: 是否是 Linux 系统
 
 ### isMacintosh
 
@@ -88,7 +88,7 @@ import { isLinux } form '@walrus/shared-utils';
 () => boolean;
 ```
 
-- 描述: 是否是Mac系统
+- 描述: 是否是 Mac 系统
 
 ### isWindows
 
@@ -104,7 +104,7 @@ import { isWindows } form '@walrus/shared-utils';
 () => boolean;
 ```
 
-- 描述: 是否是Windows系统
+- 描述: 是否是 Windows 系统
 
 ### isUrl
 
@@ -120,7 +120,7 @@ import { isUrl } form '@walrus/shared-utils';
 (path: string) => boolean;
 ```
 
-- 描述: path是否是Url
+- 描述: path 是否是 Url
 
 ### clearConsole
 
@@ -162,7 +162,6 @@ class
 
 - 描述: 日志输出
 
-
 ### compatDirname
 
 - 使用:
@@ -181,7 +180,7 @@ import { compatDirname } form '@walrus/shared-utils';
 
 ### configLoader
 
-> 封装`joycon`支持读取`.ts`后缀配置文件，具体API请查看[joycon](https://github.com/egoist/joycon)
+> 封装`joycon`支持读取`.ts`后缀配置文件，具体 API 请查看[joycon](https://github.com/egoist/joycon)
 
 - 使用:
 
@@ -217,7 +216,7 @@ checkNodeVersion(checkNodeVersion, '@walrus/cli')
 (wanted: string, id: string) => void
 ```
 
-- 描述: 检查Node版本 
+- 描述: 检查 Node 版本
 
 ### chalk
 
@@ -250,5 +249,3 @@ import { signale } form '@walrus/shared-utils';
 ```
 import { semver } form '@walrus/shared-utils';
 ```
-
-

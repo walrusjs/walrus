@@ -1,12 +1,6 @@
 import { existsSync } from 'fs';
 import { join } from 'path';
-import {
-  _,
-  debug,
-  readPkg,
-  configLoader,
-  PluginResolution,
-} from '@walrus/shared-utils';
+import { _, debug, readPkg, configLoader, PluginResolution } from '@walrus/shared-utils';
 import { CommandOpts, CommandFun, RawArgs, Config, Args } from '@walrus/types';
 import helpCommand from './commands/help';
 import custom from './custom';

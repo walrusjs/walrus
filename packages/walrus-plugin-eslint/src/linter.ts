@@ -40,20 +40,10 @@ export interface IOptions {
 
 const HOME_OR_TMP = homedir() || tmpdir();
 
-const DEFAULT_PATTERNS = [
-  '**/*.js',
-  '**/*.jsx',
-  '**/*.mjs',
-  '**/*.cjs'
-];
+const DEFAULT_PATTERNS = ['**/*.js', '**/*.jsx', '**/*.mjs', '**/*.cjs'];
 
 // 默认忽略的文件
-const DEFAULT_IGNORE = [
-  '**/*.min.js',
-  'coverage/**',
-  'node_modules/**',
-  'vendor/**'
-];
+const DEFAULT_IGNORE = ['**/*.min.js', 'coverage/**', 'node_modules/**', 'vendor/**'];
 
 const deglob = require('deglob');
 
@@ -75,16 +65,19 @@ class Linter {
 
     const cacheLocation = join(HOME_OR_TMP, `.${this.cwd}-v${majorVersion}-cache/`);
 
-    this.eslintConfig = Object.assign({
-      cache: true,
-      cacheLocation: cacheLocation,
-      envs: [],
-      fix: false,
-      globals: [],
-      ignore: false,
-      plugins: [],
-      useEslintrc: false
-    }, options.eslintConfig);
+    this.eslintConfig = Object.assign(
+      {
+        cache: true,
+        cacheLocation: cacheLocation,
+        envs: [],
+        fix: false,
+        globals: [],
+        ignore: false,
+        plugins: [],
+        useEslintrc: false
+      },
+      options.eslintConfig
+    );
 
     if (this.eslintConfig.configFile) {
       this.eslintConfig.resolvePluginsRelativeTo = dirname(this.eslintConfig.configFile);
@@ -93,7 +86,7 @@ class Linter {
 
   lintTextSync = (text: string, opts) => {
     opts = this.parseOpts(opts);
-    return new this.eslint.CLIEngine(opts.eslintConfig).executeOnText(text, opts.filename)
+    return new this.eslint.CLIEngine(opts.eslintConfig).executeOnText(text, opts.filename);
   };
 
   lintText = (text, opts, cb) => {
@@ -109,11 +102,7 @@ class Linter {
     process.nextTick(cb, null, result);
   };
 
-  lintFiles = (
-    files: string[],
-    opts: IOptions,
-    callback: (error, result?) => void
-  ) => {
+  lintFiles = (files: string[], opts: IOptions, callback: (error, result?) => void) => {
     const self = this;
     if (_.isFunction(opts)) {
       return self.lintFiles(files, null, opts);
@@ -123,7 +112,7 @@ class Linter {
       files = [files];
     }
     if (files.length === 0) {
-      files = DEFAULT_PATTERNS
+      files = DEFAULT_PATTERNS;
     }
 
     const deglobOpts = {
@@ -133,22 +122,22 @@ class Linter {
       usePackageJson: false
     };
 
-    deglob(files, deglobOpts, function (err, allFiles) {
+    deglob(files, deglobOpts, function(err, allFiles) {
       if (err) return callback(err);
 
       let result;
       try {
-        result = new self.eslint.CLIEngine(opts.eslintConfig).executeOnFiles(allFiles)
+        result = new self.eslint.CLIEngine(opts.eslintConfig).executeOnFiles(allFiles);
       } catch (err) {
-        return callback(err)
+        return callback(err);
       }
 
       if (opts.fix) {
-        self.eslint.CLIEngine.outputFixes(result)
+        self.eslint.CLIEngine.outputFixes(result);
       }
 
-      return callback(null, result)
-    })
+      return callback(null, result);
+    });
   };
 
   /**
@@ -168,20 +157,16 @@ class Linter {
     if (!opts.cwd) opts.cwd = self.cwd;
 
     // 如果未提供usePackageJson选择，默认为true
-    const usePackageJson = !_.isNil(opts.usePackageJson)
-      ? opts.usePackageJson
-      : true;
+    const usePackageJson = !_.isNil(opts.usePackageJson) ? opts.usePackageJson : true;
 
     // package.json中的配置
-    const packageOpts = usePackageJson
-      ? pkgConf.sync(self.cmd, { cwd: opts.cwd })
-      : {};
+    const packageOpts = usePackageJson ? pkgConf.sync(self.cmd, { cwd: opts.cwd }) : {};
 
     // ignore
     if (!opts.ignore) opts.ignore = [];
     addIgnore(packageOpts.ignore);
     if (!packageOpts.noDefaultIgnore) {
-      addIgnore(DEFAULT_IGNORE)
+      addIgnore(DEFAULT_IGNORE);
     }
 
     // globals
@@ -208,13 +193,13 @@ class Linter {
     // 添加global
     function addGlobals(globals) {
       if (!globals) return;
-      opts.eslintConfig.globals = self.eslintConfig.globals.concat(globals)
+      opts.eslintConfig.globals = self.eslintConfig.globals.concat(globals);
     }
 
     // 添加插件
     function addPlugins(plugins) {
       if (!plugins) return;
-      opts.eslintConfig.plugins = self.eslintConfig.plugins.concat(plugins)
+      opts.eslintConfig.plugins = self.eslintConfig.plugins.concat(plugins);
     }
 
     // 添加Env
@@ -222,18 +207,20 @@ class Linter {
       if (!envs) return;
       if (!_.isArray(envs) && !_.isString(envs)) {
         // envs can be an object in `package.json`
-        envs = Object.keys(envs).filter(function (env) { return envs[env] })
+        envs = Object.keys(envs).filter(function(env) {
+          return envs[env];
+        });
       }
-      opts.eslintConfig.envs = self.eslintConfig.envs.concat(envs)
+      opts.eslintConfig.envs = self.eslintConfig.envs.concat(envs);
     }
 
     function setParser(parser) {
       if (!parser) return;
-      opts.eslintConfig.parser = parser
+      opts.eslintConfig.parser = parser;
     }
 
     return opts;
-  }
+  };
 }
 
 export default Linter;

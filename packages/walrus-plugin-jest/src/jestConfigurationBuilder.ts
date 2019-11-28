@@ -8,11 +8,7 @@ export class JestConfigurationBuilder {
     private customConfigResolver: CustomConfigResolver
   ) {}
 
-  buildConfiguration(
-    projectRoot: string,
-    configPath: string = 'jest.config.js'
-  ): any {
-
+  buildConfiguration(projectRoot: string, configPath: string = 'jest.config.js'): any {
     const globalDefaultConfig = this.defaultConfigResolver.resolveGlobal();
     const globalCustomConfig = this.customConfigResolver.resolveGlobal(projectRoot);
 
