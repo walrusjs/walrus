@@ -45,16 +45,16 @@ Frontend development tools
 
 ### 内置
 
-- [@walrus/plugin-jest](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-jest/README.md)
-- [@walrus/plugin-eslint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-eslint/README.md)
-- [@walrus/plugin-prettier](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-prettier/README.md)
-- [@walrus/plugin-stylelint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-stylelint/README.md)
-- [@walrus/plugin-commitlint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-commitlint/README.md)
+- [@walrus/plugin-jest](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-jest/README.md) 封装Jest
+- [@walrus/plugin-eslint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-eslint/README.md) 封装ESLint
+- [@walrus/plugin-prettier](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-prettier/README.md) 封装Prettier
+- [@walrus/plugin-stylelint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-stylelint/README.md) 封装StyleLint
+- [@walrus/plugin-commitlint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-commitlint/README.md) 封装CommitLint
 
 ### 其他
 
-- [@walrus/plugin-replace](https://github.com/walrusjs/walrus-plugin-replace)
-- [@walrus/plugin-release](https://github.com/walrusjs/walrus-plugin-release)
+- [@walrus/plugin-replace](https://github.com/walrusjs/walrus-plugin-replace) 替换文本
+- [@walrus/plugin-release](https://github.com/walrusjs/walrus-plugin-release) 项目发布
 
 ### 社区
 
@@ -140,7 +140,7 @@ yarn prettier
 
 ```
 # 克隆项目到本地
-git clone git@github.com:walrus-plus/walrus.git
+git clone git@github.com:walrusjs/walrus.git
 
 # 安装依赖
 yarn bootstarp
@@ -150,7 +150,7 @@ yarn bootstarp
 
 | Github Issue                                                  | 钉钉群                                                                                     | 微信群                                                                                   |
 | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| [walrus/issues](https://github.com/walrus-plus/walrus/issues) | <img src="https://github.com/alitajs/alita/blob/master/public/dingding.png" width="100" /> | <img src="https://github.com/alitajs/alita/blob/master/public/wechat.png" width="100" /> |
+| [walrus/issues](https://github.com/walrusjs/walrus/issues) | <img src="https://github.com/alitajs/alita/blob/master/public/dingding.png" width="100" /> | <img src="https://github.com/alitajs/alita/blob/master/public/wechat.png" width="100" /> |
 
 ## License
 
