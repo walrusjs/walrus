@@ -1,6 +1,6 @@
 {
   "name": "@walrus/plugin-prettier",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "walrus prettier plugin",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
@@ -9,8 +9,8 @@
     "lib"
   ],
   "dependencies": {
-    "@walrus/shared-utils": "^0.3.1",
-    "@walrus/types": "^0.3.1",
+    "@walrus/shared-utils": "^0.4.0",
+    "@walrus/types": "^0.4.0",
     "execa": "^3.4.0",
     "find-up": "^4.1.0",
     "ignore": "^5.1.4",
