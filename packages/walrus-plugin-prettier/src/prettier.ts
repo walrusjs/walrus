@@ -13,7 +13,7 @@ import processFiles from './process-files';
 const prettier = (currentDirectory: string, options: PluginPrettierOptions = {}) => {
   const scm = scms(currentDirectory);
   const {
-    staged,
+    staged = true,
     branch,
     since,
     check,
