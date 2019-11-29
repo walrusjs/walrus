@@ -1,7 +1,7 @@
 {
   "name": "@walrus/workspace",
   "private": true,
-  "repository": "git@github.com:ts-react/walrus.git",
+  "repository": "git@github.com:walrusjs/walrus.git",
   "author": "wangxingkang <wang_xingkang@qq.com>",
   "license": "MIT",
   "scripts": {
@@ -19,7 +19,7 @@
   "devDependencies": {
     "@types/node": "^12.7.5",
     "@walrus/pansy": "^0.2.3",
-    "@walrus/plugin-lerna-release": "^1.0.3",
+    "@walrus/plugin-release": "^1.1.0",
     "father-build": "^1.9.5",
     "husky": "^3.0.9",
     "lerna": "^3.16.4",
