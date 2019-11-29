@@ -2,7 +2,7 @@ const debug = require('debug');
 const minimist = require('minimist');
 
 export { default as compatDirname } from './compat-dirname';
-
+// 记录日志 - 不推荐使用 下个大版本会删除
 export { default as Logger } from './logger';
 // 日志记录器
 export { default as signale } from './signale';

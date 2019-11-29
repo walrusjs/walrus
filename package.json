@@ -17,14 +17,14 @@
     "release": "node ./packages/walrus-cli/lib/cli.js release"
   },
   "devDependencies": {
-    "@types/node": "^12.7.5",
+    "@types/node": "^12.12.14",
     "@walrus/pansy": "^0.2.3",
     "@walrus/plugin-release": "^1.1.0",
-    "father-build": "^1.9.5",
-    "husky": "^3.0.9",
-    "lerna": "^3.16.4",
-    "lerna-changelog": "^0.8.2",
-    "typescript": "^3.6.3"
+    "father-build": "^1.16.0",
+    "husky": "^3.1.0",
+    "lerna": "^3.19.0",
+    "lerna-changelog": "^0.8.3",
+    "typescript": "^3.7.2"
   },
   "husky": {
     "hooks": {
