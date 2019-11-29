@@ -5,13 +5,14 @@ export { default as compatDirname } from './compat-dirname';
 
 export { default as Logger } from './logger';
 // 日志记录器
+export { default as signale } from './signale';
 export * from './signale';
 // 导出lodash
 export { default as _ } from './lodash';
 // npm的语义版本控制程序
 export { default as semver } from './semver';
 // 判断是否是Url
-export { default as isUrl } from 'is-url';
+export { default as isUrl } from './is-url';
 // 终端字符串样式
 export { default as chalk } from 'chalk';
 // 终端字符串样式
