@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/walrus-plus/walrus">
+  <a href="https://github.com/walrusjs">
     <img width="100" src="https://avatars0.githubusercontent.com/u/55735928?s=200&v=4">
   </a>
 </p>
@@ -53,8 +53,8 @@ Frontend development tools
 
 ### 其他
 
-- [@walrus/plugin-replace](https://github.com/walrusjs/walrus-plugin-replace) 替换文本
-- [@walrus/plugin-release](https://github.com/walrusjs/walrus-plugin-release) 项目发布
+- [@walrus/plugin-replace](https://github.com/walrusjs/walrus-plugin-replace) 替换文本插件
+- [@walrus/plugin-release](https://github.com/walrusjs/walrus-plugin-release) 项目发布插件
 
 ### 社区
 
@@ -64,7 +64,7 @@ Frontend development tools
 
 ```
 // npm
-npm install @walrus/cli --dev
+npm install @walrus/cli --dev --save
 
 // yarn
 yarn add @walrus/cli --dev
@@ -78,7 +78,7 @@ yarn global add @walrus/cli
 
 ### 测试
 
-> Cli 自带`@walrus/walrus-plugin-jest`插件
+> Cli 自带`@walrus/plugin-jest`插件
 
 - package.json 添加如下代码
 
@@ -98,7 +98,7 @@ yarn test
 
 ### ESLint
 
-> Cli 自带`@walrus/walrus-plugin-eslint`插件
+> Cli 自带`@walrus/plugin-eslint`插件
 
 - package.json 添加如下代码
 
@@ -118,7 +118,7 @@ yarn lint
 
 ### 代码美化
 
-> Cli 自带`@walrus/walrus-plugin-prettier`插件
+> Cli 自带`@walrus/plugin-prettier`插件
 
 - package.json 添加如下代码
 
