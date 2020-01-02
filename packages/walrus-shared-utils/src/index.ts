@@ -18,7 +18,7 @@ export { default as chalk } from 'chalk';
 // 终端字符串样式
 export { default as readPkg } from './read-pkg';
 // 清空控制台
-export { default as clearConsole } from './utils/clear-console';
+export { default as clearConsole } from './clear-console';
 // 获取系统路径，主要解决windows/linux路径规则不一致的问题
 export { default as getSystemPath } from './utils/get-system-path';
 // 判断操作系统类型
