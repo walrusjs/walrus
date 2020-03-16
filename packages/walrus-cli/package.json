@@ -1,34 +1,19 @@
 {
   "name": "@walrus/cli",
-  "version": "0.4.1",
-  "main": "./lib/index.js",
-  "typings": "./lib/index.d.ts",
+  "version": "1.0.0",
+  "description": "walrus cli",
+  "main": "index.js",
+  "license": "MIT",
   "bin": {
-    "walrus": "lib/cli.js"
+    "walrus": "bin/walrus.js"
   },
   "files": [
-    "lib"
-  ],
-  "license": "MIT",
-  "keywords": [
-    "walrus",
-    "walrus-cli"
+    "lib",
+    "bin"
   ],
   "dependencies": {
-    "@walrus/plugin-commitlint": "^0.4.1",
-    "@walrus/plugin-eslint": "^0.4.1",
-    "@walrus/plugin-jest": "^0.4.1",
-    "@walrus/plugin-prettier": "^0.4.1",
-    "@walrus/plugin-stylelint": "^0.4.1",
-    "@walrus/shared-utils": "^0.4.1",
-    "@walrus/types": "^0.4.1",
-    "resolve-from": "^5.0.0"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "engines": {
-    "node": ">=8.9"
-  },
-  "gitHead": "48c26219832681c3d769cd6de2951855736fa739"
+    "@walrus/core": "^1.0.0",
+    "@walrus/preset-internal": "^1.0.0",
+    "resolve-cwd": "^3.0.0"
+  }
 }

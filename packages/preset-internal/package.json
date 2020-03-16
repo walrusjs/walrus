@@ -1,9 +1,9 @@
 {
-  "name": "@walrus/types",
+  "name": "@walrus/preset-internal",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@walrus/core": "^1.0.0"
+    "@walrus/types": "^1.0.0"
   }
 }
