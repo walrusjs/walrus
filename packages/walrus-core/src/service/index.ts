@@ -5,9 +5,8 @@ import { EventEmitter } from 'events';
 import { AsyncSeriesWaterfallHook } from 'tapable';
 import { BabelRegister, NodeEnv, lodash } from '@birman/utils';
 import PluginApi, { PluginApiOpts } from './plugin-api';
-import Config from './config';
+import Config from '../config';
 import { resolvePlugins } from './utils/plugin-utils';
-import { getUserConfigWithKey } from './config/utils';
 import { ServiceStage, ApplyPluginsType, EnableBy } from './enums';
 import { Command, Hook, Plugin, Package } from './types';
 

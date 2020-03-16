@@ -1,6 +1,6 @@
 import assert from 'assert';
 import * as utils from '@umijs/utils';
-import Service from './service';
+import Service from '.';
 import { Command, Hook } from './types';
 
 export interface PluginApiOpts {

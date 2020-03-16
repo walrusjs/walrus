@@ -13,7 +13,7 @@ import {
 import assert from 'assert';
 import joi from '@hapi/joi';
 import Service from '../service';
-import { ServiceStage } from '../enums';
+import { ServiceStage } from '../service/enums';
 import {
   isEqual,
   mergeDefault,

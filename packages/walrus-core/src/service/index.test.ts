@@ -1,6 +1,6 @@
 
 import { join } from 'path';
-import Service from './service';
+import Service from '.';
 
 const fixtures = join(__dirname, 'fixtures');
 

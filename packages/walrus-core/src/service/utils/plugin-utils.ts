@@ -7,7 +7,7 @@ import { compatESModuleRequire, createDebug, resolve, winPath } from '@birman/ut
 import { PluginType } from '../enums';
 import { Package, Plugin } from '../types';
 
-const debug = createDebug('@birman/core:service:plugin-utils');
+const debug = createDebug('walrus:core:service:plugin-utils');
 
 interface Opts {
   pkg: Package;
@@ -31,19 +31,22 @@ function isPluginOrPreset(type: PluginType, name: string) {
 
 /**
  *
+ * @param type
  * @param opts
  */
-function getPlugins(opts: Opts): string[] {
+function getPluginsOrPresets(type: PluginType, opts: Opts): string[] {
+  const upperCaseType = type.toUpperCase();
   return [
     // opts
-    ...((opts['plugins'] as any) || []),
+    ...((opts[type === PluginType.preset ? 'presets' : 'plugins'] as any) || []),
     // env
-    ...(process.env[`BIRMAN_PLUGINS`] || '').split(',').filter(Boolean),
+    ...(process.env[`BIRMAN_${upperCaseType}S`] || '').split(',').filter(Boolean),
     // dependencies
     ...Object.keys(opts.pkg.devDependencies || {})
-      .concat(Object.keys(opts.pkg.dependencies || {})),
+      .concat(Object.keys(opts.pkg.dependencies || {}))
+      .filter(isPluginOrPreset.bind(null, type)),
     // user config
-    ...((opts['userConfigPlugins'] as any) || [])
+    ...((opts[type === PluginType.preset ? 'userConfigPresets' : 'userConfigPlugins'] as any) || [])
   ].map((path) => {
     return resolve.sync(path, {
       basedir: opts.cwd,
@@ -160,10 +163,35 @@ interface ResolvePluginsOpts extends Opts {
  */
 export function resolvePlugins(opts: ResolvePluginsOpts) {
   const type = PluginType.plugin;
-  const plugins = getPlugins(opts);
+  const plugins = getPluginsOrPresets(type, opts);
   debug(`plugin paths:`);
   debug(plugins);
   return plugins.map((path: string) => {
+    return pathToObj({
+      type,
+      path,
+      cwd: opts.cwd
+    });
+  });
+}
+
+// ------------ resolvePlugins ------------
+
+interface ResolvePresetsOpts extends Opts {
+  presets: string[];
+  userConfigPresets: string[];
+}
+
+/**
+ *
+ * @param opts
+ */
+export function resolvePresets(opts: ResolvePresetsOpts) {
+  const type = PluginType.preset;
+  const presets = [...getPluginsOrPresets(type, opts)];
+  debug(`preset paths:`);
+  debug(presets);
+  return presets.map((path: string) => {
     return pathToObj({
       type,
       path,
