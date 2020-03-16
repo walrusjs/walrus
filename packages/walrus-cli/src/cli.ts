@@ -13,6 +13,17 @@ const args = yParser(process.argv.slice(2), {
   boolean: ['version'],
 });
 
+// 处理版本 >> walrus -v
+if (args.version && !args._[0]) {
+  args._[0] = 'version';
+  const local = existsSync(join(__dirname, '../.local'))
+    ? chalk.cyan('@local')
+    : '';
+  console.log(`walrus@${require('../package.json').version}${local}`);
+} else if (!args._[0]) {
+  args._[0] = 'help';
+}
+
 (async () => {
   try {
     const name = args._[0];
