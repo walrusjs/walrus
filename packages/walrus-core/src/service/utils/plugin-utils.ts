@@ -126,7 +126,7 @@ export function pathToObj({ type, path, cwd }: PathToObjOpts) {
   } else {
     id = winPath(path);
   }
-  id = id.replace('@birman/preset-built-in/lib/plugins', '@@');
+  id = id.replace('@walrus/preset-internal/lib/plugins', '@@');
   id = id.replace(/\.js$/, '');
 
   const key = isPkgPlugin

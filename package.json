@@ -9,11 +9,7 @@
     "build": "father-build",
     "prerelease": "father-build",
     "test": "birman-test",
-    "lint": "node ./packages/walrus-cli/lib/cli.js lint",
-    "lint:style": "node ./packages/walrus-cli/lib/cli.js stylelint",
-    "prettier": "node ./packages/walrus-cli/lib/cli.js prettier",
-    "commitlint": "node ./packages/walrus-cli/lib/cli.js commitlint --env HUSKY_GIT_PARAMS",
-    "release": "node ./packages/walrus-cli/lib/cli.js release"
+    "walrus": "node ./packages/walrus-cli/lib/cli.js"
   },
   "devDependencies": {
     "@birman/test": "^1.1.0",

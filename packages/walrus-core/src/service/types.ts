@@ -33,6 +33,8 @@ export interface Plugin {
   enableBy?: EnableBy | Function;
 }
 
+export interface Preset extends Plugin {}
+
 export interface Hook {
   key: string;
   fn: Function;

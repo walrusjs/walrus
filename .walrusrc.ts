@@ -1,5 +1,3 @@
-const config = {
-  test: 123
-};
+const config = {};
 
 export default config;

@@ -6,9 +6,9 @@ import { AsyncSeriesWaterfallHook } from 'tapable';
 import { BabelRegister, NodeEnv, lodash } from '@birman/utils';
 import PluginApi, { PluginApiOpts } from './plugin-api';
 import Config from '../config';
-import { resolvePlugins } from './utils/plugin-utils';
-import { ServiceStage, ApplyPluginsType, EnableBy } from './enums';
-import { Command, Hook, Plugin, Package } from './types';
+import { resolvePlugins, pathToObj, resolvePresets } from './utils/plugin-utils';
+import { ServiceStage, ApplyPluginsType, EnableBy, PluginType } from './enums';
+import { Command, Hook, Plugin, Package, Preset } from './types';
 
 export interface ServiceOpts {
   cwd: string;
@@ -26,9 +26,10 @@ interface ConfigData {
 class Service extends EventEmitter {
   cwd: string;
   pkg: Package;
-  configInstance: Config;
   // user config
   userConfig: ConfigData;
+  configInstance: Config;
+  config: ConfigData | null = null;
   skipPluginIds: Set<string> = new Set<string>();
   // babel register
   babelRegister: BabelRegister;
@@ -51,14 +52,17 @@ class Service extends EventEmitter {
   plugins: {
     [id: string]: Plugin;
   } = {};
-  // plugins for registering
-  _extraPlugins: Plugin[] = [];
   // initial presets and plugins from arguments, config, process.env, and package.json
+  initialPresets: Preset[];
   initialPlugins: Plugin[];
+    // presets and plugins for registering
+    _extraPresets: Preset[] = [];
+    _extraPlugins: Plugin[] = [];
   // lifecycle stage
   stage: ServiceStage = ServiceStage.uninitiialized;
   EnableBy = EnableBy;
   ServiceStage = ServiceStage;
+  ApplyPluginsType = ApplyPluginsType;
   env: string | undefined;
   args: any;
 
@@ -86,6 +90,11 @@ class Service extends EventEmitter {
       pkg: this.pkg,
       cwd: this.cwd,
     };
+    this.initialPresets = resolvePresets({
+      ...baseOpts,
+      presets: opts.presets || [],
+      userConfigPresets: this.userConfig.presets || [],
+    });
     this.initialPlugins = resolvePlugins({
       ...baseOpts,
       plugins: opts.plugins || [],
@@ -171,14 +180,71 @@ ${name} from ${plugin.path} register failed.`);
     this.plugins[plugin.id] = plugin;
   }
 
-  initPlugins() {
-    this.setStage(ServiceStage.initPlugins);
+  initPresetsAndPlugins() {
+    this.setStage(ServiceStage.initPresets);
     this._extraPlugins = [];
+    while (this.initialPresets.length) {
+      this.initPreset(this.initialPresets.shift()!);
+    }
 
     this.setStage(ServiceStage.initPlugins);
     this._extraPlugins.push(...this.initialPlugins);
     while (this._extraPlugins.length) {
       this.initPlugin(this._extraPlugins.shift()!);
+    }
+  }
+
+  initPreset(preset: Preset) {
+    const { id, key, apply } = preset;
+    preset.isPreset = true;
+
+    const api = this.getPluginAPI({ id, key, service: this });
+
+    // register before apply
+    this.registerPlugin(preset);
+    const { presets, plugins } = apply()(api) || {};
+
+    // register extra presets and plugins
+    if (presets) {
+      assert(
+        Array.isArray(presets),
+        `presets returned from preset ${id} must be Array.`,
+      );
+      // 插到最前面，下个 while 循环优先执行
+      this._extraPresets.splice(
+        0,
+        0,
+        ...presets.map((path: string) => {
+          return pathToObj({
+            type: PluginType.preset,
+            path,
+            cwd: this.cwd,
+          });
+        }),
+      );
+    }
+
+    // 深度优先
+    const extraPresets = lodash.clone(this._extraPresets);
+    this._extraPresets = [];
+    while (extraPresets.length) {
+      this.initPreset(extraPresets.shift()!);
+    }
+
+    if (plugins) {
+      assert(
+        Array.isArray(plugins),
+        `plugins returned from preset ${id} must be Array.`,
+      );
+      this._extraPlugins.push(
+        ...plugins.map((path: string) => {
+          return pathToObj({
+            type: PluginType.plugin,
+            path,
+            cwd: this.cwd,
+          });
+        }),
+      );
     }
   }
 
@@ -295,8 +361,9 @@ ${name} from ${plugin.path} register failed.`);
   }
 
   async init() {
+    this.setStage(ServiceStage.init);
     // 初始化插件
-    this.initPlugins();
+    this.initPresetsAndPlugins();
 
     // hooksByPluginId -> hooks
     // hooks is mapped with hook key, prepared for applyPlugins()
@@ -317,16 +384,30 @@ ${name} from ${plugin.path} register failed.`);
       type: ApplyPluginsType.event,
     });
 
+    // get config, including:
+    // 1. merge default config
+    // 2. validate
+    this.setStage(ServiceStage.getConfig);
+    const defaultConfig = await this.applyPlugins({
+      key: 'modifyDefaultConfig',
+      type: this.ApplyPluginsType.modify,
+      initialValue: await this.configInstance.getDefaultConfig(),
+    });
+    this.config = await this.applyPlugins({
+      key: 'modifyConfig',
+      type: this.ApplyPluginsType.modify,
+      initialValue: this.configInstance.getConfig({
+        defaultConfig,
+      }) as any,
+    });
   }
 
   async run({ name, args = {} }: { name: string; args?: any }) {
     args._ = args._ || [];
-
     // shift the command itself
     args._.shift();
-    this.args = args;
-    this.setStage(ServiceStage.init);
 
+    this.args = args;
     await this.init();
 
     this.setStage(ServiceStage.run);
