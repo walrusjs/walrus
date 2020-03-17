@@ -1,6 +1,6 @@
 {
   "name": "@walrus/types",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.1-beta.1",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
@@ -8,7 +8,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@walrus/core": "^1.0.0-beta.3"
+    "@walrus/core": "^1.0.1-beta.1"
   },
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,6 @@
 {
   "name": "@walrus/cli",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.1-beta.1",
   "description": "walrus cli",
   "main": "index.js",
   "license": "MIT",
@@ -12,8 +12,8 @@
     "bin"
   ],
   "dependencies": {
-    "@walrus/core": "^1.0.0-beta.3",
-    "@walrus/preset-internal": "^1.0.0-beta.3",
+    "@walrus/core": "^1.0.1-beta.1",
+    "@walrus/preset-internal": "^1.0.1-beta.1",
     "resolve-cwd": "^3.0.0"
   },
   "publishConfig": {
