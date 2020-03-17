@@ -1,6 +1,6 @@
 {
   "name": "@walrus/preset-internal",
-  "version": "1.0.1-beta.2",
+  "version": "1.0.1-beta.3",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -8,7 +8,7 @@
     "lib"
   ],
   "dependencies": {
-    "@walrus/types": "^1.0.1-beta.2"
+    "@walrus/types": "^1.0.1-beta.3"
   },
   "publishConfig": {
     "access": "public"

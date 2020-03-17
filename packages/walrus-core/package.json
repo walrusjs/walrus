@@ -1,6 +1,6 @@
 {
   "name": "@walrus/core",
-  "version": "1.0.1-beta.2",
+  "version": "1.0.1-beta.3",
   "description": "walrus core",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
