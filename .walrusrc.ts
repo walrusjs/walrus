@@ -1,7 +1,5 @@
 const config = {
-  plugins: {
-    release: true
-  }
+  plugins: []
 };
 
 export default config;

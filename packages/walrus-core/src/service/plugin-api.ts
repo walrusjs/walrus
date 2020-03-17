@@ -1,9 +1,9 @@
 import assert from 'assert';
 import * as utils from '@birman/utils';
 import Service from '.';
-import { ServiceStage, PluginType } from './enums';
+import { ServiceStage, PluginType, EnableBy } from './enums';
 import { pathToObj, isValidPlugin } from './utils/plugin-utils';
-import { Command, Hook, Preset } from './types';
+import { Command, Hook, Preset, PluginConfig } from './types';
 import { Plugin } from './types';
 
 export interface PluginApiOpts {
@@ -23,6 +23,44 @@ class PluginApi {
     this.key = opts.key;
     this.service = opts.service;
     this.utils = utils;
+  }
+
+  describe({
+    id,
+    key,
+    config,
+    enableBy,
+  }: {
+    id?: string;
+    key?: string;
+    config?: PluginConfig;
+    enableBy?: EnableBy | (() => boolean);
+  } = {}) {
+    const { plugins } = this.service;
+    // this.id and this.key is generated automatically
+    // so we need to diff first
+    if (id && this.id !== id) {
+      if (plugins[id]) {
+        const name = plugins[id].isPreset ? 'preset' : 'plugin';
+        throw new Error(
+          `api.describe() failed, ${name} ${id} is already registered by ${plugins[id].path}.`,
+        );
+      }
+      plugins[id] = plugins[this.id];
+      plugins[id].id = id;
+      delete plugins[this.id];
+      this.id = id;
+    }
+    if (key && this.key !== key) {
+      this.key = key;
+      plugins[this.id].key = key;
+    }
+
+    if (config) {
+      plugins[this.id].config = config;
+    }
+
+    plugins[this.id].enableBy = enableBy || EnableBy.register;
   }
 
   register(hook: Hook) {
