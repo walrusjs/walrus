@@ -8,7 +8,8 @@
     "lib"
   ],
   "dependencies": {
-    "@walrus/types": "^1.0.1-beta.3"
+    "@walrus/types": "^1.0.1-beta.3",
+    "ignore": "^5.1.4"
   },
   "publishConfig": {
     "access": "public"

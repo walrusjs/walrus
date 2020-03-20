@@ -8,7 +8,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@walrus/core": "^1.0.1-beta.3"
+    "@walrus/core": "^1.0.1-beta.3",
+    "ignore": "^5.1.4"
   },
   "publishConfig": {
     "access": "public"
