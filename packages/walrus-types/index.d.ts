@@ -1,5 +1,6 @@
 import { Ignore } from 'ignore';
 import { PluginApi, Service } from '@walrus/core';
+import { PluginPrettierConfig, ProcessFilesOptions } from './plugin-prettier';
 
 export interface ReleasePluginConfig {
   // 跳过编译
@@ -21,7 +22,9 @@ export interface ReleasePluginConfig {
 }
 
 export interface Config {
+  // 插件配置
   release?: ReleasePluginConfig;
+  prettier?: PluginPrettierConfig;
   // 需要忽略的文件
   ignore?: string[]
   [key: string]: any;
@@ -56,6 +59,8 @@ export interface Api extends PluginApi {
     // 暂存文件
     stageFile: (directory: string, file: string) => void
   }>;
-  createIgnorer: Fun<(string | Ignore)[], (v?: string) => boolean>;
+  createIgnorer: Fun<(string | (string | Ignore)[]), (v?: string) => boolean>;
   createMatcher: Fun<(string | string[]), (v?: string) => boolean>;
 }
+
+export { PluginPrettierConfig, ProcessFilesOptions }
