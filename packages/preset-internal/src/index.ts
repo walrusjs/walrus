@@ -2,6 +2,7 @@ export default function() {
   return {
     plugins: [
       // register methods
+      require.resolve('./plugins/methods/scm'),
       require.resolve('./plugins/methods/create-ignorer'),
 
       // bundle configs

@@ -9,6 +9,7 @@
   ],
   "dependencies": {
     "@walrus/types": "^1.0.1-beta.3",
+    "find-up": "^4.1.0",
     "ignore": "^5.1.4"
   },
   "publishConfig": {
