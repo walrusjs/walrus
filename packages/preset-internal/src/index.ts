@@ -3,6 +3,7 @@ export default function() {
     plugins: [
       // register methods
       require.resolve('./plugins/methods/scm'),
+      require.resolve('./plugins/methods/create-matcher'),
       require.resolve('./plugins/methods/create-ignorer'),
 
       // bundle configs

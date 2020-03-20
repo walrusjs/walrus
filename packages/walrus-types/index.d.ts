@@ -57,4 +57,5 @@ export interface Api extends PluginApi {
     stageFile: (directory: string, file: string) => void
   }>;
   createIgnorer: Fun<(string | Ignore)[], (v?: string) => boolean>;
+  createMatcher: Fun<(string | string[]), (v?: string) => boolean>;
 }
