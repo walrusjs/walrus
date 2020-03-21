@@ -27,12 +27,17 @@ export interface Config {
   release?: ReleasePluginConfig;
   prettier?: PluginPrettierConfig;
   // 需要忽略的文件
-  ignore?: string[]
+  ignore?: string[];
+  commitlint?: any;
   [key: string]: any;
 }
 
 interface Fun<V, T> {
   (v: V): T;
+}
+
+interface Obj {
+  [key: string]: any;
 }
 
 export interface Api extends PluginApi {
@@ -60,6 +65,7 @@ export interface Api extends PluginApi {
     // 暂存文件
     stageFile: (directory: string, file: string) => void
   }>;
+  mergeConfig: (userConfig: Obj, args: Obj) => Obj;
   createIgnorer: Fun<(string | (string | Ignore)[]), (v?: string) => boolean>;
   createMatcher: Fun<(string | string[]), (v?: string) => boolean>;
 }
