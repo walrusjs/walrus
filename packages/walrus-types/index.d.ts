@@ -1,5 +1,6 @@
 import { Ignore } from 'ignore';
 import { PluginApi, Service } from '@walrus/core';
+import { PluginCommitLintConfig } from './plugin-commitlint';
 import { PluginPrettierConfig, ProcessFilesOptions } from './plugin-prettier';
 
 export interface ReleasePluginConfig {
@@ -63,4 +64,5 @@ export interface Api extends PluginApi {
   createMatcher: Fun<(string | string[]), (v?: string) => boolean>;
 }
 
+export { PluginCommitLintConfig }
 export { PluginPrettierConfig, ProcessFilesOptions }

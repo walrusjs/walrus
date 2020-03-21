@@ -405,12 +405,31 @@ ${name} from ${plugin.path} register failed.`);
   async run({ name, args = {} }: { name: string; args?: any }) {
     args._ = args._ || [];
     // shift the command itself
-    args._.shift();
+    if (args._[0] === name) args._.shift();
 
     this.args = args;
     await this.init();
 
     this.setStage(ServiceStage.run);
+
+    await this.applyPlugins({
+      key: 'onStart',
+      type: ApplyPluginsType.event,
+      args: {
+        args,
+      },
+    });
+
+    return this.runCommand({ name, args });
+  }
+
+  async runCommand({ name, args = {} }: { name: string; args?: any }) {
+    assert(this.stage >= ServiceStage.init, `service is not initialized.`);
+
+    args._ = args._ || [];
+
+    // shift the command itself
+    if (args._[0] === name) args._.shift();
 
     const command =
       typeof this.commands[name] === 'string'
@@ -418,11 +437,6 @@ ${name} from ${plugin.path} register failed.`);
         : this.commands[name];
 
     assert(command, `run command failed, command ${name} does not exists.`);
-
-    await this.applyPlugins({
-      key: 'onStart',
-      type: ApplyPluginsType.event,
-    });
 
     const { fn } = command as Command;
     return fn({ args });
