@@ -1,6 +1,7 @@
 import { Api } from '@walrus/types';
 import { chalk, lodash } from '@birman/utils';
 import assert from 'assert';
+import { getPadLength } from './utils';
 
 function getDescriptions(commands: any) {
   return Object.keys(commands)
@@ -23,6 +24,27 @@ function padLeft(str: string) {
     .join('\n');
 }
 
+function logHelpForCommand(name, command) {
+  if (!command) {
+    console.log(chalk.red(`\n  command "${name}" does not exist.`));
+  }
+
+  const options = command.options || {};
+  console.log(`\n  Usage: walrus ${name} [options]`);
+
+  if (options) {
+    console.log(`\n  Options:\n`);
+    const padLength = getPadLength(options);
+    for (const [flags, description] of Object.entries(options)) {
+      console.log(`    ${chalk.blue(flags.padEnd(padLength))}${description}`);
+    }
+  }
+
+  console.log('\n  Details: \n  ');
+
+  console.log(`${command.details ? padLeft(command.details.trim()) : ''}`);
+}
+
 export default (api: Api) => {
   api.registerCommand({
     name: 'help',
@@ -32,15 +54,8 @@ export default (api: Api) => {
       if (commandName) {
         const command = api.service.commands[commandName] as any;
         assert(command, `Command ${commandName} not found.`);
-        console.log(`
-  Usage: walrus ${commandName} [options]
 
-  Options:
-
-  Details:
-
-${command.details ? padLeft(command.details.trim()) : ''}
-        `);
+        logHelpForCommand(commandName, command);
       } else {
         console.log(`
   Usage: walrus <command> [options]

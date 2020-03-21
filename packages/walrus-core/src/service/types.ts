@@ -47,6 +47,9 @@ export interface Command {
   name: string;
   alias?: string;
   description?: string;
+  options?: {
+    [key: string]: string;
+  }
   details?: string;
   fn: {
     ({ args }: { args: yargs.Arguments }): void;
