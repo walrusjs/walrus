@@ -65,6 +65,7 @@ export interface Api extends PluginApi {
     // 暂存文件
     stageFile: (directory: string, file: string) => void
   }>;
+  getIgnore: (directory: string, filename?: string) => string;
   mergeConfig: (userConfig: Obj, args: Obj) => Obj;
   createIgnorer: Fun<(string | (string | Ignore)[]), (v?: string) => boolean>;
   createMatcher: Fun<(string | string[]), (v?: string) => boolean>;
