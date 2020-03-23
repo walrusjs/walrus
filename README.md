@@ -7,32 +7,11 @@
 <h1 align="center">walrus</h1>
 
 <div align="center">
-Frontend development tools 
+🎉 Cli development framework. (一个命令行开发框架) 🎉
 </div>
 
-[![Alita](https://img.shields.io/badge/alitajs-walrus-blue.svg)](https://github.com/alitajs)
 [![NPM version](https://img.shields.io/npm/v/@walrus/cli.svg?style=flat)](https://npmjs.org/package/@walrus/cli)
 [![NPM downloads](http://img.shields.io/npm/dm/@walrus/cli.svg?style=flat)](https://npmjs.org/package/@walrus/cli)
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org)
-
-## 项目由来以及定位
-
-**项目由来:**
-
-新开发一个前端项目，为了代码质量管控和团队一致性，总会需要配置 lint、jest、...，每个配置项目都会有一份配置,会引发难以保证每个项目做到完全统一，同时需要安装各种依赖，比较繁琐，
-
-社区上的解决方案有以下：
-
-1.  使用抽取配置为单独的 npm 包 缺点: 无法解决安装众多依赖的问题
-2.  通过项目模板创建项目 缺点: 模板升级不好对历史项目进行修改，无法解决安装众多依赖的问题
-
-综上考虑，开发一个拥有插件体系的 cli 工具，对常用的工具进行封装、根据约定大于配置的原则，内置最优配置
-
-最后结果: 只需要安装 `@walrus/cli` 一个依赖，所有配置内置，当然支持自定义配置
-
-**项目定位:**
-
-不造轮子，封装已有的成熟工具，会根据工作经验，开发一些实用的插件
 
 ## ✨ 特性
 
@@ -43,107 +22,24 @@ Frontend development tools
 
 ## 🌈 插件
 
-### 内置
+* [plugin-commitlint](https://github.com/walrusjs/plugins/tree/master/packages/plugin-commitlint)
+* [plugin-eslint](https://github.com/walrusjs/plugins/tree/master/packages/plugin-eslint)
+* [plugin-prettier](https://github.com/walrusjs/plugins/tree/master/packages/plugin-prettier)
+* [plugin-stylelint](https://github.com/walrusjs/plugins/tree/master/packages/plugin-stylelint)
+* [plugin-release](https://github.com/walrusjs/plugins/tree/master/packages/plugin-release)
 
-- [@walrus/plugin-jest](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-jest/README.md) 封装 Jest
-- [@walrus/plugin-eslint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-eslint/README.md) 封装 ESLint
-- [@walrus/plugin-prettier](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-prettier/README.md) 封装 Prettier
-- [@walrus/plugin-stylelint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-stylelint/README.md) 封装 StyleLint
-- [@walrus/plugin-commitlint](https://github.com/walrusjs/walrus/blob/master/packages/walrus-plugin-commitlint/README.md) 封装 CommitLint
+## 🌈 插件集
 
-### 其他
-
-- [@walrus/plugin-replace](https://github.com/walrusjs/walrus-plugin-replace) 替换文本插件
-- [@walrus/plugin-release](https://github.com/walrusjs/walrus-plugin-release) 项目发布插件
-
-### 社区
-
-...待补充
+* [preset-lint](https://github.com/walrusjs/plugins/tree/master/packages/preset-lint)
 
 ## 📦 安装
 
 ```
 // npm
-npm install @walrus/cli --dev --save
+npm install @walrus/cli @walrus/preset-lint --dev --save
 
 // yarn
-yarn add @walrus/cli --dev
-
-// 全局安装
-yarn global add @walrus/cli
-
-```
-
-## 🔨 使用
-
-### 测试
-
-> Cli 自带`@walrus/plugin-jest`插件
-
-- package.json 添加如下代码
-
-```
-// package.json
-
-"scripts": {
-  "test": "walrus test"
-}
-```
-
-- 当前项目目录执行
-
-```
-yarn test
-```
-
-### ESLint
-
-> Cli 自带`@walrus/plugin-eslint`插件
-
-- package.json 添加如下代码
-
-```
-// package.json
-
-"scripts": {
-  "lint": "walrus lint"
-}
-```
-
-- 当前项目目录执行
-
-```
-yarn lint
-```
-
-### 代码美化
-
-> Cli 自带`@walrus/plugin-prettier`插件
-
-- package.json 添加如下代码
-
-```
-// package.json
-
-"scripts": {
-  "prettier": "walrus prettier"
-}
-```
-
-- 当前项目目录执行
-
-```
-yarn prettier
-```
-
-## ⌨️ 本地开发
-
-```
-# 克隆项目到本地
-git clone git@github.com:walrusjs/walrus.git
-
-# 安装依赖
-yarn bootstarp
+yarn add @walrus/cli @walrus/preset-lint --dev
 ```
 
 ## 🌟 社区
