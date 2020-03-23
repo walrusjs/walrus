@@ -47,7 +47,3 @@ yarn add @walrus/cli @walrus/preset-lint --dev
 | Github Issue                                               | 钉钉群                                                                                     | 微信群                                                                                   |
 | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
 | [walrus/issues](https://github.com/walrusjs/walrus/issues) | <img src="https://github.com/alitajs/alita/blob/master/public/dingding.png" width="100" /> | <img src="https://github.com/alitajs/alita/blob/master/public/wechat.png" width="100" /> |
-
-## License
-
-[MIT](https://github.com/walrusjs/walrus/blob/master/LICENSE)
