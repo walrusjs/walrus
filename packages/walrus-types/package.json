@@ -4,9 +4,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
-    "index.d.ts",
-    "plugin-prettier.d.ts",
-    "plugin-commitlint.d.ts"
+    "index.d.ts"
   ],
   "license": "MIT",
   "dependencies": {

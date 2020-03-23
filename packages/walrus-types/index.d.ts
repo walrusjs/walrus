@@ -1,34 +1,7 @@
 import { Ignore } from 'ignore';
 import { PluginApi, Service } from '@walrus/core';
-import { PluginCommitLintConfig } from './plugin-commitlint';
-import { PluginPrettierConfig, ProcessFilesOptions } from './plugin-prettier';
-
-export interface ReleasePluginConfig {
-  // 跳过编译
-  skipBuild?: boolean;
-  // 跳过发布
-  skipPublish?: boolean;
-  // 仓库地址
-  repoUrl?: string;
-  // 仓库地址前缀 目前支持 github
-  repoUrlPrefix?: string;
-  // 跳过 Git 状态检查
-  skipGitStatusCheck?: boolean;
-  // 仅发布
-  publishOnly?: boolean;
-  // 跳过changelog
-  skipChangelog?: boolean;
-  conventionalGraduate?: any;
-  conventionalPrerelease?: any;
-}
 
 export interface Config {
-  // 插件配置
-  release?: ReleasePluginConfig;
-  prettier?: PluginPrettierConfig;
-  // 需要忽略的文件
-  ignore?: string[];
-  commitlint?: any;
   [key: string]: any;
 }
 
@@ -70,6 +43,3 @@ export interface Api extends PluginApi {
   createIgnorer: Fun<(string | (string | Ignore)[]), (v?: string) => boolean>;
   createMatcher: Fun<(string | string[]), (v?: string) => boolean>;
 }
-
-export { PluginCommitLintConfig }
-export { PluginPrettierConfig, ProcessFilesOptions }
