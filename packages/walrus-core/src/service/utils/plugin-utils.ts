@@ -40,7 +40,7 @@ function getPluginsOrPresets(type: PluginType, opts: Opts): string[] {
     // opts
     ...((opts[type === PluginType.preset ? 'presets' : 'plugins'] as any) || []),
     // env
-    ...(process.env[`BIRMAN_${upperCaseType}S`] || '').split(',').filter(Boolean),
+    ...(process.env[`WALRUS_${upperCaseType}S`] || '').split(',').filter(Boolean),
     // dependencies
     ...Object.keys(opts.pkg.devDependencies || {})
       .concat(Object.keys(opts.pkg.dependencies || {}))
@@ -64,8 +64,8 @@ interface PathToObjOpts {
 }
 
 const RE = {
-  [PluginType.plugin]: /^(@birman\/|birman-)plugin-/,
-  [PluginType.preset]: /^(@birman\/|birman-)preset-/
+  [PluginType.plugin]: /^(@walrus\/|walrus-)plugin-/,
+  [PluginType.preset]: /^(@walrus\/|walrus-)preset-/
 };
 
 /**
