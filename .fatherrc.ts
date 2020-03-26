@@ -3,7 +3,7 @@ import { join } from 'path';
 
 // utils must build before core
 // runtime must build before renderer-react
-const headPkgs = ['walrus-core', 'preset-internal'];
+const headPkgs = ['core', 'preset-internal'];
 const tailPkgs = [];
 const otherPkgs = readdirSync(join(__dirname, 'packages')).filter(
   pkg =>
