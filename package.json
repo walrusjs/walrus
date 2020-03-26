@@ -8,7 +8,6 @@
     "start": "dumi dev",
     "build": "father-build",
     "test": "birman-test",
-    "walrus": "node ./packages/walrus-cli/lib/cli.js",
     "release": "walrus release"
   },
   "devDependencies": {
