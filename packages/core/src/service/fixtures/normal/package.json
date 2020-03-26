@@ -1,0 +1,16 @@
+{
+  "name": "foo",
+  "dependencies": {
+    "@alipay/birman-preset-bigfish": "1",
+    "@birman/preset-1": "1",
+    "birman-preset-1": "1",
+    "@birman/plugin-1": "1",
+    "birman-plugin-1": "1"
+  },
+  "devDependencies": {
+    "@birman/preset-2": "1",
+    "birman-preset-2": "1",
+    "@birman/plugin-2": "1",
+    "birman-plugin-2": "1"
+  }
+}
