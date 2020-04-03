@@ -46,7 +46,7 @@ test('with abs APP_ROOT & dir, pkg not found in both APP_ROOT and dir, null shou
 });
 
 test('with relative APP_ROOT, pkg retrieved in APP_ROOT', () => {
-  process.env.APP_ROOT = 'packages/walrus-cli/src/utils/fixtures/normal';
+  process.env.APP_ROOT = 'packages/cli/src/utils/fixtures/normal';
   const pkg = getPkg('');
   expect(pkg.name).toEqual('normal');
 });
