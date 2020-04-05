@@ -88,7 +88,7 @@ function nameToKey(name: string) {
  * @param type
  */
 function pkgNameToKey(pkgName: string, type: PluginType) {
-  if (pkgName.charAt(0) === '@' && !pkgName.startsWith('@birman/')) {
+  if (pkgName.charAt(0) === '@' && !pkgName.startsWith('@walrus/')) {
     pkgName = pkgName.split('/')[1];
   }
   return nameToKey(pkgName.replace(RE[type], ''));

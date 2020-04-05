@@ -16,9 +16,16 @@ test('normal', async () => {
   const cwd = join(fixtures, 'normal');
   const service = new Service({
     cwd,
-    presets: [require.resolve(join(cwd, 'preset_1')), require.resolve(join(cwd, 'preset_2'))],
-    plugins: [require.resolve(join(cwd, 'plugin_1')), require.resolve(join(cwd, 'plugin_2'))]
+    presets: [
+      require.resolve(join(cwd, 'preset_1')),
+      require.resolve(join(cwd, 'preset_2'))
+    ],
+    plugins: [
+      require.resolve(join(cwd, 'plugin_1')),
+      require.resolve(join(cwd, 'plugin_2'))
+    ]
   });
+
   expect(service.pkg.name).toEqual('foo');
   expect(service.initialPresets.map((p) => p.key)).toEqual([
     'index',
@@ -47,21 +54,21 @@ test('normal', async () => {
     '[preset] ./preset_1/index',
     '[preset] ./preset_1/preset_1/index',
     '[preset] ./preset_2/index',
-    '[preset] @birman/preset-2',
-    '[preset] birman-preset-2',
-    '[preset] @alipay/birman-preset-bigfish',
-    '[preset] @birman/preset-1',
-    '[preset] birman-preset-1',
+    '[preset] @walrus/preset-2',
+    '[preset] walrus-preset-2',
+    '[preset] @sensoro/walrus-preset-bigfish',
+    '[preset] @walrus/preset-1',
+    '[preset] walrus-preset-1',
     '[plugin] ./preset_1/preset_1/plugin_1',
     '[plugin] ./preset_1/plugin_1',
     '[plugin] ./preset_1/plugin_2',
     '[plugin] ./preset_2/plugin_1',
     '[plugin] ./plugin_1',
     '[plugin] ./plugin_2',
-    '[plugin] @birman/plugin-2',
-    '[plugin] birman-plugin-2',
-    '[plugin] @birman/plugin-1',
-    '[plugin] birman-plugin-1'
+    '[plugin] @walrus/plugin-2',
+    '[plugin] walrus-plugin-2',
+    '[plugin] @walrus/plugin-1',
+    '[plugin] walrus-plugin-1'
   ]);
 
   expect(service.hooks['foo'].length).toEqual(2);
