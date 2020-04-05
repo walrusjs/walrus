@@ -1,5 +1,5 @@
 import { join } from 'path';
-import getIgnore from './';
+import getIgnore from '.';
 
 const fixtures = join(__dirname, 'fixtures');
 
