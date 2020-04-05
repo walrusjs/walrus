@@ -1,7 +1,7 @@
 import { dirname, join } from 'path';
 import { existsSync } from 'fs';
 import findUp from 'find-up';
-import { execa } from '@birman/utils';
+import { execa } from '../';
 
 export const name = 'git';
 
