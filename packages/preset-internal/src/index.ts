@@ -3,7 +3,6 @@ export default function() {
     plugins: [
       // register methods
       require.resolve('./plugins/methods/merge-config'),
-      require.resolve('./plugins/methods/create-matcher'),
 
       // bundle configs
       require.resolve('./plugins/features/ignore'),

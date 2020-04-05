@@ -8,9 +8,7 @@
     "lib"
   ],
   "dependencies": {
-    "@walrus/types": "1.2.0",
-    "find-up": "^4.1.0",
-    "multimatch": "^4.0.0"
+    "@walrus/types": "1.2.0"
   },
   "publishConfig": {
     "access": "public"
