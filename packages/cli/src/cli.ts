@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { existsSync } from 'fs';
-import { chalk, yParser } from '@birman/utils';
+import { chalk, yParser } from '@walrus/utils';
 import { Service } from './service';
 import getCwd from './utils/get-cwd';
 import getPkg from './utils/get-pkg';

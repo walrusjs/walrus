@@ -3,7 +3,7 @@ import { existsSync } from 'fs';
 import camelcase from 'camelcase';
 import assert from 'assert';
 import { basename, dirname, extname, join, relative } from 'path';
-import { compatESModuleRequire, createDebug, resolve, winPath } from '@birman/utils';
+import { compatESModuleRequire, createDebug, resolve, winPath } from '@walrus/utils';
 import { PluginType } from '../enums';
 import { Package, Plugin } from '../types';
 

@@ -1,5 +1,5 @@
 import { Api } from '@walrus/types';
-import { lodash } from '@birman/utils';
+import { lodash } from '@walrus/utils';
 
 interface Obj {
   [key: string]: any;

@@ -10,6 +10,11 @@
   "keywords": [
     "walrus"
   ],
+  "dependencies": {
+    "@birman/utils": "^1.1.2",
+    "find-up": "^4.1.0",
+    "ignore": "^5.1.4"
+  },
   "publishConfig": {
     "access": "public"
   },

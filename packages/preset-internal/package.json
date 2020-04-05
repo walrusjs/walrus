@@ -10,7 +10,6 @@
   "dependencies": {
     "@walrus/types": "1.2.0",
     "find-up": "^4.1.0",
-    "ignore": "^5.1.4",
     "multimatch": "^4.0.0"
   },
   "publishConfig": {

@@ -1,6 +1,6 @@
 
 import { join } from 'path';
-import { winPath } from '@birman/utils';
+import { winPath } from '@walrus/utils';
 import { ApplyPluginsType } from './enums';
 import Service from '.';
 

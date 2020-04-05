@@ -12,9 +12,9 @@
     "walrus"
   ],
   "dependencies": {
-    "@birman/utils": "^1.1.2",
     "@hapi/joi": "^17.1.1",
     "@types/tapable": "^1.0.5",
+    "@walrus/utils": "^1.2.0",
     "camelcase": "^5.3.1",
     "pkg-up": "^3.1.0",
     "set-value": "^3.0.1",

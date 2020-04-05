@@ -3,7 +3,7 @@ import { join } from 'path';
 import { existsSync } from 'fs';
 import { EventEmitter } from 'events';
 import { AsyncSeriesWaterfallHook } from 'tapable';
-import { BabelRegister, NodeEnv, lodash } from '@birman/utils';
+import { BabelRegister, NodeEnv, lodash } from '@walrus/utils';
 import PluginApi, { PluginApiOpts } from './plugin-api';
 import Config from '../config';
 import { resolvePlugins, pathToObj, resolvePresets } from './utils/plugin-utils';

@@ -1,5 +1,5 @@
 import joi from '@hapi/joi';
-import { yargs } from '@birman/utils';
+import { yargs } from '@walrus/utils';
 import { EnableBy } from './enums';
 
 export interface PluginConfig {

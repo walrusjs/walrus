@@ -1,5 +1,5 @@
 import { Api } from '@walrus/types';
-import { chalk, lodash } from '@birman/utils';
+import { chalk, lodash } from '@walrus/utils';
 import assert from 'assert';
 import { getPadLength } from './utils';
 

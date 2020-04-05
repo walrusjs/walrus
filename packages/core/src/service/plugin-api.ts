@@ -1,5 +1,5 @@
 import assert from 'assert';
-import * as utils from '@birman/utils';
+import * as utils from '@walrus/utils';
 import Service from '.';
 import { ServiceStage, PluginType, EnableBy } from './enums';
 import { pathToObj, isValidPlugin } from './utils/plugin-utils';

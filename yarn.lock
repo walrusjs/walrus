@@ -1427,8 +1427,8 @@
 
 "@birman/utils@1.1.2", "@birman/utils@^1.1.2":
   version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@birman/utils/-/utils-1.1.2.tgz#923569ae504d9b15d406dda95a0ec3d7697abf18"
-  integrity sha512-olPgX6maGy29jMp1YtrGrpEeVh245x5PExBkWFDmKxDOHZ6MQwAzNEmbff60YW1VW+vtJg+xKb8qfy6JXFDEGA==
+  resolved "https://registry.npm.taobao.org/@birman/utils/download/@birman/utils-1.1.2.tgz#923569ae504d9b15d406dda95a0ec3d7697abf18"
+  integrity sha1-kjVprlBNmxXUBt2pWg7D12l6vxg=
   dependencies:
     "@babel/parser" "^7.8.6"
     "@babel/register" "^7.8.6"
@@ -8223,10 +8223,18 @@ find-up@^3.0.0:
   dependencies:
     locate-path "^3.0.0"
 
-find-up@^4.0.0, find-up@^4.1.0:
+find-up@^4.0.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-4.1.0.tgz#97afe7d6cdc0bc5928584b7c8d7b16e8a9aa5d19"
   integrity sha512-PpOwAdQ/YlXQ2vj8a3h8IipDuYRi3wceVQQGYWxNINccq40Anw7BlsEXCMbt1Zt+OLA6Fq9suIpIWD0OsnISlw==
+  dependencies:
+    locate-path "^5.0.0"
+    path-exists "^4.0.0"
+
+find-up@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.npm.taobao.org/find-up/download/find-up-4.1.0.tgz#97afe7d6cdc0bc5928584b7c8d7b16e8a9aa5d19"
+  integrity sha1-l6/n1s3AvFkoWEt8jXsW6KmqXRk=
   dependencies:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
@@ -9327,8 +9335,8 @@ ignore@^4.0.3, ignore@^4.0.6:
 
 ignore@^5.0.0, ignore@^5.0.4, ignore@^5.0.5, ignore@^5.0.6, ignore@^5.1.4:
   version "5.1.4"
-  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.1.4.tgz#84b7b3dbe64552b6ef0eca99f6743dbec6d97adf"
-  integrity sha512-MzbUSahkTW1u7JpKKjY7LCARd1fU5W2rLdxlM4kdkayuCwZImjkpluF9CM1aLewYJguPDqewLam18Y6AU69A8A==
+  resolved "https://registry.npm.taobao.org/ignore/download/ignore-5.1.4.tgz#84b7b3dbe64552b6ef0eca99f6743dbec6d97adf"
+  integrity sha1-hLez2+ZFUrbvDsqZ9nQ9vsbZet8=
 
 image-size@~0.5.0:
   version "0.5.5"

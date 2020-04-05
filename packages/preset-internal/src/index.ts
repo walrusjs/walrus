@@ -2,11 +2,8 @@ export default function() {
   return {
     plugins: [
       // register methods
-      require.resolve('./plugins/methods/scm'),
-      require.resolve('./plugins/methods/get-ignore'),
       require.resolve('./plugins/methods/merge-config'),
       require.resolve('./plugins/methods/create-matcher'),
-      require.resolve('./plugins/methods/create-ignorer'),
 
       // bundle configs
       require.resolve('./plugins/features/ignore'),

@@ -1,4 +1,4 @@
-import { lodash } from '@birman/utils';
+import { lodash } from '@walrus/utils';
 // @ts-ignore
 import set from 'set-value';
 

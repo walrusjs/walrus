@@ -1,4 +1,4 @@
-import { lodash } from '@birman/utils';
+import { lodash } from '@walrus/utils';
 
 function funcToStr(obj: Function | object) {
   if (typeof obj === 'function') {

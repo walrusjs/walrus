@@ -9,7 +9,7 @@ import {
   parseRequireDeps,
   winPath,
   createDebug
-} from '@birman/utils';
+} from '@walrus/utils';
 import assert from 'assert';
 import joi from '@hapi/joi';
 import Service from '../service';

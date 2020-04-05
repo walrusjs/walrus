@@ -1,4 +1,4 @@
-import { deepmerge, lodash } from '@birman/utils';
+import { deepmerge, lodash } from '@walrus/utils';
 
 interface Opts {
   defaultConfig: any;
