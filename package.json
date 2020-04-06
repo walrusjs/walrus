@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "dumi dev",
+    "prebuild": "rm -rf ./node_modules/@birman/utils/node_modules",
     "build": "father-build",
     "prettier": "walrus prettier",
     "test": "walrus-test",
