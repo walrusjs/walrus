@@ -16,7 +16,7 @@
 ## ✨ 特性
 
 - 🚀 零配置，配置已内置
-- 💅 内置支持 jest、eslint、stylelint、prettier、commitlint
+- 💅 内置支持 eslint、stylelint、prettier、commitlint
 - 🎉 插件体系，所有功能通过插件实现
 - 💻 使用 TypeScript 编写
 
