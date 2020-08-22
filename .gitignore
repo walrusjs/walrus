@@ -5,7 +5,7 @@ lib
 coverage
 
 # Dependency
-node_modules
+/node_modules
 
 # Log
 npm-debug.log*

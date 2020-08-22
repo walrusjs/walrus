@@ -1,7 +1,7 @@
 {
   "name": "foo",
   "dependencies": {
-    "@sensoro/walrus-preset-bigfish": "1",
+    "@sensoro/walrus-preset-lint": "1",
     "@walrus/preset-1": "1",
     "walrus-preset-1": "1",
     "@walrus/plugin-1": "1",

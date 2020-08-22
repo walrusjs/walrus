@@ -11,9 +11,9 @@
     "walrus"
   ],
   "dependencies": {
-    "@birman/utils": "^1.1.2",
-    "find-up": "^4.1.0",
-    "ignore": "^5.1.4",
+    "@birman/utils": "^1.2.1",
+    "find-up": "^5.0.0",
+    "ignore": "^5.1.8",
     "multimatch": "^4.0.0"
   },
   "publishConfig": {

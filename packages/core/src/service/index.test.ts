@@ -32,7 +32,7 @@ test('normal', async () => {
     'index',
     '2',
     '2',
-    'bigfish',
+    'lint',
     '1',
     '1'
   ]);
@@ -56,7 +56,7 @@ test('normal', async () => {
     '[preset] ./preset_2/index',
     '[preset] @walrus/preset-2',
     '[preset] walrus-preset-2',
-    '[preset] @sensoro/walrus-preset-bigfish',
+    '[preset] @sensoro/walrus-preset-lint',
     '[preset] @walrus/preset-1',
     '[preset] walrus-preset-1',
     '[plugin] ./preset_1/preset_1/plugin_1',
