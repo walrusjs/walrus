@@ -1,6 +1,6 @@
 {
   "name": "@walrus/cli",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "walrus cli",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -13,8 +13,8 @@
     "bin"
   ],
   "dependencies": {
-    "@walrus/core": "1.3.2",
-    "@walrus/preset-internal": "1.3.2",
+    "@walrus/core": "1.3.3",
+    "@walrus/preset-internal": "1.3.3",
     "resolve-cwd": "^3.0.0"
   },
   "publishConfig": {
