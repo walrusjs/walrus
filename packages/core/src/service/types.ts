@@ -1,4 +1,4 @@
-import joi from '@hapi/joi';
+import joi from 'joi';
 import { yargs } from '@walrus/utils';
 import { EnableBy } from './enums';
 

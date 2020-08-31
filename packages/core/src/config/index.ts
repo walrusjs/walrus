@@ -11,7 +11,7 @@ import {
   createDebug
 } from '@walrus/utils';
 import assert from 'assert';
-import joi from '@hapi/joi';
+import joi from 'joi';
 import Service from '../service';
 import { ServiceStage } from '../service/enums';
 import {
